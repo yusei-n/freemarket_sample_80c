@@ -16,17 +16,17 @@
 |belongs_to: address|
 
 
-# addressテーブル
+# addressテーブル（商品配送情報）
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### 苗字（全角）
-|Last|storing||
+|Last_name|storing||
 ### 名前（全角）
-|First|storing||
+|First_name|storing||
 ### 苗字 ふりがな（全角）
-|Last_f|storing||
+|Last_name_hurigana|storing||
 ### 名前 ふりがな（全角）
-|first_f|storing||
+|first_name_hurigana|storing||
 ### 生年月日（年,西暦）
 |Birthday_year|string||
 ### 生年月日（月）
@@ -34,17 +34,17 @@
 ### 生年月日（日）
 |Birthday_dey|string|
 ### 郵便番号
-|Postal_c|storing||
+|Postal_number|storing||
 ### 都道府県
-|Postal_p|storing||
+|Postal_Prefectures|storing||
 ### 市町村
-|Postal_m|storing||
+|Postal_Municipalities|storing||
 ### 番地
-|Postal_n|storing||
+|Postal_address|storing||
 ### 部屋番号マンション （任意）
-|Post_a|storing||
+|Post_apartment|storing||
 ### 電話番号 (任意)
-|tell_n|storing||
+|tell_number|storing||
 
 ### addressアソシエーション
 ｜has_many: products|
@@ -60,13 +60,13 @@
 ### 商品値段
 |price|integer||
 ### 配送料負担関係
-|delivery|string||
+|delivery_burden|string||
 ### 商品説明
-|text_area|text||
+|explanation|text||
 ### 商品状態 (フロントで処理する)
-|product_s|string||
+|product_Status|string||
 ### 発送日目安 (フロントで処理する)
-|Estimated|string||
+|Estimated shipping |string||
 ### タグ:teg（外部キー）
 |tag|string|foreign_key: true|
 
@@ -76,7 +76,7 @@
  |has_many: tags through:product_tags|
 
 
-### Product_imageテーブル
+### imageテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ## 商品情報（外部キー）
@@ -84,7 +84,7 @@
 ## 画像（複数）,(外部キー)
 |image|integer|foreign_key: true|
 
-# product_imageアソシエーション
+# imageアソシエーション
 |belongs_to: product|
 
 
@@ -100,6 +100,18 @@
 ｜has_many: products|
 ｜has_many: product_tags|
 |has_many: products through:product_tags|
+
+# j_payテーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### クレジットカード番号
+|Credit number|string|null: false|
+### クレジットカードキー
+|Credit key|string|null: false|
+### 名前（ローマ字）
+|user_name_romazi|storing|null: false|
+
+
 
 
 
