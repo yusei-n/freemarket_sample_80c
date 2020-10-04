@@ -17,6 +17,8 @@
 
 
 # addressテーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
 ### 苗字（全角）
 |Last|storing||
 ### 名前（全角）
@@ -82,6 +84,7 @@
 
 # product_imageアソシエーション
 |belongs_to: product|
+
 
 # Tagテーブル
 ｜Column｜Type｜Options｜
