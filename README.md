@@ -59,6 +59,8 @@
 |title|string||
 ### 商品値段
 |price|integer||
+### 配送料負担関係
+|delivery|string||
 ### 商品説明
 |text_area|text||
 ### 商品状態 (フロントで処理する)
@@ -71,7 +73,7 @@
 ### Productアソシエーション
  ｜has_many: product_images|
  |has_many: product_tags|
- |has_many: tag through:product_tags|
+ |has_many: tags through:product_tags|
 
 
 ### Product_imageテーブル
