@@ -53,6 +53,8 @@
 # Productsテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
+### ユーザー情報（外部キー）
+|user_id|integer|foreign_key: true, null: false|
 ### 商品名
 |title|string|null: false|
 ### 商品値段
@@ -70,10 +72,10 @@
 
 
 ### Productsアソシエーション
- ｜has_many: images|
- |has_many: users|
+ ｜belongs_to: image|
+ |belongs_to: user|
  |has_many: orders|
-
+ |belongs_to: category|
 
 # Ordersテーブル
 ｜Column｜Type｜Options｜
@@ -97,14 +99,14 @@
 |belongs_to: product|
 
 ---アクティブハッシュ---
-# Categorys(カテゴリー)テーブル
+# categories(カテゴリー)テーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### カテゴリー
 |item|string|null: false|
 ---アクティブハッシュここまで---
 
-# Categorysアソシエーション
+# categoriesアソシエーション
 |has_many:producrs｜
 
 
