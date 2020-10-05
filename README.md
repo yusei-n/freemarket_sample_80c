@@ -4,42 +4,41 @@
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### ニックネーム
-|nickname|string||
+|nickname|string|null: false|
 ### メールアドレス
-|mail|string||
+|mail|string|null: false|
 ### パスワード７文字以上
-|password|string||
+|password|string|null: false|
 
 # Userアソシエーション
 ｜has_many: products|
-｜has_many: J_pays|
-|belongs_to: address|
-｜has_many: order_historys|
+｜has_many: cards|
+|has_one: address|
 
 
 # addressテーブル（商品配送情報）
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### 苗字（全角）
-|Last_name|string||
+|last_name|string|null: false|
 ### 名前（全角）
-|First_name|string||
+|first_name|string|null: false|
 ### 苗字 ふりがな（全角）
-|Last_name_hurigana|string||
+|last_name_hurigana|string|null: false|
 ### 名前 ふりがな（全角）
-|first_name_hurigana|string||
+|first_name_hurigana|string|null: false|
 ### 生年月日（年：西暦,月,日）
 |birthday|data||
 ---　アクティブハッシュ---(カラム設定しない)
-### 郵便番号
-|postal_number|string||
-### 都道府県
-|postal_prefectures|string||
-### 市町村
-|postal_municipalities|string||
+### 郵便番号(外部キーモデルから)
+|postal_number|integer|foreign_key: true|
+### 都道府県（外部キーモデルから）
+|postal_prefectures|integer|foreign_key: true|
+### 市町村（外部キーモデルから）
+|postal_municipalities|integer|foreign_key: true|
 --- アクティブハッシュここまで---
 ### 番地
-|postal_address|string||
+|postal_address|string|null: false|
 ### 部屋番号マンション （任意）
 |post_apartment|string||
 ### 電話番号 (任意)
@@ -55,18 +54,18 @@
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### 商品名
-|title|string||
+|title|string|null: false|
 ### 商品値段
-|price|integer||
+|price|integer|null: false|
 ### 商品説明
-|explanation|text||
+|explanation|text|null: false|
 --- アクティブハッシュ---（カラム設定しない）
-### 配送料負担関係
-|delivery_burden|string||
-### 商品状態 (フロントで処理する)
-|product_Status|string||
-### 発送日目安 (フロントで処理する)
-|estimated shipping |string||
+### 配送料負担関係（外部キーモデルから）
+|delivery_burden|integer|foreign_key: true,null: false|
+### 商品状態 (外部キーモデルから)
+|product_Status|integer|foreign_key: true,null: false|
+### 発送日目安 (外部キーモデルから)
+|estimated_shipping|integer|foreign_key: true,null: false|
 --- アクティブハッシュここまで---
 
 
@@ -80,8 +79,6 @@
 |-------|-----|-------|
 ### ユーザー情報（配送情報含む）（外部キー）
 |user|integer|foreign_key: true|
-### クレジットカード情報（外部キー）
-|j_pay|integer|foreign_key: true|
 ### 商品情報（ニックネームを除く）（外部キー）
 |product|integer|foreign_key: true|
 ### 注文履歴
@@ -107,32 +104,21 @@
 
 
 
-# J_payテーブル
+# Cardsテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
-### クレジットカード番号
-|credit number|string|null: false|
-### クレジットカードキー
-|credit key|string|null: false|
 ### 名前（ローマ字）
 |user_name_romazi|storing|null: false|
+### クレジットカード番号
+|customer_id|string|null: false|
+### クレジットカードキー
+|card_id|string|null: false|
 
-# J_payアソシエーション
+
+# Cardsアソシエーション
 |belongs_to: Order|
+|has_many: users|
 
-# Order_history（注文履歴）テーブル
-｜Column｜Type｜Options｜
-|-------|-----|-------|
-### ユーザー情報（外部キー）
-|user|integer|foreign_key: true|
-### 商品情報（外部キー）
-|product|integer|foreign_key: true|
-### 商品配送情報（外部キー）
-|address|integer|foreign_key: true|
-
-# Order_historyアソシエーション
-｜has_many: users|
-|belongs_to: order|
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
