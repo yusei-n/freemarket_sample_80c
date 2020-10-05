@@ -72,7 +72,7 @@
 
 
 ### Productsアソシエーション
- ｜belongs_to: image|
+ ｜has_many: images|
  |belongs_to: user|
  |has_many: orders|
  |belongs_to: category|
