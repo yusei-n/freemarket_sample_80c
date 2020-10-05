@@ -1,6 +1,6 @@
 # README
 
-# USERテーブル
+# Userテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### ニックネーム
@@ -12,8 +12,9 @@
 
 # Userアソシエーション
 ｜has_many: products|
-｜has_many: pay_cords|
+｜has_many: J_pays|
 |belongs_to: address|
+｜has_many: order_history|
 
 
 # addressテーブル（商品配送情報）
@@ -33,12 +34,14 @@
 |Birthday_month|string||
 ### 生年月日（日）
 |Birthday_dey|string|
+---　アクティブハッシュ---(カラム設定しない)
 ### 郵便番号
 |Postal_number|storing||
 ### 都道府県
 |Postal_Prefectures|storing||
 ### 市町村
 |Postal_Municipalities|storing||
+--- アクティブハッシュここまで---
 ### 番地
 |Postal_address|storing||
 ### 部屋番号マンション （任意）
@@ -48,7 +51,7 @@
 
 ### addressアソシエーション
 ｜has_many: products|
-|belongs_to: users|
+|belongs_to: user|
 
 
 
@@ -59,49 +62,87 @@
 |title|string||
 ### 商品値段
 |price|integer||
-### 配送料負担関係
-|delivery_burden|string||
 ### 商品説明
 |explanation|text||
+---　アクティブハッシュ---（カラム設定しない）
+### 配送料負担関係
+|delivery_burden|string||
 ### 商品状態 (フロントで処理する)
 |product_Status|string||
 ### 発送日目安 (フロントで処理する)
 |Estimated shipping |string||
-### タグ:teg（外部キー）
-|tag|string|foreign_key: true|
+--- アクティブハッシュここまで---
+### カテゴリー:category（外部キー）
+|category|integer|foreign_key: true|
 
 ### Productアソシエーション
- ｜has_many: product_images|
- |has_many: product_tags|
- |has_many: tags through:product_tags|
+ ｜has_many: images|
+ |has_many: product_categorys|
+ |has_many: categorys through:product_categorys|
+ ｜has_many: product_states|
+｜has_many: states through:product_states|
 
+
+# Orderテーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### ユーザー情報（配送情報含む）（外部キー）
+|user|integer|foreign_key: true|
+### クレジットカード情報（外部キー）
+|J_pay|integer|foreign_key: true|
+### 商品情報（ニックネームを除く）（外部キー）
+|product|integer|foreign_key: true|
+### 注文履歴
+|order_history|integer||
+### スターテス情報（取引中）（外部キー）
+|stats|integer|foreign_key: true|
+
+## Orderアソシエーション
+|belongs_to: user|
+|belongs_to: j_pay|
+|belongs_to: product|
+|belongs_to: order_history|
+|belongs_to: stats|
 
 ### imageテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ## 商品情報（外部キー）
 |product|integer|foreign_key: true|
-## 画像（複数）,(外部キー)
-|image|integer|foreign_key: true|
+## 画像（複数）
+|image|text||
 
 # imageアソシエーション
 |belongs_to: product|
 
-
-# Tagテーブル
+---アクティブハッシュ(カラム設定しない)---
+# Category(カテゴリー)テーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### 商品情報(外部キー)
 |product|integer|foreign_key: true|
 ### カテゴリー
 |item|string||
+---アクティブハッシュここまで---
 
-# Tagアソシエーション
+# Categoryアソシエーション
+｜has_many: product_categorys|
+|has_many: products through:product_categorys|
+
+# Product_Category中間テーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### 商品情報（外部キー）
+|product|integer|foreign_key: true|
+### カテゴリー（外部キー）
+|category|integer|foreign_key: true|
+
+# Product_Categoryアソシエーション
 ｜has_many: products|
-｜has_many: product_tags|
-|has_many: products through:product_tags|
+|has_many: categorys|
 
-# j_payテーブル
+
+# J_payテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### クレジットカード番号
@@ -111,6 +152,51 @@
 ### 名前（ローマ字）
 |user_name_romazi|storing|null: false|
 
+# J_payアソシエーション
+|belongs_to: Order|
+
+# Order_history（注文履歴）テーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### ユーザー情報（外部キー）
+|user|integer|foreign_key: true|
+### 商品情報（外部キー）
+|product|integer|foreign_key: true|
+### 商品配送情報（外部キー）
+|address|integer|foreign_key: true|
+
+# Order_historyアソシエーション
+｜has_many: users|
+|belongs_to: order|
+
+---アクティブハッシュ---
+# Statesテーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### productとの中間テーブル（外部キー）
+|product_states|integer|foreign_key: true|
+###　ステータス状態（出品中）
+|States_under|||
+###　ステータス状態（取引中）
+|States_transaction|||
+###　ステータス状態（売却済）
+|States_sale|||
+
+# statesアソシエーション
+｜has_many: product_states|
+｜has_many: products through:product_states|
+---アクティブハッシュここまで---
+
+
+# product_statesテーブル
+### 商品情報（外部キー）
+|product|integer|foreign_key: true|
+### スターテス情報（外部キー）
+|states|integer|foreign_key: true|
+
+# product_statesアソシエーション
+｜has_many: products|
+｜has_many: states|
 
 
 
