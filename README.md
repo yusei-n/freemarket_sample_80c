@@ -33,11 +33,11 @@
 |birthday|data||
 ---　アクティブハッシュ---(カラム設定しない)
 ### 郵便番号(外部キーモデルから)
-|postal_number|integer|foreign_key: true|
+|postal_number_id|integer|foreign_key: true|
 ### 都道府県（外部キーモデルから）
-|postal_prefectures|integer|foreign_key: true|
+|postal_prefectures_id|integer|foreign_key: true|
 ### 市町村（外部キーモデルから）
-|postal_municipalities|integer|foreign_key: true|
+|postal_municipalities_id|integer|foreign_key: true|
 --- アクティブハッシュここまで---
 ### 番地
 |postal_address|string|null: false|
@@ -63,11 +63,11 @@
 |explanation|text|null: false|
 --- アクティブハッシュ---（カラム設定しない）
 ### 配送料負担関係（外部キーモデルから）
-|delivery_burden|integer|foreign_key: true,null: false|
+|delivery_burden_id|integer|foreign_key: true,null: false|
 ### 商品状態 (外部キーモデルから)
-|product_Status|integer|foreign_key: true,null: false|
+|product_Status_id|integer|foreign_key: true,null: false|
 ### 発送日目安 (外部キーモデルから)
-|estimated_shipping|integer|foreign_key: true,null: false|
+|estimated_shipping_id|integer|foreign_key: true,null: false|
 --- アクティブハッシュここまで---
 
 
@@ -84,13 +84,12 @@
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### ユーザー情報（配送情報含む）（外部キー）
-|user|integer|foreign_key: true|
+|user_id|integer|foreign_key: true|
 ### 商品情報（ニックネームを除く）（外部キー）
-|product|integer|foreign_key: true|
+|product_id|integer|foreign_key: true|
 
 
 ## Orderアソシエーション
-|belongs_to: user|
 |belongs_to: cored|
 |belongs_to: product|
 
@@ -98,21 +97,21 @@
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ## 商品情報（外部キー）
-|product|integer|foreign_key: true|
+|product_id|integer|foreign_key: true|
 ## 画像（複数）
 |image|text||
 
 # imageアソシエーション
-|belongs_to: product|
+|has_many: products|
 
 ---アクティブハッシュ---
 # Category(カテゴリー)テーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
-### 商品情報(外部キーモデル)
-|product|integer|foreign_key: true, null: false|
+### 商品情報(外部キー)
+|product_id|integer|foreign_key: true, null: false|
 ### カテゴリー（外部キーモデル）
-|item|integer|foreign_key: true, null: false|
+|category_id|integer|foreign_key: true, null: false|
 ---アクティブハッシュここまで---
 
 # Categoryアソシエーション
@@ -124,13 +123,13 @@
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### 商品情報（外部キー）
-|product|integer|foreign_key: true|
+|product_id|integer|foreign_key: true|
 ### カテゴリー（外部キー）
-|category|integer|foreign_key: true|
+|category_id|integer|foreign_key: true|
 
 # Product_Categoryアソシエーション
-｜has_many: products|
-|has_many: categorys|
+｜belongs_to: product|
+|belongs_to: category|
 
 
 
@@ -138,20 +137,23 @@
 # Statesテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
-### productとの中間テーブル（外部キー）
-|product_states|integer|foreign_key: true|
-###　ステータス状態（出品中）
-|states_under|||
-###　ステータス状態（取引中）
-|states_transaction|||
-###　ステータス状態（売却済）
-|states_sale|||
+###　ステータス状態
+|states_under|integer|foreign_key: true|
+
 
 # statesアソシエーション
 ｜has_many: product_states|
 ｜has_many: products through:product_states|
 
+# product_statesテーブル
+### 商品情報（外部キー）
+|product_id|integer|foreign_key: true|
+### スターテス情報（外部キーモデル）
+|states_id|integer|foreign_key: true|
 
+# product_statesアソシエーション
+｜belongs_to: products|
+｜belongs_to: states|
 
 # Cardsテーブル
 ｜Column｜Type｜Options｜
@@ -165,7 +167,7 @@
 
 
 # Cardsアソシエーション
-|belongs_to: Order|
+|belongs_to: order|
 |belongs_to: user|
 
 
