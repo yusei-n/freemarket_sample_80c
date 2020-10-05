@@ -10,7 +10,7 @@
 ### パスワード７文字以上
 |password|string|null: false|
 
-# Userアソシエーション
+# Usersアソシエーション
 ｜has_many: products|
 ｜has_many: cards|
 |has_one: address|
@@ -50,7 +50,7 @@
 |belongs_to: user|
 
 
-# Productテーブル
+# Productsテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### 商品名
@@ -69,23 +69,23 @@
 --- アクティブハッシュここまで---
 
 
-### Productアソシエーション
+### Productsアソシエーション
  ｜has_many: images|
  |has_many: users|
- |has_many: order|
+ |has_many: orders|
 
 
-# Orderテーブル
+# Ordersテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ### 商品情報（ユーザー情報,配送情報含む）（外部キー）
 |product_id|integer|foreign_key: true|
 
 
-## Orderアソシエーション
+## Ordersアソシエーション
 |belongs_to: product|
 
-### imageテーブル
+### imagesテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
 ## 商品情報（外部キー）
@@ -93,20 +93,18 @@
 ## 画像（複数）
 |image|text||
 
-# imageアソシエーション
+# imagesアソシエーション
 |belongs_to: product|
 
 ---アクティブハッシュ---
-# Category(カテゴリー)テーブル
+# Categorys(カテゴリー)テーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
-### 商品情報(外部キー)
-|product_id|integer|foreign_key: true, null: false|
-### カテゴリー（外部キーモデル）
-|category_id|integer|foreign_key: true, null: false|
+### カテゴリー
+|item|string|null: false|
 ---アクティブハッシュここまで---
 
-# Categoryアソシエーション
+# Categorysアソシエーション
 |has_many:producrs｜
 
 
