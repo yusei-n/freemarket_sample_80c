@@ -31,13 +31,13 @@
 |first_name_hurigana|string|null: false|
 ### 生年月日（年：西暦,月,日）
 |birthday|data||
----　アクティブハッシュ---(カラム設定しない)
+---　アクティブハッシュ---
 ### 郵便番号(外部キーモデルから)
-|postal_number_id|integer|foreign_key: true|
+|postal_number_id|integer|foreign_key: true, null: false|
 ### 都道府県（外部キーモデルから）
-|postal_prefectures_id|integer|foreign_key: true|
+|postal_prefectures_id|integer|foreign_key: true, null: false|
 ### 市町村（外部キーモデルから）
-|postal_municipalities_id|integer|foreign_key: true|
+|postal_municipalities_id|integer|foreign_key: true, null: false|
 --- アクティブハッシュここまで---
 ### 番地
 |postal_address|string|null: false|
@@ -47,9 +47,7 @@
 |tell_number|string||
 
 ### addressアソシエーション
-｜has_many: products|
 |belongs_to: user|
-
 
 
 # Productテーブル
@@ -61,7 +59,7 @@
 |price|integer|null: false|
 ### 商品説明
 |explanation|text|null: false|
---- アクティブハッシュ---（カラム設定しない）
+--- アクティブハッシュ---
 ### 配送料負担関係（外部キーモデルから）
 |delivery_burden_id|integer|foreign_key: true,null: false|
 ### 商品状態 (外部キーモデルから)
@@ -74,23 +72,17 @@
 ### Productアソシエーション
  ｜has_many: images|
  |has_many: users|
- |belongs_to: order|
- |has_many: product_categorys|
- |has_many: categorys through:product_categorys|
- 
+ |has_many: order|
 
 
 # Orderテーブル
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
-### ユーザー情報（配送情報含む）（外部キー）
-|user_id|integer|foreign_key: true|
-### 商品情報（ニックネームを除く）（外部キー）
+### 商品情報（ユーザー情報,配送情報含む）（外部キー）
 |product_id|integer|foreign_key: true|
 
 
 ## Orderアソシエーション
-|belongs_to: cored|
 |belongs_to: product|
 
 ### imageテーブル
@@ -102,7 +94,7 @@
 |image|text||
 
 # imageアソシエーション
-|has_many: products|
+|belongs_to: product|
 
 ---アクティブハッシュ---
 # Category(カテゴリー)テーブル
@@ -115,45 +107,9 @@
 ---アクティブハッシュここまで---
 
 # Categoryアソシエーション
-|has_many:product_categorys|
-|has_many:producrs through:product_categorys|
+|has_many:producrs｜
 
 
-# Product_Category中間テーブル
-｜Column｜Type｜Options｜
-|-------|-----|-------|
-### 商品情報（外部キー）
-|product_id|integer|foreign_key: true|
-### カテゴリー（外部キー）
-|category_id|integer|foreign_key: true|
-
-# Product_Categoryアソシエーション
-｜belongs_to: product|
-|belongs_to: category|
-
-
-
-
-# Statesテーブル
-｜Column｜Type｜Options｜
-|-------|-----|-------|
-###　ステータス状態
-|states_under|integer|foreign_key: true|
-
-
-# statesアソシエーション
-｜has_many: product_states|
-｜has_many: products through:product_states|
-
-# product_statesテーブル
-### 商品情報（外部キー）
-|product_id|integer|foreign_key: true|
-### スターテス情報（外部キーモデル）
-|states_id|integer|foreign_key: true|
-
-# product_statesアソシエーション
-｜belongs_to: products|
-｜belongs_to: states|
 
 # Cardsテーブル
 ｜Column｜Type｜Options｜
@@ -167,7 +123,6 @@
 
 
 # Cardsアソシエーション
-|belongs_to: order|
 |belongs_to: user|
 
 
