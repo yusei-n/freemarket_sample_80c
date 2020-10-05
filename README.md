@@ -19,6 +19,8 @@
 # addressテーブル（商品配送情報）
 ｜Column｜Type｜Options｜
 |-------|-----|-------|
+### ユーザーと紐付ける（外部キー）
+|user_id|integer|foreign_key: true|
 ### 苗字（全角）
 |last_name|string|null: false|
 ### 名前（全角）
@@ -71,6 +73,10 @@
 
 ### Productアソシエーション
  ｜has_many: images|
+ |has_many: users|
+ |belongs_to: order|
+ |has_many: product_categorys|
+ |has_many: categorys through:product_categorys|
  
 
 
@@ -81,15 +87,12 @@
 |user|integer|foreign_key: true|
 ### 商品情報（ニックネームを除く）（外部キー）
 |product|integer|foreign_key: true|
-### 注文履歴
-|order_history|integer||
 
 
 ## Orderアソシエーション
 |belongs_to: user|
-|belongs_to: j_pay|
+|belongs_to: cored|
 |belongs_to: product|
-|belongs_to: order_history|
 
 ### imageテーブル
 ｜Column｜Type｜Options｜
@@ -101,6 +104,52 @@
 
 # imageアソシエーション
 |belongs_to: product|
+
+---アクティブハッシュ---
+# Category(カテゴリー)テーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### 商品情報(外部キーモデル)
+|product|integer|foreign_key: true, null: false|
+### カテゴリー（外部キーモデル）
+|item|integer|foreign_key: true, null: false|
+---アクティブハッシュここまで---
+
+# Categoryアソシエーション
+|has_many:product_categorys|
+|has_many:producrs through:product_categorys|
+
+
+# Product_Category中間テーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### 商品情報（外部キー）
+|product|integer|foreign_key: true|
+### カテゴリー（外部キー）
+|category|integer|foreign_key: true|
+
+# Product_Categoryアソシエーション
+｜has_many: products|
+|has_many: categorys|
+
+
+
+
+# Statesテーブル
+｜Column｜Type｜Options｜
+|-------|-----|-------|
+### productとの中間テーブル（外部キー）
+|product_states|integer|foreign_key: true|
+###　ステータス状態（出品中）
+|states_under|||
+###　ステータス状態（取引中）
+|states_transaction|||
+###　ステータス状態（売却済）
+|states_sale|||
+
+# statesアソシエーション
+｜has_many: product_states|
+｜has_many: products through:product_states|
 
 
 
@@ -117,7 +166,7 @@
 
 # Cardsアソシエーション
 |belongs_to: Order|
-|has_many: users|
+|belongs_to: user|
 
 
 This README would normally document whatever steps are necessary to get the
