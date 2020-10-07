@@ -38,6 +38,9 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
+  gem 'faker', "~> 2.8"
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
 end
 
 group :development do
@@ -63,3 +66,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn'
 end
+
+gem 'jquery-rails'
+gem 'devise'
+gem 'carrierwave'
+gem 'active_hash'
+gem 'payjp'
+gem 'dotenv-rails'
+gem 'fog-aws'
+gem 'mini_magick'
+gem "haml-rails", ">= 1.0", '<= 2.0.1'
