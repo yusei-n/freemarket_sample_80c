@@ -1,3 +1,151 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// ここから詳細画面 田村作成
+* {
+  box-sizing: border-box;
+}
+
+* ul,li {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.Header {
+  height: 100px;
+  background-color: aquamarine;
+}
+
+.Category-nav {
+  width: 100%;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  padding: 0 60px;
+  background-color: #ffffff;
+}
+
+ul {
+  list-style: none;
+}
+
+.Category-nav ul {
+  padding: 17px 0 16px;
+  width: 100%;
+  font-size: 14px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.Category-nav ul li {
+  padding: 0 10px 0 0;
+}
+
+.Category-nav a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  color: #3CCACE;
+}
+
+li.item-name {
+  font-weight: bold;
+}
+
+.ItemBox {
+  width: 700px;
+  background: #fff;
+  margin: 40px auto 0;
+  padding: 24px 40px 40px;
+  &__name {
+    text-align: center;
+  }
+  &__photo {
+    margin: 16px 0 0;
+    & ul li {
+    display: flex;
+    flex-direction: column;
+    width: 560px;
+    align-items: center;
+    margin: 0 auto;
+    }
+    & ul>li img {
+      object-fit: cover;
+      height: 346px;
+    }
+    & ul>li ul {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    & ul>li>ul li {
+      width: 25%;
+      margin: 0 10px 0 0;
+    }
+    & ul li>ul li img {
+      object-fit: cover;
+      height: 87px;
+    }
+  }
+  &__price {
+    margin: 24px 0 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    & span {
+      font-size: 46px;
+      font-weight: bold;
+      margin: 0 10px 0 0;
+    }
+    &-info span {
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+  &__description {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  &__details {
+    margin-bottom: 20px;
+    & table {
+      width: 100%;
+      height: 375px;
+      border-collapse: collapse;
+      border: 1px solid #f8f8f8;
+      & th {
+        width: 20%;
+        background-color: #eee;
+        font-weight: 400;
+        padding: 8px;
+        border: 1px solid #dedede;
+        font-size: 14px;
+        text-align: center;
+      }
+      & td {
+        width: 61%;
+        padding: 15px 15px;
+        border: 1px solid #dedede;
+        font-size: 14px;
+        & a {
+          text-decoration: none;
+          color: #3CCACE;
+        }
+      } 
+    }
+  }
+}
+
+img {
+  width: 100%;
+}
+
+.Footer {
+  height: 300px;
+  background-color: gray;
+  margin-top: 40px;
+}
+// ここまで詳細画面 田村作成
