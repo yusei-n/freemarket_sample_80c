@@ -8,17 +8,17 @@
 |nickname|string|null: false|
 |mail|string|null: false|
 |password|string|null: false|
-OK
+
 ### Usersアソシエーション
 - has_many: products
 - has_many: cards
 - has_one: address
-OK
+
 
 ## addressテーブル（商品配送情報）
 |Column|Type|Options|
 |-------|-----|-------|
-|user_id|reference|foreign_key: true|
+|user_id|reference|foreign_key: true, null: false|
 |last_name|string|null: false|
 |first_name|string|null: false|
 |last_name_hurigana|string|null: false|
@@ -30,10 +30,10 @@ OK
 |postal_address|string|null: false|
 |post_apartment|string||
 |tell_number|string||
-OK
+
 ### addressアソシエーション
 - belongs_to: user
-OK
+
 
 
 ## Productsテーブル
@@ -47,13 +47,13 @@ OK
 |delivery_burden_id|integer|f,null: false※アクティブハッシュ|
 |product_Status_id|integer|null: false※アクティブハッシュ|
 |estimated_shipping_id|integer|null: false※アクティブハッシュ|
-OK
+
 ### Productsアソシエーション
 - has_many: images
 - belongs_to: user
 - has_many: orders
 - belongs_to: category
-OK
+
 
 ## Ordersテーブル
 
@@ -64,26 +64,26 @@ OK
 
 ### Ordersアソシエーション
 - belongs_to: product
-OK
+
 
 ### imagesテーブル
 
 |Column|Type|Options|
 |-------|-----|-------|
-|product_id|references|foreign_key: true|
+|product_id|references|foreign_key: true, null: false|
 |image|text||
 OK
 ### imagesアソシエーション
 - belongs_to: product
-OK
+
 ## categories(カテゴリー)テーブル
 |Column|Type|Options|
 |-------|-----|-------|
 |item|string|null: false※アクティブハッシュ|
-OK
+
 ### categoriesアソシエーション
 - has_many:producrs
-OK
+
 
 
 

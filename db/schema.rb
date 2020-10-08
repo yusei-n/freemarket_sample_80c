@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_10_08_053705) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "last_name", null: false
     t.string "first_name", null: false
     t.string "last_name_hurigana", null: false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_053705) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "product_id"
+    t.bigint "product_id", null: false
     t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
