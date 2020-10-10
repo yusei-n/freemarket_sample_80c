@@ -35,34 +35,31 @@
   margin: 0 auto;
 }
 
-.Category-nav {
+.Category-nav__item-name {
   width: 100%;
   border-top: 1px solid #eee;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
   position: relative;
   padding: 0 60px;
   background-color: #ffffff;
+  & ul {
+    padding: 17px 0 16px;
+    width: 100%;
+    font-size: 14px;
+    margin: 0 auto;
+    display: flex;
+  }
+  & ul li {
+    padding: 0 10px 0 0;
+  }
+  & a {
+    text-decoration: none;
+    color: #333;
+  }
 }
 
 ul {
   list-style: none;
-}
-
-.Category-nav ul {
-  padding: 17px 0 16px;
-  width: 100%;
-  font-size: 14px;
-  margin: 0 auto;
-  display: flex;
-}
-
-.Category-nav ul li {
-  padding: 0 10px 0 0;
-}
-
-.Category-nav a {
-  text-decoration: none;
-  color: #333;
 }
 
 a:hover {
