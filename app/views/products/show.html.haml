@@ -11,54 +11,103 @@
     %li >
     %li.item-name
       商品名
-%section.ItemBox
-  %h2.ItemBox__name
-    商品名
-  .ItemBox__photo
-    %ul
-      %li
-        = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
-        %ul
-          %li= image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png', height: '75', width: '75'
-          %li= image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png', height: '75', width: '75'
-          %li= image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png', height: '75', width: '75'
-  .ItemBox__price
-    %span¥10,000
-    .ItemBox__price-info
-      %span (税込)
-      %span 送料別(着払い)
-  .ItemBox__description
-    商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります
-  .ItemBox__details
-    %table
-      %tbody
-        %tr
-          %th 出品者
-          %td test
-        %tr
-          %th カテゴリー
-          %td
-            =link_to 'メンズ', '#'
+.Main
+  .MainShow
+    .Main-contents
+      %section.ItemBox
+        %h2.ItemBox__name
+          商品名
+        .ItemBox__photo
+          %ul
+            %li
+              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
+              %ul
+                %li= image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png', height: '75', width: '75'
+                %li= image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png', height: '75', width: '75'
+                %li= image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png', height: '75', width: '75'
+        .ItemBox__price
+          %span¥10,000
+          .ItemBox__price-info
+            %span (税込)
+            %span 送料別(着払い)
+        .ItemBox__description
+          商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります
+        .ItemBox__details
+          %table
+            %tbody
+              %tr
+                %th 出品者
+                %td test
+              %tr
+                %th カテゴリー
+                %td
+                  =link_to 'メンズ', '#'
+                  %br/
+                  =link_to 'ジャケット/アウター', '#'
+                  %br/
+                  =link_to 'ノーカラージャケット', '#'
+              %tr
+                %th ブランド
+                %td
+              %tr
+                %th 商品のサイズ
+                %td
+              %tr
+                %th 商品の状態
+                %td 新品/未使用
+              %tr
+                %th 配送料の負担
+                %td 着払い（購入者負担）
+              %tr
+                %th 発送元の地域
+                %td=link_to "神奈川県", "#"
+              %tr
+                %th 発送日の目安
+                %td 1日〜2日で発送
+        .ItemBox__btn
+          %ul
+            %li.ItemBox__btn-like
+              = icon("fas", "star")
+              お気に入り 0
+          %ul
+            %li.ItemBox__btn-report
+              = link_to "#" do
+                = icon("fab", "font-awesome-flag")
+                不適切な商品の通報
+      .CommentArea
+        = form_with url: "#" do |f|
+          = f.text_area :comment
+          %p.caution
+            相手のことを考え丁寧なコメントを心がけましょう。
             %br/
-            =link_to 'ジャケット/アウター', '#'
-            %br/
-            =link_to 'ノーカラージャケット', '#'
-        %tr
-          %th ブランド
-          %td
-        %tr
-          %th 商品のサイズ
-          %td
-        %tr
-          %th 商品の状態
-          %td 新品/未使用
-        %tr
-          %th 配送料の負担
-          %td 着払い（購入者負担）
-        %tr
-          %th 発送元の地域
-          %td 神奈川県
-        %tr
-          %th 発送日の目安
-          %td 1日〜2日で発送
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          = button_tag type: 'submit', class: 'button' do
+            = icon("fas", "comment")
+            コメントする
+      %ul.AnotherProducts
+        %li
+          = link_to "#" do
+            = icon("fas","angle-left")
+            前の商品
+        %li
+          = link_to "#" do
+            後ろの商品
+            = icon("fas","angle-right")
+      .SeeMoreProducts
+        = link_to 'メンズをもっと見る', '#'
+        .SeeMoreProduct
+          .SeeMoreProduct__list
+            = link_to "#" do
+              %figure.SeeMoreProduct__list-image
+                = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG'
+              .SeeMoreProduct__list-body
+                %h3.name
+                  test
+                .info
+                  %ul
+                    %li 1000円
+                    %il
+                      =icon("fas", "star")
+                      4
+                  %p (税込)
 .Footer
