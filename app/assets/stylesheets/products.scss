@@ -35,6 +35,18 @@
   margin: 0 auto;
 }
 
+.Category-nav__item-name i.fa-angle-right:before {
+  -webkit-text-stroke: 1px white;
+}
+
+.AnotherProducts i.fa-angle-right:before {
+  -webkit-text-stroke: 1px#f8f8f8;
+}
+
+.AnotherProducts i.fa-angle-left:before {
+  -webkit-text-stroke: 1px#f8f8f8;
+}
+
 .Category-nav__item-name {
   width: 100%;
   border-top: 1px solid #eee;
