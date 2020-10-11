@@ -1,4 +1,29 @@
-.Header
+%header
+  .MainHeader
+    .MainHeader__icon
+      %a{ href: '#' }
+        = image_tag 'material/logo/logo.png', class: "Logo"
+    .MainHeader__searchBox
+      -# 検索欄は後ほど変更があると思われるのでtopページ作成の時点ではこの記述とする（実装後コメントアウト削除をお願いします。）
+      %form キーワードから探す
+      .SearchButton
+        = image_tag 'material/icon/icon-search 1.png', class: "Button"
+  .Nav
+    -# ナビバーは後ほどリンクなどの変更があると思われるのでtopページ作成の時点ではこの記述とする（実装後コメントアウト削除をお願いします。）
+    %ul.ListLeft
+      %li.ListLeft__item
+        %a{ href: '#' }
+          カテゴリー
+      %li.ListLeft__item
+        %a{ href: '#' }
+          ブランド
+    %ul.ListRight
+      %li.ListRight__item
+        %a{ href: '#' }
+          ログイン
+      %li.ListRight__item
+        %a{ href: '#' }
+          新規会員登録
 %nav.Category-nav__item-name
   %ul
     %li
@@ -40,7 +65,7 @@
           %span¥10,000
           .ItemBox__price-info
             %span (税込)
-            %span 送料別(着払い)
+            %span 送料込み
         .ItemBox__description
           商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります
         .ItemBox__details
@@ -121,4 +146,65 @@
                       =icon("fas", "star")
                       4
                   %p (税込)
-.Footer
+.AppBanner
+  .Inner
+    %h2.Inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.Inner__text
+      今すぐ無料ダウンロード！
+    .Inner__btn
+      %a{ href: '#' }
+        = image_tag 'material/badge/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class: "appleIcon"
+      %a{ href: '#' }
+        = image_tag 'material/badge/google-play-badge.png', class: "googleIcon"
+%footer
+  %ul.Contents
+    %li.Content
+      %h2.Content__head
+        FURIMAについて
+      %ul
+        %li
+          %a{ href: '#' }
+            会社概要（運営会社）
+        %li
+          %a{ href: '#' }
+            プライバシーポリシー
+        %li
+          %a{ href: '#' }
+            FURIMA利用規約
+        %li
+          %a{ href: '#' }
+            ポイントに関する特約
+    %li.Content
+      %h2.Content__head
+        FURIMAを見る
+      %ul
+        %li
+          %a{ href: '#' }
+            カテゴリー一覧
+        %li
+          %a{ href: '#' }
+            ブランド一覧
+    %li.Content
+      %h2.Content__head
+        ヘルプ＆ガイド
+      %ul
+        %li
+          %a{ href: '#' }
+            FURIMAガイド
+        %li
+          %a{ href: '#' }
+            FURIMAロゴ利用ガイドライン
+        %li
+          %a{ href: '#' }
+            お知らせ
+  .FooterLogo
+    %a{ href: '#' }
+      = image_tag 'material/logo/logo-white.png', class: "Logo"
+  %p
+    © FURIMA
+%a{ href: '#'}
+  .PurchaseBtn
+    %span.PurchaseBtn__text
+      出品する
+    = image_tag 'material/icon/icon_camera.png', class: "PurchaseBtn__icon"
