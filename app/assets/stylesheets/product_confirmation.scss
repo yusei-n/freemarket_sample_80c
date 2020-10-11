@@ -7,9 +7,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-body {
   background-color: rgb(245, 245, 245);
 }
 
@@ -20,7 +17,6 @@ body {
   box-pack: center;
   justify-content: center;
   height: 128px;
-  background-color: rgb(245, 245, 245);
 
   img {
     width: 185px;
@@ -111,6 +107,7 @@ body {
         .product-show_Shipping {
           font-size: 12px;
         }
+
         .product-show_price {
           font-size: 16px;
           font-weight: 600;
@@ -143,6 +140,7 @@ body {
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
+
       .method_name {
         font-size: 17px;
         font-weight: 600;
@@ -186,14 +184,13 @@ body {
         align-items: center;
         margin-top: 10px;
     }
+
     .address_name {
       margin-top: 20px;
       display: inline-flex
     }
 
   .product-show-list-button {
-
-    &_list {
 
       .btn {
         min-width: initial;
@@ -211,7 +208,6 @@ body {
         Meiryo, 
         sans-serif;
       }
-    }
   }
 }
 
@@ -256,27 +252,6 @@ body {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 共通CSS
 
 a {
   text-decoration: none;
