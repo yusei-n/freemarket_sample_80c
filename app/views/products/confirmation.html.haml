@@ -1,50 +1,51 @@
-.mein
-  .header
-    %img(src="https://www.green-japan.com/photo/288501" alt="")/
-  .product-show
-    .product-show-list
-      %section.product-show-list-title.BB
-        %h2.product-show-list-title_name 
+.Main
+  .Header
+    %a(href="#")
+      = image_tag 'material/logo/logo.png'
+  .Product_Show
+    .Product_Show--list
+      %section.Product_Show_list--title.BB
+        %h2.Product_Show_List_title--name 
           購入内容の確認
-      %section.product-show-list-form.BB
-        .product-show-list-form_name
-          .product-show-image
-            %figure.product-show-image_list
+      %section.Product_Show_list-form.BB
+        .Product_Show_List_form-name
+          .Product_Show--image
+            %figure
               %img(src="https://o.imgz.jp/fashionnews/109222/master_640_1.jpg" alt="商品画像一枚" srcset="")/
-          .product-show-text
-            %p.product-show-text_title
+          .Product_Show_text
+            %p.Product_Show_text--title
               ここに商品名が入る
-            %p.product-show-text_area
-              %span.product-show_Shipping
+            %p.Product_Show_text--area
+              %span.Product_Show--shipping
                 送料込み(税込み)
-              %span.product-show_price
+              %span.Product_Show--price
                 ¥1,000
-      %section.product-show-list-price-list.BB
-        .product-show-price-list
+      %section.Product_Show_list-price.BB
+        .Product_Show_price--list
           %span.price_text
             支払い金額 
           %spam.price_area
             ¥1,100
-      %section.product-show-list-method.BB
-        .product-show-method
-          .product-show-method-list
-            %h3.method_name
+      %section.Product_Show_list-method.BB
+        .Product_Show--method
+          .Product_Show--method--list
+            %h3.method--name
               支払い方法
-            = link_to "変更する","#", class: "method_Change" 
-          .product-show-method-text
+            = link_to "変更する","#", class: "method--Change" 
+          .Product_Show_method--text
             %p クレジットカード支払い
             %p 手数料¥100
-      %section.product-show-list-address.BB
-        .roduct-show-list-address-list
-          .roduct-show-list-address-list_name
+      %section.Product_Show_List--address.BB
+        .Product_Show_List_Address--list
+          .Product_Show_List_Address_list--name
             %h3.h3 配送先
-          = link_to "登録してください","#", class: "address_name" 
-      %section.product-show-list-button.BB
-        .product-show-list-button_list
+          = link_to "登録してください","#" , class: "address--name"
+      %section.Product_Show_list--button.BB
+        .Product_Show_List_button--list
           %button.btn(type="button") 購入する
 
-  .footer
-    .footer-list
+  .Footer
+    .Footer--list
       %ul.uu
         %li.ii
           = link_to "プライバシーポリシー", "#"
@@ -52,5 +53,6 @@
           = link_to "メルカリ使用規約","#"
         %li.ii
           = link_to "特定商取引に関する表記","#"
-    %img(src="https://lh3.googleusercontent.com/rhevmCJG49m8PjNkt_Ago2mg2JgH_KrVbVETL5tNsMJfNVYzzWR9JK6YKRLiZz-5P54" alt="")/
+    %a(href="#")
+      = image_tag 'material/logo/logo-white.png'
     %p © Mercari, Inc.
