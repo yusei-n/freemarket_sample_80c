@@ -2,56 +2,56 @@
   .Header
     %a(href="#")
       = image_tag 'material/logo/logo.png'
-  .Product_Show
-    .Product_Show--list
-      %section.Product_Show_list--title.BB
-        %h2.Product_Show_List_title--name 
+  .Product
+    .Product__list
+      %section.Product__list--title.No__fst--cld
+        %h2.Product__list--name
           購入内容の確認
-      %section.Product_Show_list-form.BB
-        .Product_Show_List_form-name
-          .Product_Show--image
+      %section.Product__list--form.No__fst--cld
+        .Product__form
+          .Product__form--image
             %figure
               %img(src="https://o.imgz.jp/fashionnews/109222/master_640_1.jpg" alt="商品画像一枚" srcset="")/
-          .Product_Show_text
-            %p.Product_Show_text--title
+          .Product__form__show
+            %p.Product__title
               ここに商品名が入る
-            %p.Product_Show_text--area
-              %span.Product_Show--shipping
+            %p.Product__area
+              %span.Product__shipping
                 送料込み(税込み)
-              %span.Product_Show--price
+              %span.Product__price
                 ¥1,000
-      %section.Product_Show_list-price.BB
-        .Product_Show_price--list
-          %span.price_text
+      %section.Product__list--price.No__fst--cld
+        .Product__price
+          %span.price--text
             支払い金額 
-          %spam.price_area
+          %spam.price--area
             ¥1,100
-      %section.Product_Show_list-method.BB
-        .Product_Show--method
-          .Product_Show--method--list
-            %h3.method--name
+      %section.Product__list--method.No__fst--cld
+        .Product__method
+          .Product__method--list
+            %h3.method__name
               支払い方法
-            = link_to "変更する","#", class: "method--Change" 
-          .Product_Show_method--text
+            = link_to "変更する","#", class: "method__Change" 
+          .method__text
             %p クレジットカード支払い
             %p 手数料¥100
-      %section.Product_Show_List--address.BB
-        .Product_Show_List_Address--list
-          .Product_Show_List_Address_list--name
+      %section.Product__list--address.No__fst--cld
+        .Product__address
+          .Product__address--name
             %h3.h3 配送先
-          = link_to "登録してください","#" , class: "address--name"
-      %section.Product_Show_list--button.BB
-        .Product_Show_List_button--list
+          = link_to "登録してください","#" , class: "address__name"
+      %section.Product__list--button.No__fst--cld
+        .Product__button
           %button.btn(type="button") 購入する
 
   .Footer
-    .Footer--list
-      %ul.uu
-        %li.ii
+    .Footer__list
+      %ul.ul
+        %li.li
           = link_to "プライバシーポリシー", "#"
-        %li.ii
+        %li.li
           = link_to "メルカリ使用規約","#"
-        %li.ii
+        %li.li
           = link_to "特定商取引に関する表記","#"
     %a(href="#")
       = image_tag 'material/logo/logo-white.png'

@@ -10,29 +10,29 @@
   background-color: rgb(245, 245, 245);
 }
 
-  .Header {
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Header {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media(min-width: 760px) {
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  img {
+    height: 33px;
+    width: 120px;
     @media(min-width: 760px) {
-    height: 128px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-    img {
-      height: 33px;
-      width: 120px;
-      @media(min-width: 760px) {
-      height: 49px;
-      width: 185px;
-      }
+    height: 49px;
+    width: 185px;
     }
   }
+}
 
 
-.Product_Show {
+.Product {
   margin: 0px auto;
   width: 100%;
   max-width: 700px;
@@ -43,16 +43,17 @@
     display: block;
     padding: 32px 16px;
   }
-  
-  &--list {
+  // プロダクト全体の設定
+
+  &__list {
     position: relative;
     background-color: white;
   }
 
-  &_list--title {
+  &__list--title {
     padding: 32px 16px;
   }
-  &_List_title--name {
+  &__list--name {
     display: block;
     text-align: center;
     font-weight: 600;
@@ -63,13 +64,14 @@
     游ゴシック体, YuGothic, メイリオ, Meiryo, 
     sans-serif;
   }
-  
-  &_List_form-name {
+  // セッション１完了以下２
+  // productから
+  &__form {
     display: flex;
     box-pack: justify;
     justify-content: space-between;
 
-    .Product_Show--image {
+    .Product__form--image {
       display: flex;
       box-pack: center;
       justify-content: center;
@@ -94,24 +96,24 @@
       }
     }
 
-    .Product_Show_text {
+    .Product__form__show {
       width: 100%;
       margin-left: 16px;
 
-      &--title {
+      .Product__title {
         font-size: 14px;
         line-height: 1.4em;
         margin-bottom: 8px;
       }
-
-      &--area {
+    
+      .Product__area {
         text-align: right;
 
-        .Product_Show--shipping {
+        .Product__shipping {
           font-size: 12px;
         }
 
-        .Product_Show--price {
+        .Product__price {
           font-size: 16px;
           font-weight: 600;
           margin-left: 8px;
@@ -120,8 +122,8 @@
     }
   }
 
-   &_list-price {
-      .Product_Show_price--list {
+   &__list--price {
+      .Product__price {
         display: flex;
         font-size: 18px;
         font-weight: 600;
@@ -129,14 +131,14 @@
         align-items: center;
         margin-bottom: 24px;
 
-        .price_area {
-          font-size: 24px;
+        .price--area {
+          font-size: 20px;
         }
       }
    }
 
-
-  .Product_Show--method {
+  //  セッション３完了以下４
+  .Product__method {
 
     &--list {
       display: flex;
@@ -144,19 +146,19 @@
       align-items: center;
       margin-bottom: 16px;
 
-      .method--name {
+      .method__name {
         font-size: 17px;
         font-weight: 600;
       }
 
-      .method--Change {
+      .method__Change {
         font-size: 14px;
         text-decoration: none;
       }
     }
   }
-
-    .Product_Show_List_Address_list--name {
+  // セッション４完了以下５
+    .Product__address--name {
       display: flex;
       box-pack: justify;
       justify-content: space-between;
@@ -173,27 +175,21 @@
         color: rgb(0, 149, 238);
       }
 
-    .address--name {
+    .address__name {
       text-decoration: none;
     }
-
-  .Product_Show_list--button {
+  // セッション５完了以下６
+  .Product__list--button {
 
       .btn {
-        min-width: initial;
-        background-color: #ea352d;
-        color: #fff;
+        background-color: #3CCACE;
+        color: white;
         cursor: pointer;
         width: 100%;
         font-size: 17px;
         min-height: 48px;
         padding: 0 24px;
-        font-family: Arial, 
-        游ゴシック体, 
-        YuGothic, 
-        メイリオ, 
-        Meiryo, 
-        sans-serif;
+        border: none;
       }
   }
 }
@@ -202,11 +198,11 @@
   margin-top: auto;
   text-align: center;
 
-  &--list {
+  &__list {
     text-align: center;
     margin-top: 20px;
 
-    .uu {
+    .ul {
       list-style: none;
       justify-content: center;
       margin: 20px 0px 20px 0px;
@@ -218,7 +214,7 @@
       }
     }
 
-    .ii {
+    .li {
       margin: 18px 6px 0px 10px;
       font-size: 12px;
       a {
@@ -241,6 +237,6 @@
     margin-bottom: auto;
   }
 }
-.BB:not(:first-child) {
+.No__fst--cld:not(:first-child) {
   border-top: 1px solid rgb(245, 245, 245);
 }
