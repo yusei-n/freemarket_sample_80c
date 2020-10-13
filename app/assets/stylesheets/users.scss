@@ -1,35 +1,54 @@
-.Header {
-  height: 30px;
+.Container {
+  background-color:lightgray;
 }
 
-.container {
-  height: 500px;
-}
-
-.register__title{
-  &&__contents {
-
+  .Register {
+    background-color:white;
+    margin: 0px auto;
+    width: 100%;
+    @media(min-width: 768px) {
+    max-width: 700px;
+    }
+    @media(min-width: 1068px) {
+    max-width: 700px;
+    }
+    &__title{
+      font-size: 22px;
+      padding: 32px;
+      text-align: center;
+      border-bottom: solid #EEEEEE;
+      line-height: 1.5;
+      font-weight: bold;
+    &__form {
+      }
+    }
   }
-}
+    .Contents {
+      padding: 40px 40px 64px;
+    }
 
-.content-block {
-  &&__item {
+    .ContentBlock {
+      text-align: center;
+      &__item {
+        font-weight: 600;
+      }
+      &__requirement{
+        font-size:12px;
+        color:white;
+        background-color:red;
+        margin-left: 8px;
+        padding:0 4px;
+        border-radius: 2px;
+        display: inline-block;
+        line-height: 1.4em;
+      }
+      &__form {
 
-  }
-  &&__reauier{
+      }
+      &__input {
 
-  }
-  &&__form {
+      }
+      &__submit {
 
-  }
-  &&__input {
-
-  }
-  &&__submit {
-
-  }
-}
-
-.Footer {
-  height: 20px;
-}
+      }
+    }

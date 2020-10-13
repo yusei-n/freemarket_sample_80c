@@ -1,35 +1,29 @@
-.Header
-  .container
-    %h2.register__title
+.Container
+  .Register
+    %h2.Register__title
       新規会員登録
-    .register__contents
-      .content-block
-        %h5.content-block__item
-          ニックネーム
-        .content-block__reauier
-          必須
-        %form.content-block__form
-          %input{type: "text", class:content-block__input, placeholder: "(例)鈴木一郎"}
-      .content-block
-        %h5.content-block__item
-          メールアドレス
-        .content-block__reauier
-          必須
-        %form.content-block__form
-          %input{type: "text", class:content-block__input, placeholder: "携帯・パソコンどちらでも可能"}
-      .content-block
-        %h5.content-block__item
-          パスワード
-        .content-block__reauier
-          必須
-        %form.content-block__form
-          %input{type: "text", class:content-block__input, placeholder: "7文字以上の半角英数字"}
-      %form.content-block__submit
-        %input{tyep: "submit"}
-        登録
-  %span
-   = link_to('プライバシポリシー', '#')
-  %span
-   = link_to('利用規約', '#')
-
-.Footer
+    .Register__form
+      .Contents
+        .ContentBlock
+          %label.ContentBlock__item
+            ニックネーム
+            %span.ContentBlock__requirement
+              必須
+          %form.ContentBlock__form
+            %input{type: "text", class: "ContentBlock__input", placeholder: "(例)鈴木一郎"}
+        .ContentBlock
+          %label.ContentBlock__item
+            メールアドレス
+            %span.ContentBlock__requirement
+              必須
+          %form.ContentBlock__form
+            %input{type: "text", class: "ContentBlock__input", placeholder: "携帯・パソコンどちらでも可能"}
+        .ContentBlock
+          %label.ContentBlock__item
+            パスワード
+            %span.ContentBlock__requirement
+              必須
+          %form.ContentBlock__form
+            %input{type: "text", class: "ContentBlock__input", placeholder: "7文字以上の半角英数字"}
+        .ContentBlock
+          %button{tyep: "submit", class: "ContentBlock__submit"}登録
