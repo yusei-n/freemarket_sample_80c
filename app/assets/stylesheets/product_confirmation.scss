@@ -43,7 +43,6 @@
     display: block;
     padding: 32px 16px;
   }
-  // プロダクト全体の設定
 
   &__list {
     position: relative;
@@ -64,8 +63,6 @@
     游ゴシック体, YuGothic, メイリオ, Meiryo, 
     sans-serif;
   }
-  // セッション１完了以下２
-  // productから
   &__form {
     display: flex;
     box-pack: justify;
@@ -101,9 +98,10 @@
       margin-left: 16px;
 
       .Product__title {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.4em;
         margin-bottom: 8px;
+        margin-top: 0px;
       }
     
       .Product__area {
@@ -114,7 +112,7 @@
         }
 
         .Product__price {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
           margin-left: 8px;
         }
@@ -137,14 +135,13 @@
       }
    }
 
-  //  セッション３完了以下４
   .Product__method {
 
     &--list {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
 
       .method__name {
         font-size: 17px;
@@ -156,15 +153,16 @@
         text-decoration: none;
       }
     }
+    .method__text p {
+      margin: 4px 0px 0px;
+      font-size: 12px;
+    }
   }
-  // セッション４完了以下５
     .Product__address--name {
       display: flex;
-      box-pack: justify;
       justify-content: space-between;
-      box-align: center;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       
       .h3 {
         font-size: 17px;
@@ -177,9 +175,10 @@
 
     .address__name {
       text-decoration: none;
+      font-size: 15px;
     }
-  // セッション５完了以下６
   .Product__list--button {
+      padding: 35px 16px 50px;
 
       .btn {
         background-color: #3CCACE;
@@ -190,13 +189,20 @@
         min-height: 48px;
         padding: 0 24px;
         border: none;
+        font-family: 
+        Arial,
+        游ゴシック体,
+        YuGothic,
+        メイリオ,
+        Meiryo,
+        sans-serif;
       }
   }
 }
 
 .Footer {
-  margin-top: auto;
   text-align: center;
+  padding: 40px;
 
   &__list {
     text-align: center;
@@ -205,18 +211,38 @@
     .ul {
       list-style: none;
       justify-content: center;
-      margin: 20px 0px 20px 0px;
+      margin: 20px 0px;
+      padding: 0px;
+      font-family: 
+        Arial, 
+        游ゴシック体, 
+        YuGothic, 
+        メイリオ, 
+        Meiryo, 
+        sans-serif;
       @media (min-width: 760px){
         list-style: none;
         display: flex;
         justify-content: center;
-        margin: 16px 0px 23px -16px;
+        margin: 10px 0px 20px;
+        padding: 0px;
+        font-family: 
+          Arial, 
+          游ゴシック体, 
+          YuGothic, 
+          メイリオ, 
+          Meiryo, 
+          sans-serif;
       }
     }
 
     .li {
-      margin: 18px 6px 0px 10px;
-      font-size: 12px;
+      margin: 20px 0px 0px;
+      font-size: 11px;
+      @media (min-width: 760px){
+        margin: 18px 10px 0px 10px;
+        font-size: 11px;
+      }
       a {
         text-decoration: none;
         color: inherit;
@@ -235,6 +261,14 @@
     font-size: 12px;
     text-align: center;
     margin-bottom: auto;
+    margin-top: 0px;
+    font-family: 
+    Arial, 
+    游ゴシック体, 
+    YuGothic, 
+    メイリオ, 
+    Meiryo, 
+    sans-serif;
   }
 }
 .No__fst--cld:not(:first-child) {
