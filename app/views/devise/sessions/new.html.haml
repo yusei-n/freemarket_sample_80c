@@ -1,0 +1,25 @@
+/ヘッダーは部分テンプレートにて別途流用予定です
+.Container
+  .ContainerForm
+    .NoAccount
+      %p.NoAccount__explanation
+        アカウントをお持ちでない方はこちら
+      %button{tyep: "submit", class: "NoAccount__submit"}新規会員登録
+    .Login
+      .Login__contents
+        .LoginBlock
+          %label.LoginBlock__item
+            メールアドレス
+            %span.LoginBlock__requirement
+              必須
+            %input{type: "text", class: "LoginBlock__input", placeholder: "PCまたは携帯のメールアドレス"}
+        .LoginBlock
+          %label.LoginBlock__item
+            パスワード
+            %span.LoginBlock__requirement
+              必須
+            %input{type: "text", class: "LoginBlock__input", placeholder: "7文字以上の半角英数字"}
+        .LoginBlock
+          %button{tyep: "submit", class: "LoginBlock__submit"}ログイン
+          = link_to "パスワードをお忘れの方", "#", class: "PasswordReissue"
+/フッターーは部分テンプレートにて別途流用予定です
