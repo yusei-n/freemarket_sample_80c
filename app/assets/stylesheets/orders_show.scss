@@ -44,31 +44,31 @@
     padding: 32px 16px;
   }
 
-  &__list {
+  .ProductList {
     position: relative;
     background-color: white;
   }
+  .Verification {
 
-  &__list--title {
-    padding: 32px 16px;
+    .Name {
+      display: block;
+      text-align: center;
+      font-weight: 600;
+      font-size: 24px;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, 
+      游ゴシック体, YuGothic, メイリオ, 
+      sans-serif;
+    }
+
   }
-  &__list--name {
-    display: block;
-    text-align: center;
-    font-weight: 600;
-    font-size: 24px;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, 
-    游ゴシック体, YuGothic, メイリオ, Meiryo, 
-    sans-serif;
-  }
-  &__form {
+  .ProductForm {
     display: flex;
     box-pack: justify;
     justify-content: space-between;
 
-    .Product__form--image {
+     .Image {
       display: flex;
       box-pack: center;
       justify-content: center;
@@ -93,7 +93,7 @@
       }
     }
 
-    .Product__form__show {
+    .Show {
       width: 100%;
       margin-left: 16px;
 
@@ -104,14 +104,14 @@
         margin-top: 0px;
       }
     
-      .Product__area {
+      .ProductArea {
         text-align: right;
 
-        .Product__shipping {
+        .Shipping {
           font-size: 12px;
         }
 
-        .Product__price {
+        .Price {
           font-size: 14px;
           font-weight: 600;
           margin-left: 8px;
@@ -120,8 +120,8 @@
     }
   }
 
-   &__list--price {
-      .Product__price {
+   .Price {
+      .PriceForm {
         display: flex;
         font-size: 18px;
         font-weight: 600;
@@ -129,42 +129,45 @@
         align-items: center;
         margin-bottom: 24px;
 
-        .price--area {
+        .Total__Price {
           font-size: 20px;
         }
       }
    }
 
-  .Product__method {
+  .MethodForm {
 
-    &--list {
+    .Method__List {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
 
-      .method__name {
+      .Name {
         font-size: 17px;
         font-weight: 600;
       }
 
-      .method__Change {
+      .Change {
         font-size: 14px;
         text-decoration: none;
       }
     }
-    .method__text p {
+
+    .Method__Show p {
       margin: 4px 0px 0px;
       font-size: 12px;
     }
+
   }
-    .Product__address--name {
+
+    .Delivery__Name {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
       
-      .h3 {
+      & .Delivery {
         font-size: 17px;
         font-weight: 600;
       }
@@ -173,11 +176,12 @@
         color: rgb(0, 149, 238);
       }
 
-    .address__name {
+    .Registration {
       text-decoration: none;
       font-size: 15px;
     }
-  .Product__list--button {
+
+  .Button {
       padding: 35px 16px 50px;
 
       .btn {
@@ -189,12 +193,12 @@
         min-height: 48px;
         padding: 0 24px;
         border: none;
+        border-radius: 4px;
         font-family: 
         Arial,
         游ゴシック体,
         YuGothic,
         メイリオ,
-        Meiryo,
         sans-serif;
       }
   }
@@ -204,7 +208,7 @@
   text-align: center;
   padding: 40px;
 
-  &__list {
+  &__Center{
     text-align: center;
     margin-top: 20px;
 
@@ -218,7 +222,6 @@
         游ゴシック体, 
         YuGothic, 
         メイリオ, 
-        Meiryo, 
         sans-serif;
       @media (min-width: 760px){
         list-style: none;
@@ -230,8 +233,7 @@
           Arial, 
           游ゴシック体, 
           YuGothic, 
-          メイリオ, 
-          Meiryo, 
+          メイリオ,
           sans-serif;
       }
     }
@@ -267,10 +269,9 @@
     游ゴシック体, 
     YuGothic, 
     メイリオ, 
-    Meiryo, 
     sans-serif;
   }
 }
-.No__fst--cld:not(:first-child) {
+.fst--cld:not(:first-child) {
   border-top: 1px solid rgb(245, 245, 245);
 }
