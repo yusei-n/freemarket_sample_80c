@@ -3,47 +3,46 @@
     %a(href="#")
       = image_tag 'material/logo/logo.png'
   .Product
-    .ProductList
-      %section.Verification.fst--cld
-        %h2.Name
+    .Product__List
+      %section.Product__List__Verification.NoFst--cld
+        %h2.Verification__Contents
           購入内容の確認
-      %section.Show.fst--cld
+      %section.Product__List__Show.NoFst--cld
         .ProductForm
-          .Image
+          .ProductForm__Image
             %figure
               %img(src="https://o.imgz.jp/fashionnews/109222/master_640_1.jpg" alt="商品画像一枚" srcset="")/
-          .Show
-            %p.Product__title
+          .ProductForm__Show
+            %p.Show__ProductTitle
               ここに商品名が入る
-            %p.ProductArea
+            %p.Show__ProductPrice
               %span.Shipping
                 送料込み(税込)
               %span.Price
                 ¥1,000
-      %section.Price.fst--cld
+      %section.Product__List__Price.NoFst--cld
         .PriceForm
-          %span.Text
+          %span.Price__Text
             支払い金額 
           %spam.Total__Price
             ¥1,100
-      %section.Method.fst--cld
+      %section.Product__List__Method.NoFst--cld
         .MethodForm
-          .Method__List
-            %h3.Name
+          .MethodList
+            %h3.Payment__Method
               支払い方法
-            = link_to "変更する","#", class: "Change" 
-          .Method__Show
+            = link_to "変更する","#", class: "Method__Change" 
+          .Method__Payment__Show
             %p クレジットカード支払い
             %p 手数料¥100
-      %section.Address.fst--cld
+      %section.Product__List__Address.NoFst--cld
         .AddressForm
-          .Delivery__Name
-            %h3.Delivery 配送先
+          .Delivery
+            %h3.Delivery__Name 配送先
           = link_to "登録してください","#" , class: "Registration"
       %section.Button.fst--cld
         .ButtonForm
           %button.btn(type="button") 購入する
-
   .Footer
     .Footer__Center
       %ul.ul
