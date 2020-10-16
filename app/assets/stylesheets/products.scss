@@ -1,3 +1,815 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  box-sizing: border-box;
+}
+// 共通のメインカラー
+$main-color: #3CCACE;
+
+header {
+  max-width: 1040px;
+  width: 100%;
+  min-height: 82px;
+  margin: 0 auto;
+  padding: 15px 60px 0;
+  .MainHeader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    &__icon {
+      padding-bottom: 10px;
+      margin-right: 30px;
+      border-radius: 4px;
+      a {
+        width: 140px;
+        display: block;
+        .Logo{
+          width: 100%;
+          vertical-align: bottom;
+        }
+      }
+    }
+    &__searchBox {
+      width: 100%;
+      display: flex;
+      // フォーム部分、form{} .SearchButtom{}の部分については以降の実装時に変更が生じると思われるため現状この記述としています。（実装後コメントアウト削除をお願いします。）
+      form {
+        width: 100%;
+        height: 36px;
+        background-color: #fff;
+        border: 1px solid black;
+      }
+      .SearchButton {
+        width: 38px;
+        height: 36px;
+        background-color: $main-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .Button {
+          width: 20px;
+        }
+      }
+    }
+  }
+}
+.Nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .ListLeft {
+    display: flex;
+    &__item {
+      font-size: 14px;
+      line-height: 40px;
+      padding-right: 50px;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+  .ListRight {
+    display: flex;
+    &__item {
+      font-size: 14px;
+      line-height: 40px;
+      padding-left: 25px;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+
+
+.AnotherProducts i.fa-angle-right:before {
+  -webkit-text-stroke: 1px#f8f8f8;
+}
+
+.AnotherProducts i.fa-angle-left:before {
+  -webkit-text-stroke: 1px#f8f8f8;
+}
+
+.MainHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  &__icon {
+    padding-bottom: 10px;
+    margin-right: 30px;
+    border-radius: 4px;
+    a {
+      width: 140px;
+      display: block;
+      .Logo{
+        width: 100%;
+        vertical-align: bottom;
+      }
+    }
+  }
+  &__searchBox {
+    width: 100%;
+    display: flex;
+    // フォーム部分、form{} .SearchButtom{}の部分については以降の実装時に変更が生じると思われるため現状この記述としています。（実装後コメントアウト削除をお願いします。）
+    form {
+      width: 100%;
+      height: 36px;
+      background-color: #fff;
+      border: 1px solid black;
+    }
+    .SearchButton {
+      width: 38px;
+      height: 36px;
+      background-color: $main-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .Button {
+        width: 20px;
+      }
+    }
+  }
+}
+.Nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .ListLeft {
+    display: flex;
+    &__item {
+      font-size: 14px;
+      line-height: 40px;
+      padding-right: 50px;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+  .ListRight {
+    display: flex;
+    &__item {
+      font-size: 14px;
+      line-height: 40px;
+      padding-left: 25px;
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    }
+  }
+}
+
+.Main {
+  .MainVisual {
+    width: 100%;
+    height: 560px;
+    background-image: url(material/pict/bg-mainVisual-pict_pc.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    .Content {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 35px 0 0 0;
+      &__subtitle {
+        color: #fff;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 60px;
+        line-height: 1.2;
+      }
+      &__text {
+        color: #fff;
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 18px;
+        line-height: 1.7;
+        margin: 16px 0 0 0;
+      }
+      &__btn {
+        margin: 24px 0 0 0;
+        a {
+          text-decoration: none;
+          .appleIcon {
+            width: 175px;
+          }
+          .googleIcon {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+  .TopIntroduction {
+    padding: 60px 20px;
+    .subtitle {
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+      .border {
+        width: 70px;
+        height: 4px;
+        background-color: $main-color;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+      }
+    }
+    .Lists {
+      width: 100%;
+      display: flex;
+      margin: 0 auto;
+      .List {
+        width: 30%;
+        margin: 16px 5% 0 0;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &--last {
+          margin: 16px 0 0;
+        }
+        &__pict {
+          position: relative;
+          margin-bottom: 20px;
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: $main-color;
+          }
+          .backgroundPict {
+            width: 100%;
+          }
+        }
+        &__text {
+          font-size: 24px;
+          font-weight: bold;
+          span {
+            color: $main-color;
+          }
+        }
+        &__description {
+          font-size: 18px;
+          margin: 16px 0 0;
+        }
+      }
+    }
+  }
+  .TopMiddle {
+    background-image: url(material/pict/bg-topMiddleDl-pict.jpg);
+    height: 400px;
+    background-size: cover;
+    background-position: bottom right;
+    display: flex;
+    align-items: center;
+    .Content {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-align: left;
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      &__subtitle {
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__text {
+        font-size: 18px;
+        margin: 20px 0 30px;
+        line-height: 1.5;
+      }
+      &__btn {
+        display: flex;
+        a {
+          text-decoration: none;
+          margin-right: 10px;
+          .appleIcon {
+            width: 175px;
+          }
+          .googleIcon {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+  .TopKeyFeatures {
+    padding: 60px 100px;
+    background-color: #fff;
+    .head {
+      font-size: 27px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 0 40px;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+      .border {
+        width: 70px;
+        height: 4px;
+        background-color: $main-color;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+      }
+    }
+    .Items {
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      .Item {
+        width: calc(1 / 3 * 100%);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 20px;
+        &__img {
+          .image {
+            width: 70%;
+            margin: 0 auto;
+            line-height: 120px;
+          }
+        }
+        &__subtitle {
+          margin: 38px 0 10px;
+          font-size: 19px;
+          font-weight: bold;
+        }
+        &__detail {
+          margin: 0 0 40px;
+          font-size: 17px;
+          font-weight: 200;
+          text-align: left;
+        }
+      }
+    }
+  }
+  .PickupContainer {
+    padding: 80px 0 0;
+    background-color: #f8f8f8;
+    height: 100%;
+    .head {
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    .ProductBox {
+      .ProductHead {
+        text-align: center;
+        a {
+          font-size: 24px;
+          text-decoration: none;
+          color: $main-color;
+          .title {
+            font-weight: bold;
+          }
+        }
+      }
+      .ProductLists {
+        width: 780px;
+        margin: 26px auto 0;
+        display: flex;
+        justify-content: space-around;
+        .ProductList {
+          width: 220px;
+          display: inline-block;
+          float: flex;
+          a {
+            background-color: #fff;
+            display: inline-block;
+            text-decoration: none;
+            .ProductList__img {
+              width: 220px;
+              height: 150px;
+              position: relative;
+              overflow: hidden;
+              margin: 0;
+              z-index: auto;
+            }
+            .ProductList__body {
+              background-color: #fff;
+              color: #333;
+              padding: 16px;
+              .name {
+                overflow: hidden;
+                line-height: 1.5;
+                font-size: 16px;
+                text-align: left;
+              }
+              .details {
+                font-size: 16px;
+                ul {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  li {
+                    //今の所記載なし
+                  }
+                }
+                p {
+                  font-size: 10px;
+                  text-align: left;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .LastContainer {
+    padding-bottom: 80px;
+  }
+}
+.AppBanner {
+  background-image: url(material/pict/bg-appBanner-pict.jpg);
+  padding: 100px 40px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  .Inner {
+    color: #fff;
+    text-align: center;
+    &__title {
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    &__text {
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-size: 35px;
+    }
+    &__btn {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 20px auto 0;
+      a {
+        text-decoration: none;
+        .appleIcon {
+          margin-right: 10px;
+          width: 175px;
+        }
+        .googleIcon {
+          width: 200px;
+        }
+      }
+    }
+  }
+}
+footer {
+  padding: 60px;
+  color: #fff;
+  background-color: #272727;
+  text-align: center;
+  .Contents {
+    max-width: 840px;
+    margin: 0 auto;
+    display: flex;
+    .Content {
+      display: flex;
+      flex-direction: column;
+      width: calc(1 / 3 * 100%);
+      margin: 0 2% 0 0;
+      &__head {
+        margin: 0 0 20px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      ul {
+        list-style: none;
+        li {
+          a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            line-height: 32px;
+          }
+        }
+      }
+    }
+  }
+  .FooterLogo {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+    a {
+      .Logo {
+        width: 100%;
+        vertical-align: bottom;
+      }
+    }
+  }
+  p {
+    font-size: 14px;
+  }
+}
+
+a {
+  .PurchaseBtn {
+    width: 120px;
+    background-color: $main-color;
+    text-align: center;
+    border-radius: 4%;
+    bottom: 32px;
+    right: 32px;
+    position: fixed;
+    padding: 15px;
+    &__text {
+      color: #fff;
+      display: block;
+      font-size: 18px;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+    &__icon {
+      width: 60%;
+    }
+  }
+}
+
+// ここから商品詳細画面
+li.item-name {
+  font-weight: bold;
+}
+
+.Category-nav__item-name {
+  width: 100%;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  padding: 0 60px;
+  background-color: #ffffff;
+  ul {
+    padding: 17px 0 16px;
+    width: 100%;
+    font-size: 14px;
+    margin: 0 auto;
+    display: flex;
+    list-style: none;
+  }
+  ul li {
+    padding: 0 10px 0 0;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  i.fa-angle-right:before {
+    -webkit-text-stroke: 1px white;
+  }
+  i.fa-angle-right:before {
+    -webkit-text-stroke: 1px#f8f8f8;
+  }
+  i.fa-angle-left:before {
+    -webkit-text-stroke: 1px#f8f8f8;
+  }
+}
+
+.Main {
+  background-color: #f8f8f8;
+  .MainShow {
+    padding: 40px;
+    margin: 0 auto;
+    .Main-contents {
+      width: 700px;
+      margin: 0 auto;
+      .ItemBox {
+        background: #fff;
+        padding: 24px 40px 40px;
+        img {
+          width: 100%;
+        }
+        &__name {
+          text-align: center;
+          font-weight: bold;
+          font-size: 24px;
+        }
+        &__photo {
+          margin: 16px 0 0;
+          & ul li {
+          display: flex;
+          flex-direction: column;
+          width: 560px;
+          align-items: center;
+          margin: 0 auto;
+          }
+          & ul>li img {
+            object-fit: cover;
+            height: 346px;
+          }
+          & ul>li ul {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+          }
+          & ul>li>ul li {
+            width: 25%;
+            margin: 0 10px 0 0;
+          }
+          & ul li>ul li img {
+            object-fit: cover;
+            height: 87px;
+          }
+        }
+        &__price {
+          margin: 24px 0 24px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          & span {
+            font-size: 46px;
+            font-weight: bold;
+          }
+          &-info span {
+            font-size: 16px;
+            font-weight: normal;
+          }
+        }
+        &__description {
+          font-size: 18px;
+          margin-bottom: 30px;
+        }
+        &__details {
+          margin-bottom: 20px;
+          & table {
+            width: 100%;
+            height: 375px;
+            border-collapse: collapse;
+            border: 1px solid #f8f8f8;
+            & th {
+              width: 20%;
+              background-color: #eee;
+              font-weight: 400;
+              padding: 8px;
+              border: 1px solid #dedede;
+              font-size: 14px;
+              text-align: center;
+            }
+            & td {
+              width: 61%;
+              padding: 15px 15px;
+              border: 1px solid #dedede;
+              font-size: 14px;
+              & a {
+                text-decoration: none;
+                color: #3CCACE;
+              }
+            } 
+          }
+        }
+        .ItemBox__btn {
+          display: flex;
+          justify-content: space-between;
+          & ul {
+            margin: 10px 0 0;
+            display: flex;
+          }
+          &-like {
+            margin-right: auto;
+            padding: 6px 10px;
+            border-radius: 40px;
+            color: #3CCACE;
+            border: 1px solid #ffb340;
+          }
+        }
+        li.ItemBox__btn-report a {
+          padding: 6px 10px;
+          display: inline-block;
+          border-radius: 4px;
+          color: #333;
+          border: 1px solid #333;
+          text-decoration: none;
+          font-size: 14px;
+        }
+      }
+      .CommentArea {
+        padding: 24px;
+        background-color: #fff;
+        margin: 10px 0;
+        text-align: center;
+        #comment {
+          width: 100%;
+          min-height: 104px;
+          padding: 10px;
+        }
+        p.caution {
+          padding: 8px;
+          font-size: 14px;
+          background-color: #f8f8f8;
+          margin: 10px 0;
+          text-align: left;
+        }
+        
+        .button {
+          line-height: 48px;
+          background: #3CCACE;
+          border: 1px solid #3CCACE;
+          color: #fff;
+          width: 60%;
+          font-size: 18px;
+          border-radius: 100px;
+          margin-top: 30px;
+        }
+      }
+      .AnotherProducts a {
+        text-decoration: none;
+        color: #3CCACE;
+      }
+      .AnotherProducts li {
+        float: left;
+      }
+      .AnotherProducts li:last-child {
+        float: right;
+      }
+      .AnotherProducts::after {
+        display: block;
+        content: "";
+        clear: both;
+      }
+      .SeeMoreProducts a {
+        display: block;
+        margin: 24px 0 8px;
+        color: #3CCACE;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 22px;
+        position: relative;
+      }
+      .SeeMoreProduct__list {
+        margin: 0 0 10px;
+        width: calc(100% / 3);
+        &-image {
+          height: 150px;
+          position: relative;
+          overflow: hidden;
+          margin: 0;
+          z-index: auto;
+          & img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            z-index: auto;
+            height: 150px;
+            object-fit: cover;
+          }
+        }
+        &-body {
+          background-color: white;
+          color: #333;
+          padding: 16px;
+          .name {
+          overflow: hidden;
+          line-height: 1.5;
+          font-size: 16px;
+          text-align: left;
+          }
+          .info {
+            font-size: 16px;
+            & ul {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+            & p {
+              font-size: 10px;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+a:hover {
+  color: #3CCACE;
+}
+// ここまで商品詳細画面

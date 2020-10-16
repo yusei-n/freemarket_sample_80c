@@ -1,0 +1,26 @@
+%header
+  .MainHeader
+    .MainHeader__icon
+      %a{ href: '#' }
+        = image_tag 'material/logo/logo.png', class: "Logo"
+    .MainHeader__searchBox
+      -# 検索欄は後ほど変更があると思われるのでtopページ作成の時点ではこの記述とする（実装後コメントアウト削除をお願いします。）
+      %form キーワードから探す
+      .SearchButton
+        = image_tag 'material/icon/icon-search 1.png', class: "Button"
+  .Nav
+    -# ナビバーは後ほどリンクなどの変更があると思われるのでtopページ作成の時点ではこの記述とする（実装後コメントアウト削除をお願いします。）
+    %ul.ListLeft
+      %li.ListLeft__item
+        %a{ href: '#' }
+          カテゴリー
+      %li.ListLeft__item
+        %a{ href: '#' }
+          ブランド
+    %ul.ListRight
+      %li.ListRight__item
+        %a{ href: '#' }
+          ログイン
+      %li.ListRight__item
+        %a{ href: '#' }
+          新規会員登録
