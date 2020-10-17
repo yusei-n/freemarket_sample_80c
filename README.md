@@ -78,7 +78,7 @@
 |item|string|null: false※アクティブハッシュ|
 
 ### categoriesアソシエーション
-- has_many:producrs
+- has_many:products
 
 
 ## Cardsテーブル
