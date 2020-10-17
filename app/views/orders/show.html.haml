@@ -13,9 +13,9 @@
             %figure
               %img(src="https://o.imgz.jp/fashionnews/109222/master_640_1.jpg" alt="商品画像一枚" srcset="")/
           .ProductForm__Show
-            %p.Show__ProductTitle
+            %p.ProductName
               ここに商品名が入る
-            %p.Show__ProductPrice
+            %p.Product__Price
               %span.Shipping
                 送料込み(税込)
               %span.Price
@@ -28,11 +28,11 @@
             ¥1,100
       %section.Product__List__Method.NoFst--cld
         .MethodForm
-          .MethodList
-            %h3.Payment__Method
+          .Method__List
+            %h3.Method__Payment
               支払い方法
             = link_to "変更する","#", class: "Method__Change" 
-          .Method__Payment__Show
+          .Method--Show
             %p クレジットカード支払い
             %p 手数料¥100
       %section.Product__List__Address.NoFst--cld
@@ -40,7 +40,7 @@
           .Delivery
             %h3.Delivery__Name 配送先
           = link_to "登録してください","#" , class: "Registration"
-      %section.Button.fst--cld
+      %section.Button.NoFst--cld
         .ButtonForm
           %button.btn(type="button") 購入する
   .Footer

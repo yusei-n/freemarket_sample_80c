@@ -100,14 +100,14 @@
       width: 100%;
       margin-left: 16px;
 
-      .Show__ProductTitle {
+      .ProductName {
         font-size: 12px;
         line-height: 1.4em;
         margin-bottom: 8px;
         margin-top: 0px;
       }
     
-      .Show__ProductPrice {
+      .Product__Price {
         text-align: right;
 
         .Shipping {
@@ -141,13 +141,13 @@
 
   .MethodForm {
 
-    .MethodList {
+    .Method__List {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
 
-      .Payment__Method {
+      .Method__Payment {
         font-size: 17px;
         font-weight: 600;
       }
@@ -158,7 +158,7 @@
       }
     }
 
-    .Method__Payment__Show p {
+    .Method--Show p {
       margin: 4px 0px 0px;
       font-size: 12px;
     }
@@ -169,7 +169,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       
       & .Delivery__Name {
         font-size: 17px;
