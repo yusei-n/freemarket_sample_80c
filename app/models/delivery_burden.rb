@@ -1,4 +1,4 @@
-class delivery_burden < ActiveHash::Base
+class Delivery_burden < ActiveHash::Base
   self.data = [
       
   ]
