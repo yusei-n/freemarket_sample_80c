@@ -12,5 +12,3 @@ class ImagesController < ApplicationController
   def delete
   end
 end
-
-end
