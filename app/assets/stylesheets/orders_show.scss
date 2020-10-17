@@ -39,92 +39,80 @@
   margin: 0px auto;
   width: 100%;
   max-width: 700px;
-
   section {
     margin: 0px auto;
     max-width: 375px;
     display: block;
     padding: 32px 16px;
   }
-
   &__List {
     position: relative;
     background-color: white;
-  }
-  &__List__Verification {
-
-    .Verification__Contents {
-      display: block;
-      text-align: center;
-      font-weight: 600;
-      font-size: 24px;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, 
-      游ゴシック体, YuGothic, メイリオ, 
-      sans-serif;
+    &__Verification {
+      .Contents {
+        display: block;
+        text-align: center;
+        font-weight: 600;
+        font-size: 24px;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, 
+        游ゴシック体, YuGothic, メイリオ, 
+        sans-serif;
+      }
     }
 
-  }
-  .ProductForm {
-    display: flex;
-    box-pack: justify;
-    justify-content: space-between;
-
-     &__Image {
+    .ShowForm {
       display: flex;
-      box-pack: center;
-      justify-content: center;
-      height: 80px;
-      width: 80px;
-      box-align: center;
-      align-items: center;
-
-      figure {
+      box-pack: justify;
+      justify-content: space-between;
+      &__Image {
+        display: flex;
+        box-pack: center;
+        justify-content: center;
         height: 80px;
         width: 80px;
-        border-radius: 4px;
-        display: inline-block;
-        margin: 0;
-        overflow: hidden;
-
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
+        box-align: center;
+        align-items: center;
+        figure {
+          height: 80px;
+          width: 80px;
+          border-radius: 4px;
+          display: inline-block;
+          margin: 0;
+          overflow: hidden;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
         }
       }
-    }
 
-    &__Show {
-      width: 100%;
-      margin-left: 16px;
-
-      .ProductName {
-        font-size: 12px;
-        line-height: 1.4em;
-        margin-bottom: 8px;
-        margin-top: 0px;
-      }
-    
-      .Product__Price {
-        text-align: right;
-
-        .Shipping {
+      &__Show {
+        width: 100%;
+        margin-left: 16px;
+        .ProductName {
           font-size: 12px;
+          line-height: 1.4em;
+          margin-bottom: 8px;
+          margin-top: 0px;
         }
-
-        .Price {
-          font-size: 14px;
-          font-weight: 600;
-          margin-left: 8px;
+        .Product__Price {
+          text-align: right;
+          .Shipping {
+            font-size: 12px;
+          }
+          .Price {
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 8px;
+          }
         }
       }
     }
-  }
 
-    &__List__Price {
-
+    &__Price {
       .PriceForm {
         display: flex;
         font-size: 18px;
@@ -132,54 +120,46 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 24px;
-
-        .Total__Price {
-          font-size: 20px;
+        &__TotalPrice {
+          font-size: 19px;
         }
       }
-   }
+    }
 
-  .MethodForm {
-
-    .Method__List {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-
-      .Method__Payment {
-        font-size: 17px;
-        font-weight: 600;
+    .MethodForm {
+      &__List {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
       }
-
-      .Method__Change {
-        font-size: 14px;
-        text-decoration: none;
+      &__Payment {
+          font-size: 17px;
+          font-weight: 600;
+      }
+        .Method__Change {
+          font-size: 14px;
+          text-decoration: none;
+        }
+      &__Show p {
+        margin: 4px 0px 0px;
+        font-size: 12px;
       }
     }
 
-    .Method--Show p {
-      margin: 4px 0px 0px;
-      font-size: 12px;
-    }
-
-  }
-
-    .Delivery {
+    .AddressForm__Delivery {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
-      
-      & .Delivery__Name {
+      &Name {
         font-size: 17px;
         font-weight: 600;
       }
     }
-      a {
-        color: rgb(0, 149, 238);
-      }
-
+    a {
+      color: rgb(0, 149, 238);
+    }
     .Registration {
       text-decoration: none;
       font-size: 15px;
@@ -205,6 +185,7 @@
         メイリオ,
         sans-serif;
       }
+    }
   }
 }
 
