@@ -1,4 +1,4 @@
-class estimated_shipping < ActiveHash::Base
+class EstimatedShipping < ActiveHash::Base
   self.data = [
   
   ]
