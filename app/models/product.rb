@@ -7,4 +7,5 @@ class Product < ApplicationRecord
   belongs_to_active_hash :delivery_burden
   belongs_to_active_hash :product_status
   belongs_to_active_hash :estimated_shipping
+  belongs_to_active_hash :postal_prefectures
 end
