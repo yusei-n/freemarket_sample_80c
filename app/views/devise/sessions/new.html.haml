@@ -1,4 +1,4 @@
-/ヘッダーは部分テンプレートにて別途流用予定です
+= render "products/ProductHeader"
 .Container
   .ContainerForm
     .NoAccount
@@ -22,4 +22,4 @@
         .LoginBlock
           %button{tyep: "submit", class: "LoginBlock__submit"}ログイン
           = link_to "パスワードをお忘れの方", "#", class: "PasswordReissue"
-/フッターーは部分テンプレートにて別途流用予定です
+= render "products/Productfooter"
