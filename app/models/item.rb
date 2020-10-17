@@ -1,4 +1,4 @@
-class item < ActiveHash::Base
+class Item < ActiveHash::Base
   self.data = [
       
   ]

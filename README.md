@@ -1,4 +1,4 @@
- # README
+# README
 
 ## active_hashを除く外部キーを使用するカラムにreferences型を使用します
 
@@ -37,14 +37,13 @@
 
 
 ## Productsテーブル
-
 |Column|Type|Options|
 |-------|-----|-------|
 |user_id|references|foreign_key: true, null: false|
 |title|string|null: false|
 |price|integer|null: false|
-|explanation|text|null: false |
-|delivery_burden_id|integer|f,null: false※アクティブハッシュ|
+|explanation|text|null: false|
+|delivery_burden_id|integer|null: false※アクティブハッシュ|
 |product_Status_id|integer|null: false※アクティブハッシュ|
 |estimated_shipping_id|integer|null: false※アクティブハッシュ|
 
@@ -56,23 +55,20 @@
 
 
 ## Ordersテーブル
-
 |Column|Type|Options|
 |-------|-----|-------|
 |product_id|references|foreign_key: true,null: false|
-OK
 
 ### Ordersアソシエーション
 - belongs_to: product
 
 
-### imagesテーブル
-
+## imagesテーブル
 |Column|Type|Options|
 |-------|-----|-------|
 |product_id|references|foreign_key: true, null: false|
 |image|text||
-OK
+
 ### imagesアソシエーション
 - belongs_to: product
 
@@ -83,8 +79,6 @@ OK
 
 ### categoriesアソシエーション
 - has_many:products
-
-
 
 
 ## Cardsテーブル

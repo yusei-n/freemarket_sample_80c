@@ -1,4 +1,4 @@
-class product_status < ActiveHash::Base
+class ProductStatus < ActiveHash::Base
   self.data = [
       
   ]
