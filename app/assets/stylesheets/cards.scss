@@ -74,11 +74,109 @@
 
 .cards-expire__wrap {
   position: relative;
+  & .fas {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    color: rgb(136, 136, 136);
+  }
 }
 
-.fas {
-  position: absolute;
-  right: 30px;
-  top: 15px;
-  color: rgb(136, 136, 136);
+.CardInfo {
+  border-bottom: 1px solid rgb(245, 245, 245);
+  padding: 32px 0px;
+  a {
+    text-decoration: none;
+    color: #3CCACE;
+    margin-top: 32px;
+  }
+  button {
+    background-color:#3CCACE;
+    font-size: 17px;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: bold;
+    color:white;
+    width:100%;
+  }
+  &:last-of-type {
+    padding-bottom: 48px;
+    border-bottom: none;
+  }
+  &-box {
+    display: flex;
+    align-items: center;
+  }
+  &-text {
+    flex: 1 1 0%;
+    margin: 0px 16px;
+  }
+}
+
+.card-img {
+  margin-top: 8px;
+  max-height: 32px;
+  max-width: 48px;
+}
+
+.expiration-date {
+  margin-top: 6px;
+}
+
+.Delete-btn {
+  background-color: initial;
+  border: 1px solid rgb(234, 53, 45);
+  border-radius: 4px;
+  color: rgb(234, 53, 45);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px 12px;
+}
+
+.Card-add {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  .fas {
+    margin-right: 4px;
+  }
+}
+
+.MethodPayment {
+  text-align: right;
+  padding-bottom: 56px;
+  & a {
+    text-decoration: none;
+    color: #3CCACE;
+  }
+}
+
+.MyPage-tab {
+  margin: 40px 0 0;
+  background-color: #fff;
+  &__head {
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 72px;
+  }
+}
+
+.Payment-title {
+  padding: 32px 16px;
+  border-bottom: 1px solid rgb(245, 245, 245);
+  h2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+  }
+}
+
+.Payment-content {
+  margin: 0px auto;
+  padding: 0px 16px;
+  max-width: 375px;
 }
