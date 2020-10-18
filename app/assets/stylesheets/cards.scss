@@ -1,3 +1,84 @@
-// Place all the styles related to the cards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.Content__card {
+  margin: 0px auto;
+  padding: 0px 16px;
+  max-width: 375px;
+  &-inner {
+    padding: 32px 0px;
+    .new-card-img {
+      max-height: 20px;
+      max-width: 44px;
+      margin: 5px;
+      }
+    .requirement {
+      @include requirement;
+    }
+    .Content__CardNumber input {
+      margin-top: 16px;
+      padding:0 16px;
+      width: 100%;
+      height: 48px;
+      border: 1px solid #ccc;
+      font-weight: normal;
+    }
+    .Content__CardExpire {
+      margin-top: 28px;
+      input {
+        margin-top: 16px;
+        padding:0 16px;
+        width: 100%;
+        height: 48px;
+        box-sizing: border-box;
+        font-weight: normal;
+        border: 1px solid #ccc;
+      }
+      .CardExpire {
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        margin-top: 16px;
+        -webkit-box-align: center;
+        align-items: center;
+        select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          color: #222;
+          font-size: 16px;
+          height: 48px;
+          line-height: 1;
+          margin: 0;
+          outline: none;
+          padding: 0 56px 0 16px;
+        }
+      }
+    }
+    .content-bottom button {
+      background-color:#3CCACE;
+      font-size: 17px;
+      min-height: 48px;
+      padding: 0 24px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      font-weight: bold;
+      color:white;
+      width:100%;
+      margin-top: 28px;
+    }
+  }
+}
+
+.cards-expire__wrap {
+  position: relative;
+}
+
+.fas {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  color: rgb(136, 136, 136);
+}

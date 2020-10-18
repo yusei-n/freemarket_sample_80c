@@ -1,34 +1,62 @@
 = render "products/header"
-
 %nav.Category-nav__item-name
   %ul
     %li
       = link_to "FURIMA", "#"
     %li
       = icon("fas","angle-right")
+    %li
+      = link_to "マイページ", "#"
+    %li
+      = icon("fas","angle-right")
+    %li
+      = link_to "カード情報の編集", "#"
+    %li
+      = icon("fas","angle-right")
     %li.item-name
-      マイページ
+      クレジットカード情報入力
 .MyPage__Main
   %main.MyPage.clearfix
     .MyPage__Content
-      %section.User-icon
-        %a{ href: '#' }
-          %figure
-            = image_tag 'material/icon/member_photo_noimage_thumb.png', height: '60', width: '60'
-          %h2
-            ユーザー名
-          .User-info
-            %div
-              評価
-              %span 0
-            %div
-              出品数
-              %span 0
+      %section.Payment-title
+        %h2 クレジットカード情報入力
+      .Content__card
+        .Content__card-inner
+          = form_with url: '#', method: :post, html: { name: "inputForm" } do |f|
+            .Content__CardNumber
+              = f.label :カード番号
+              %span.requirement
+                必須
+              = f.text_field :card_number, type: 'text', class: 'input-number', placeholder: '半角数字のみ', maxlength: "16"
+              = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg', class: "new-card-img"
+              = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/mastercard-8b5b68c12b7a2fc8619c71f49ef9209b.svg', class: "new-card-img"
+              = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/saison-550107415f39b81fa19e87c96486ba20.svg', class: "new-card-img"
+              = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/jcb-9ea981d20008c6545aa3afd1b3da9804.svg', class: "new-card-img"
+              = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/american_express-4df44c450653b0209850070ea5cf1264.svg', class: "new-card-img"
+            .Content__CardExpire
+              = f.label :有効期限, class: 'label'
+              %span.requirement 必須
+              %br
+              .CardExpire
+                .cards-expire__wrap
+                  = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire'
+                  = icon("fas", "chevron-down")
+                  %span.expire-text 月
+                .cards-expire__wrap
+                  = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-expire'
+                  = icon("fas", "chevron-down")
+                  %span.expire-text 年
+            .Content__CardExpire
+              = f.label :セキュリティコード, class: 'label'
+              %span.requirement 必須
+              = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+            .content-bottom
+              = f.button '追加する', class: 'content-bottom--add-btn', id: 'token_submit'
     .MyPage__Side
       %nav.Side__nav
         %ul.Side__nav-list
-          %li.Side__nav-btn.active
-            = link_to user_path, class: 'Side__nav-listItem' do
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
               マイページ
           %li.Side__nav-btn
             = link_to '#', class: 'Side__nav-listItem' do
@@ -81,7 +109,7 @@
           %li.Side__nav-btn
             = link_to '#', class: 'Side__nav-listItem' do
               発送元・お届け先住所変更
-          %li.Side__nav-btn
+          %li.Side__nav-btn.active
             = link_to '#', class: 'Side__nav-listItem' do
               カード情報の編集
           %li.Side__nav-btn

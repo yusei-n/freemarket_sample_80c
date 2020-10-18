@@ -150,3 +150,370 @@
       .PasswordReissue {
         @include linkstyle;
       }
+
+// マイページ
+.MyPage__Main {
+  background-color: #f8f8f8;
+  padding-top: 10px;
+  height: 100%;
+  width: 100vw;
+}
+
+main {
+  display: block;
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.MyPage {
+  .MyPage__Content {
+    background-color: #fff;
+    .User-icon {
+      position: relative;
+      padding: 20px;
+      background-color: $main-color;
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      a {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        color: #333;
+        figure {
+          overflow: hidden;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 50%;
+        }
+        img {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+.MyPage__Side {
+  margin: 40px auto 0;
+  a {
+    text-decoration: none;
+  }
+}
+
+.Side__nav-list li:first-child {
+  border: 0;
+}
+.Side__nav-list li {
+  border-top: 1px solid #eee;
+}
+
+.Side__nav-btn.active {
+  background-color: #eee;
+  font-weight: 600;
+  a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    font-size: 14px;
+    min-height: 48px;
+    color: #333;
+    position: relative;
+    &::after{
+      content: "";
+      position: absolute;
+      right: 16px;
+      top: 22px;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid #333;
+      border-right: 2px solid #333;
+      transform: rotate(45deg);
+      transition: 0.3s;
+    }
+    &:hover{
+      background-color: #eee;
+      &::after{
+        right: 13px;
+        border-color: #333;
+      }
+    }
+  }
+}
+
+.Side__nav-btn {
+  background-color: #fff;
+  a {
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    font-size: 14px;
+    min-height: 48px;
+    color: #333;
+    position: relative;
+    &::after{
+      content: "";
+      position: absolute;
+      right: 16px;
+      top: 22px;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid #ccc;
+      border-right: 2px solid #ccc;
+      transform: rotate(45deg);
+      transition: 0.3s;
+    }
+    &:hover{
+      background-color: #f5f5f5;
+      &::after{
+        right: 13px;
+        border-color: #333;
+      }
+    }
+  }
+}
+
+.Side__nav-head {
+  margin: 40px 4% 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+// @media記述部分
+
+@media screen and (min-width: 0px) {
+  .MyPage {
+    margin: 24px auto 0;
+    padding: 0 0 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .MyPage {
+    width: 700px;
+  }
+}
+
+@media screen and (min-width: 1068px) {
+  .MyPage {
+    margin: 40px auto 0;
+    width: 1020px;
+  }
+}
+
+
+@media screen and (min-width: 0px) {
+  .MyPage__Content {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .MyPage__Content {
+    float: none;
+    width: 700px;
+  }
+}
+
+@media screen and (min-width: 1068px) {
+  .MyPage__Content {
+    float: right;
+  }
+}
+
+@media screen and (min-width: 0px) {
+  .User-icon {
+    height: 155px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .User-icon {
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .MyPage__Side {
+    width: 700px;
+  }
+}
+
+@media screen and (min-width: 1068px) {
+  .MyPage__Side {
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Side__nav-head {
+    margin: 40px 0 0;
+  }
+}
+
+.payment-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  padding: 32px 16px;
+  border-bottom: 1px solid rgb(245, 245, 245);
+  background-color: #fff;
+}
+
+.Logout-form {
+  text-align: center;
+  background-color: #fff;
+  padding: 64px;
+}
+
+.logout-btn {
+  background-color:#3CCACE;
+  font-size: 17px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: bold;
+  color:white;
+  width:100%;
+  max-width: 340px;
+}
+
+.User-icon a {
+  text-decoration: none;
+}
+
+.User-icon h2 {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.User-info {
+  margin: 8px 0 0;
+  div {
+    display: inline-block;
+    font-size: 14px;
+  }
+  span {
+    margin: 0 0 0 8px;
+    font-size: 16px;
+  }
+  div+div {
+    margin: 0 0 0 16px;
+  }
+}
+
+.MyPage-tab {
+  margin: 40px 0 0;
+  background-color: #fff;
+  &__head {
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 72px;
+  }
+}
+
+.Payment-title {
+  padding: 32px 16px;
+  border-bottom: 1px solid rgb(245, 245, 245);
+  h2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 600;
+    display: block;
+    text-align: center;
+  }
+}
+
+.Payment-content {
+  margin: 0px auto;
+  padding: 0px 16px;
+  max-width: 375px;
+}
+
+.CardInfo {
+  border-bottom: 1px solid rgb(245, 245, 245);
+  padding: 32px 0px;
+  a {
+    text-decoration: none;
+    color: #3CCACE;
+    margin-top: 32px;
+  }
+  button {
+    background-color:#3CCACE;
+    font-size: 17px;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: bold;
+    color:white;
+    width:100%;
+  }
+}
+
+.CardInfo:last-of-type {
+  padding-bottom: 48px;
+  border-bottom: none;
+}
+
+.CardInfo-box {
+  display: flex;
+  align-items: center;
+}
+
+.CardInfo-text {
+  flex: 1 1 0%;
+  margin: 0px 16px;
+}
+
+.card-img {
+  margin-top: 8px;
+  max-height: 32px;
+  max-width: 48px;
+}
+
+.expiration-date {
+  margin-top: 6px;
+}
+
+.Delete-btn {
+  background-color: initial;
+  border: 1px solid rgb(234, 53, 45);
+  border-radius: 4px;
+  color: rgb(234, 53, 45);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 6px 12px;
+}
+
+.Card-add {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  .fas {
+    margin-right: 4px;
+  }
+}
+
+.MethodPayment {
+  text-align: right;
+  padding-bottom: 56px;
+}
+
+.MethodPayment a {
+  text-decoration: none;
+  color: #3CCACE;
+}

@@ -6,28 +6,22 @@
       = link_to "FURIMA", "#"
     %li
       = icon("fas","angle-right")
+    %li
+      = link_to "マイページ", "#"
+    %li
+      = icon("fas","angle-right")
     %li.item-name
-      マイページ
+      ログアウト
 .MyPage__Main
   %main.MyPage.clearfix
     .MyPage__Content
-      %section.User-icon
-        %a{ href: '#' }
-          %figure
-            = image_tag 'material/icon/member_photo_noimage_thumb.png', height: '60', width: '60'
-          %h2
-            ユーザー名
-          .User-info
-            %div
-              評価
-              %span 0
-            %div
-              出品数
-              %span 0
+      .Logout-form
+        = form_with url: destroy_user_session_path do |f|
+          = f.submit 'ログアウト', class: 'logout-btn'
     .MyPage__Side
       %nav.Side__nav
         %ul.Side__nav-list
-          %li.Side__nav-btn.active
+          %li.Side__nav-btn
             = link_to user_path, class: 'Side__nav-listItem' do
               マイページ
           %li.Side__nav-btn
@@ -90,7 +84,7 @@
           %li.Side__nav-btn
             = link_to '#', class: 'Side__nav-listItem' do
               本人情報
-          %li.Side__nav-btn
+          %li.Side__nav-btn.active
             = link_to '#', class: 'Side__nav-listItem' do
               ログアウト
 = render "products/footer"
