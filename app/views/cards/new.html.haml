@@ -50,8 +50,9 @@
               = f.label :セキュリティコード, class: 'label'
               %span.requirement 必須
               = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
-              .question
-                
+              .Content__CardExpire-question
+                %span.question ?
+                カード裏面の番号とは?
             .content-bottom
               = f.button '追加する', class: 'content-bottom--add-btn', id: 'token_submit'
     .MyPage__Side

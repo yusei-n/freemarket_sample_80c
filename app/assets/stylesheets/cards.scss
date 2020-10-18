@@ -1,3 +1,5 @@
+// カード情報入力画面
+
 .Content__card {
   margin: 0px auto;
   padding: 0px 16px;
@@ -22,6 +24,22 @@
     }
     .Content__CardExpire {
       margin-top: 28px;
+      &-question {
+        margin-top: 8px;
+        text-align: right;
+        color: rgb(0, 149, 238);
+        font-size: 12px;
+        span {
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: rgb(0, 149, 238);
+          color: rgb(255, 255, 255);
+          line-height: 14px;
+          text-align: center;
+        }
+      }
       input {
         margin-top: 16px;
         padding:0 16px;
@@ -39,13 +57,10 @@
         -webkit-box-align: center;
         align-items: center;
         select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
           appearance: none;
           background-color: #fff;
           border: 1px solid #ccc;
           border-radius: 4px;
-          -moz-box-sizing: border-box;
           box-sizing: border-box;
           color: #222;
           font-size: 16px;
@@ -54,6 +69,15 @@
           margin: 0;
           outline: none;
           padding: 0 56px 0 16px;
+        }
+      }
+      .cards-expire__wrap {
+        position: relative;
+        & .fas {
+          position: absolute;
+          right: 30px;
+          top: 15px;
+          color: rgb(136, 136, 136);
         }
       }
     }
@@ -72,111 +96,88 @@
   }
 }
 
-.cards-expire__wrap {
-  position: relative;
-  & .fas {
-    position: absolute;
-    right: 30px;
-    top: 15px;
-    color: rgb(136, 136, 136);
-  }
-}
 
-.CardInfo {
-  border-bottom: 1px solid rgb(245, 245, 245);
-  padding: 32px 0px;
-  a {
-    text-decoration: none;
-    color: #3CCACE;
-    margin-top: 32px;
+// カード情報表示画面
+.Payment {
+  &-title {
+    padding: 32px 16px;
+    border-bottom: 1px solid rgb(245, 245, 245);
+    h2 {
+      font-size: 24px;
+      line-height: 34px;
+      font-weight: 600;
+      display: block;
+      text-align: center;
+    }
   }
-  button {
-    background-color:#3CCACE;
-    font-size: 17px;
-    min-height: 48px;
-    padding: 0 24px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    font-weight: bold;
-    color:white;
-    width:100%;
+  &-content {
+    margin: 0px auto;
+    padding: 0px 16px;
+    max-width: 375px;
+    .MethodPayment {
+      text-align: right;
+      padding-bottom: 56px;
+      & a {
+        text-decoration: none;
+        color: #3CCACE;
+      }
+    }
+    .CardInfo {
+      border-bottom: 1px solid rgb(245, 245, 245);
+      padding: 32px 0px;
+      .Card-add {
+        display: flex;
+        align-items: center;
+        margin-top: 32px;
+        .fas {
+          margin-right: 4px;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: #3CCACE;
+        margin-top: 32px;
+      }
+      button {
+        background-color:#3CCACE;
+        font-size: 17px;
+        min-height: 48px;
+        padding: 0 24px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        font-weight: bold;
+        color:white;
+        width:100%;
+      }
+      &:last-of-type {
+        padding-bottom: 48px;
+        border-bottom: none;
+      }
+      &-box {
+        display: flex;
+        align-items: center;
+      }
+      &-text {
+        flex: 1 1 0%;
+        margin: 0px 16px;
+        .card-img {
+          margin-top: 8px;
+          max-height: 32px;
+          max-width: 48px;
+        }
+        .expiration-date {
+          margin-top: 6px;
+        }
+      }
+      .Delete-btn {
+        background-color: initial;
+        border: 1px solid rgb(234, 53, 45);
+        border-radius: 4px;
+        color: rgb(234, 53, 45);
+        cursor: pointer;
+        font-weight: bold;
+        padding: 6px 12px;
+      }
+    }
   }
-  &:last-of-type {
-    padding-bottom: 48px;
-    border-bottom: none;
-  }
-  &-box {
-    display: flex;
-    align-items: center;
-  }
-  &-text {
-    flex: 1 1 0%;
-    margin: 0px 16px;
-  }
-}
-
-.card-img {
-  margin-top: 8px;
-  max-height: 32px;
-  max-width: 48px;
-}
-
-.expiration-date {
-  margin-top: 6px;
-}
-
-.Delete-btn {
-  background-color: initial;
-  border: 1px solid rgb(234, 53, 45);
-  border-radius: 4px;
-  color: rgb(234, 53, 45);
-  cursor: pointer;
-  font-weight: bold;
-  padding: 6px 12px;
-}
-
-.Card-add {
-  display: flex;
-  align-items: center;
-  margin-top: 32px;
-  .fas {
-    margin-right: 4px;
-  }
-}
-
-.MethodPayment {
-  text-align: right;
-  padding-bottom: 56px;
-  & a {
-    text-decoration: none;
-    color: #3CCACE;
-  }
-}
-
-.MyPage-tab {
-  margin: 40px 0 0;
-  background-color: #fff;
-  &__head {
-    padding: 0 16px;
-    font-size: 16px;
-    line-height: 72px;
-  }
-}
-
-.Payment-title {
-  padding: 32px 16px;
-  border-bottom: 1px solid rgb(245, 245, 245);
-  h2 {
-    font-size: 24px;
-    line-height: 34px;
-    font-weight: 600;
-    display: block;
-    text-align: center;
-  }
-}
-
-.Payment-content {
-  margin: 0px auto;
-  padding: 0px 16px;
-  max-width: 375px;
 }
