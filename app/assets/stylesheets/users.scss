@@ -82,7 +82,7 @@
 
     .ContentBlock {
       @media(min-width: 768px) {
-      padding: 40px;
+      padding: 20px;
       }
       &__item {
         @include item;
@@ -90,12 +90,32 @@
       &__requirement{
         @include requirement;
       }
+      &__arbitrary {
+        
+      }
       &__input {
         @include input;
       }
       &__submit {
         display: block;
         @include button;
+      }
+    }
+
+    .Input {
+      &__family-name {
+        margin-top: 16px;
+        padding:0 16px;
+        box-sizing: border-box;
+        font-weight: normal;
+        height: 48px;
+      }
+      &__first-name {
+        margin-top: 16px;
+        padding:0 16px;
+        height: 48px;
+        box-sizing: border-box;
+        font-weight: normal;
       }
     }
 
@@ -137,6 +157,8 @@
       }
       &__requirement {
         @include requirement;
+      }
+      &__arbitrary {
       }
       &__input {
         @include input;
