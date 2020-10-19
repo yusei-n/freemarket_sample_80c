@@ -6,12 +6,12 @@
   max-width: 375px;
   &-inner {
     padding: 32px 0px;
-    .new-card-img {
+    .New-card-img {
       max-height: 20px;
       max-width: 44px;
       margin: 5px;
       }
-    .requirement {
+    .Requirement {
       @include requirement;
     }
     .Content__CardNumber input {
@@ -71,9 +71,9 @@
           padding: 0 56px 0 16px;
         }
       }
-      .cards-expire__wrap {
+      .CardExpire__wrap {
         position: relative;
-        & .fas {
+        .fas {
           position: absolute;
           right: 30px;
           top: 15px;
@@ -81,7 +81,7 @@
         }
       }
     }
-    .content-bottom button {
+    .Content-button button {
       background-color:#3CCACE;
       font-size: 17px;
       min-height: 48px;
@@ -117,7 +117,7 @@
     .MethodPayment {
       text-align: right;
       padding-bottom: 56px;
-      & a {
+      a {
         text-decoration: none;
         color: #3CCACE;
       }
@@ -160,12 +160,12 @@
       &-text {
         flex: 1 1 0%;
         margin: 0px 16px;
-        .card-img {
+        .Card-img {
           margin-top: 8px;
           max-height: 32px;
           max-width: 48px;
         }
-        .expiration-date {
+        .Expiration-date {
           margin-top: 6px;
         }
       }
