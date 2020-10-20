@@ -14,5 +14,8 @@ class UsersController < ApplicationController
 
   def update
   end
+
+  def logout
+  end
   
 end

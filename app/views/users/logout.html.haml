@@ -1,0 +1,91 @@
+= render "products/header"
+
+%nav.Category-nav__item-name
+  %ul
+    %li
+      = link_to "FURIMA", "#"
+    %li
+      = icon("fas","angle-right")
+    %li
+      = link_to "マイページ", "#"
+    %li
+      = icon("fas","angle-right")
+    %li.item-name
+      ログアウト
+.MyPage__Main
+  %main.MyPage.clearfix
+    .MyPage__Content
+      .Logout-form
+        = form_with url: destroy_user_session_path do |f|
+          = f.submit 'ログアウト', class: 'Logout-btn'
+    .MyPage__Side
+      %nav.Side__nav
+        %ul.Side__nav-list
+          %li.Side__nav-btn
+            = link_to user_path, class: 'Side__nav-listItem' do
+              マイページ
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              お知らせ
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              やることリスト
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              いいね一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品する
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              下書き一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品した商品-出品中
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品した商品-取引中
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品した商品-売却済み
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              購入した商品-取引中
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              購入した商品-過去の取引
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              ニュース一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              評価一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              ガイド
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              お問い合わせ
+        %h3.Side__nav-head
+          設定
+        %ul.Side__nav-list
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              プロフィール
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              発送元・お届け先住所変更
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              カード情報の編集
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              メール/パスワード
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              本人情報
+          %li.Side__nav-btn.active
+            = link_to '#', class: 'Side__nav-listItem' do
+              ログアウト
+= render "products/footer"
+= render "products/purchasebtn"
