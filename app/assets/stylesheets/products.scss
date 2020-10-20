@@ -564,6 +564,9 @@ li.item-name {
   position: relative;
   padding: 0 60px;
   background-color: #ffffff;
+  a:hover {
+  color: #3CCACE;
+  }
   ul {
     padding: 17px 0 16px;
     width: 100%;
@@ -807,9 +810,5 @@ li.item-name {
       }
     }
   }
-}
-
-a:hover {
-  color: #3CCACE;
 }
 // ここまで商品詳細画面
