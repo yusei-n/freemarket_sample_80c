@@ -1,0 +1,124 @@
+= render "products/header"
+
+%nav.Category-nav__item-name
+  %ul
+    %li
+      = link_to "FURIMA", "#"
+    %li
+      = icon("fas","angle-right")
+    %li
+      = link_to "マイページ", "#"
+    %li
+      = icon("fas","angle-right")
+    %li.item-name
+      カード情報の編集
+.MyPage__Main
+  %main.MyPage.clearfix
+    .MyPage__Content
+      %section.Payment-title
+        %h2 カード情報の編集
+      .Payment-content
+        %section.CardInfo
+          %ul.CardInfo-ul
+            %li.CardInfo-li
+              .CardInfo-box
+                %span.Choice-btn
+                  %input(type="radio")
+                .CardInfo-text
+                  %p ***********0000
+                  %p.expiration-date 有効期限 00/00
+                  = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg', class: "Card-img"
+                %bottun.Delete-btn
+                  削除する
+        %section.CardInfo
+          %ul.CardInfo-ul
+            %li.CardInfo-li
+              .CardInfo-box
+                %span.Choice-btn
+                  %input(type="radio")
+                .CardInfo-text
+                  %p ***********0000
+                  %p.Expiration-date 有効期限 00/00
+                  = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg', class: "Card-img"
+                %bottun.Delete-btn
+                  削除する
+          = link_to "#" ,class: "Card-add" do
+            = icon("fas", "plus-circle")
+            クレジットカードを追加
+        %section.CardInfo
+          %button 選択したカードを使う
+        .MethodPayment
+          = link_to "#" do
+            支払い方法について
+            = icon("fas","angle-right")
+    .MyPage__Side
+      %nav.Side__nav
+        %ul.Side__nav-list
+          %li.Side__nav-btn
+            = link_to user_path, class: 'Side__nav-listItem' do
+              マイページ
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              お知らせ
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              やることリスト
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              いいね一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品する
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              下書き一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品した商品-出品中
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品した商品-取引中
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              出品した商品-売却済み
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              購入した商品-取引中
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              購入した商品-過去の取引
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              ニュース一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              評価一覧
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              ガイド
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              お問い合わせ
+        %h3.Side__nav-head
+          設定
+        %ul.Side__nav-list
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              プロフィール
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              発送元・お届け先住所変更
+          %li.Side__nav-btn.active
+            = link_to '#', class: 'Side__nav-listItem' do
+              カード情報の編集
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              メール/パスワード
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              本人情報
+          %li.Side__nav-btn
+            = link_to '#', class: 'Side__nav-listItem' do
+              ログアウト
+= render "products/footer"
+= render "products/purchasebtn"
