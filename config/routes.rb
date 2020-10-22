@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :create, :new, :update] do
     resources :cards, only: [:new, :create, :delete, :show]
     resources :addresss, only: [:create, :edit, :update, :new]
+    member do
+      get :logout
+    end
   end
 
   resources :products do
