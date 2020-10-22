@@ -91,7 +91,7 @@
             = link_to '#', class: 'Side__nav-listItem' do
               本人情報
           %li.Side__nav-btn
-            = link_to '#', class: 'Side__nav-listItem' do
-              ログアウト
+            = link_to "ログアウト", logout_user_path, class: 'Side__nav-listItem'
+              
 = render "products/footer"
 = render "products/purchasebtn"

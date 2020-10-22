@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
@@ -17,5 +18,5 @@ class UsersController < ApplicationController
 
   def logout
   end
-  
+
 end

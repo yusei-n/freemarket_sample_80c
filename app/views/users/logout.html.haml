@@ -16,8 +16,7 @@
   %main.MyPage.clearfix
     .MyPage__Content
       .Logout-form
-        = form_with url: destroy_user_session_path do |f|
-          = f.submit 'ログアウト', class: 'Logout-btn'
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'Logout-btn'
     .MyPage__Side
       %nav.Side__nav
         %ul.Side__nav-list
@@ -85,7 +84,6 @@
             = link_to '#', class: 'Side__nav-listItem' do
               本人情報
           %li.Side__nav-btn.active
-            = link_to '#', class: 'Side__nav-listItem' do
-              ログアウト
+            = link_to 'ログアウト', logout_user_path, class: 'Side__nav-listItem'
 = render "products/footer"
 = render "products/purchasebtn"
