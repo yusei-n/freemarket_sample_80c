@@ -5,85 +5,28 @@
       新規会員登録
     .Register__form
       .Contents
-        .ContentBlock
-          %label.ContentBlock__item
-            ニックネーム
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "text", class: "ContentBlock__input", placeholder: "(例)ざきさん"}
-        .ContentBlock
-          %label.ContentBlock__item
-            お名前　※全角入力
-          %span.ContentBlock__requirement
-            必須
-          .Input
-            %input{type: "text", class: "Input__family-name", placeholder: "(例)鈴木"}
-            %input{type: "text", class: "Input__first-name", placeholder: "(例)一郎"}
-        .ContentBlock
-          %label.ContentBlock__item
-            お名前カナ　※全角入力
-          %span.ContentBlock__requirement
-            必須
-          .Input
-            %input{type: "text", class: "Input__family-name", placeholder: "(例)すずき"}
-            %input{type: "text", class: "Input__first-name", placeholder: "(例)いちろう"}
-        .ContentBlock
-          %label.ContentBlock__item
-            誕生日（西暦）
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "data", class: "ContentBlock__input", placeholder: "(例)19900101"}
-        .ContentBlock
-          %label.ContentBlock__item
-            郵便番号
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "data", class: "ContentBlock__input", placeholder: "(例)123-4567"}
-        .ContentBlock
-          %label.ContentBlock__item
-            都道府県
-          %span.ContentBlock__requirement
-            必須
-          %select.ContentBlock__input
-            %option 選択してください
-        .ContentBlock
-          %label.ContentBlock__item
-            市区町村
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "text", class: "ContentBlock__input", placeholder: "(例)横浜市緑区"}
-        .ContentBlock
-          %label.ContentBlock__item
-            番地
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "text", class: "ContentBlock__input", placeholder: "(例)青山1-1-1"}
-        .ContentBlock
-          %label.ContentBlock__item
-            建物名
-          %span.ContentBlock__arbitrary
-            任意
-          %input{type: "text", class: "ContentBlock__input", placeholder: "(例)青山ビル103"}
-        .ContentBlock
-          %label.ContentBlock__item
-            メールアドレス
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "email", class: "ContentBlock__input", placeholder: "携帯・パソコンどちらでも可能"}
-        .ContentBlock
-          %label.ContentBlock__item
-            パスワード
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "password", class: "ContentBlock__input", placeholder: "7文字以上の半角英数字"}
-        .ContentBlock
-          %label.ContentBlock__item
-            パスワード(確認用)
-          %span.ContentBlock__requirement
-            必須
-          %input{type: "password", class: "ContentBlock__input", placeholder: "7文字以上の半角英数字"}
-          %p.Notes
-            ※ 英字と数字の両方を含めて設定してください
-        .ContentBlock
-          %button{tyep: "submit", class: "ContentBlock__submit"}次へ進む
+        = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+          = render "devise/shared/error_messages", resource: @user
+          .ContentBlock
+            = f.label :nickname, "ニックネーム", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.text_field :nickname, class: "ContentBlock__input", placeholder: "(例)ざきさん"
+          .ContentBlock
+            = f.label :email, "メールアドレス", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.email_field :email, class: "ContentBlock__input", placeholder: "携帯・パソコンどちらでも可能"
+          .ContentBlock
+            = f.label :password, "パスワード", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.password_field :password, class: "ContentBlock__input", placeholder: "7文字以上の半角英数字"
+          .ContentBlock
+            = f.label :password_confirmation, "パスワード(確認用)", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.password_field :password_confirmation, class: "ContentBlock__input", placeholder: "7文字以上の半角英数字"
+          .ContentBlock
+            = f.submit '次へ進む', class: "ContentBlock__submit", url: "address_path", method: :get
 = render "products/Productfooter"
