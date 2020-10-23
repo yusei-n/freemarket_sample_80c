@@ -17,10 +17,13 @@
       %li.ListLeft__item
         %a{ href: '#' }
           ブランド
-    %ul.ListRight
-      %li.ListRight__item
-        %a{ href: '#' }
-          ログイン
-      %li.ListRight__item
-        %a{ href: '#' }
-          新規会員登録
+    - if user_signed_in?
+      %ul.ListRight
+        %li.ListRight__item
+          = link_to "マイページ", "/users/#{current_user.id}"
+    - else
+      %ul.ListRight
+        %li.ListRight__item
+          = link_to "ログイン", new_user_session_path
+        %li.ListRight__item
+          = link_to "新規会員登録", new_user_registration_path
