@@ -16,7 +16,8 @@
   %main.MyPage.clearfix
     .MyPage__Content
       .Logout-form
-        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'Logout-btn'
+        = link_to destroy_user_session_path, method: :delete do
+          %bottun.Logout-btn ログアウト
     .MyPage__Side
       %nav.Side__nav
         %ul.Side__nav-list

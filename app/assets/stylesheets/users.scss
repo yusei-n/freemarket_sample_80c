@@ -333,20 +333,23 @@ main {
 .Logout-form {
   text-align: center;
   background-color: #fff;
-  padding: 64px;
+  padding: 64px 180px;
+  a {
+    text-decoration: none;
+  }
 }
 
 .Logout-btn {
-  background-color:#3CCACE;
+  display: block;
+  background-color: #3CCACE;
   font-size: 17px;
-  min-height: 48px;
+  line-height: 48px;
   padding: 0 24px;
   border: 1px solid transparent;
   border-radius: 4px;
   font-weight: bold;
-  color:white;
-  width:100%;
-  max-width: 340px;
+  color: white;
+  max-width: 320px;
 }
 
 // @media記述部分
@@ -420,5 +423,23 @@ main {
 @media screen and (min-width: 768px) {
   .Side__nav-head {
     margin: 40px 0 0;
+  }
+}
+
+// エラーメッセージ
+
+.error_explanation {
+  padding: 0 20px;
+  h2 {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+.field_with_errors {
+  display: contents;
+  li {
+    color: red;
+    list-style: inside;
   }
 }
