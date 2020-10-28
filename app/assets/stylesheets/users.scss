@@ -53,6 +53,17 @@
   font-weight: normal;
 }
 
+@mixin arbitrary {
+  font-size:12px;
+  color:white;
+  background-color:gray;
+  margin-left: 8px;
+  padding:0 4px;
+  border-radius: 2px;
+  display: inline-block;
+  line-height: 1.4em;
+}
+
 // 新規会員・ログイン画面共有のSCSS
 
 .Container {
@@ -91,7 +102,7 @@
         @include requirement;
       }
       &__arbitrary {
-        
+        @include arbitrary;
       }
       &__input {
         @include input;
@@ -159,6 +170,7 @@
         @include requirement;
       }
       &__arbitrary {
+        @include arbitrary;
       }
       &__input {
         @include input;
