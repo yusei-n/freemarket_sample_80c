@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_many :products
   has_many :cards
   has_one :address
-  has_many :images
 end
