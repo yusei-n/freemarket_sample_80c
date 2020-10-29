@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020100803221533) do
+ActiveRecord::Schema.define(version: 2020_10_08_053705) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -40,19 +40,19 @@ ActiveRecord::Schema.define(version: 2020100803221533) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "item", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.string "image", null: false
+    t.bigint "user_id", null: false
+    t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_images_on_product_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -63,16 +63,13 @@ ActiveRecord::Schema.define(version: 2020100803221533) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "title", null: false
     t.integer "price", null: false
     t.text "explanation", null: false
     t.integer "delivery_burden_id", null: false
     t.integer "product_status_id", null: false
     t.integer "estimated_shipping_id", null: false
-    t.integer "category_id", null: false
-    t.integer "postal_prefectures_id", null: false
-    t.text "brand"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
@@ -95,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020100803221533) do
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "images", "products"
+  add_foreign_key "images", "users"
   add_foreign_key "orders", "products"
   add_foreign_key "products", "users"
 end

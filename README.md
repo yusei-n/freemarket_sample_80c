@@ -72,12 +72,12 @@
 ### imagesアソシエーション
 - belongs_to: product
 
-## category(カテゴリー)テーブル
+## categories(カテゴリー)テーブル
 |Column|Type|Options|
 |-------|-----|-------|
 |item|string|null: false※アクティブハッシュ|
 
-### categoryアソシエーション
+### categoriesアソシエーション
 - has_many:products
 
 
