@@ -19,7 +19,7 @@ $(document).on('turbolinks:load',()=>{
       return html;
     }
     
-  let fileIndex = [1,2,3,4,5];
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.ImageFile_group:last').data('index');
   fileIndex.splice(0, lastIndex);
   $('.ImageDestroy').hide();
@@ -35,30 +35,21 @@ $(document).on('turbolinks:load',()=>{
     $('#image-box').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
     fileIndex.push(fileIndex[fileIndex.length -1] + 1);
-    var count = $('.image-file').length;
-    if (count == 5){
-      $(".ImageSide__form__icon").toggle(false);
-      }
     }
-    const hiddenCheck = $(`input[data-index="${targetIndex}"].ImageDestroy`);
+  });
+
+
+  $('#').on('click', '.delet-btn', function() {
+    const targetIndex = $(this).parent().data('index');
+    // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-    $(this).parent().toggle(false);
 
-  });
+    $(this).parent().remove();
+    $(`img[data-index="${targetIndex}"]`).parent().remove();
 
-
-  $("#previews").on('click', '.delet-btn', function() {
-    //画像の削除
-    
-    $(this).parent().parent().remove();
-    
-    var count = $('.image-file').length;
-    // 画像が4以下になった時に5枚投稿された時発動した.toggle(else)を解除
-    if (count == 4){
-      $(".ImageSide__form__icon").toggle(true);
-    } 
-  });
-  $("#previews").on('mouseenter', '.delet-btn', function() {
-    $(this).css("cursor","pointer");
+    // 画像入力欄が0個にならないようにしておく
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 });
