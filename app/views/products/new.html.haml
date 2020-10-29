@@ -19,13 +19,13 @@
                   %br またはクリックしてファイルをアップロード
                 %div#image-box
                   = f.fields_for :images do |i|
-                    %div{id:"data-index=#{i.index}",class:"ImageFile_group"}
+                    %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
                       = i.file_field :image, class: "ImageFile"
                       .js-remove  削除
                     - if @product.persisted?
                       = i.checke_box :_destroy,data:{ index: i.index }, class: "ImageDestroy"
                   -if @product.persisted?
-                    %div{id:"data-index=#{i.index}",class:"ImageFile_group"}
+                    %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
                       = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]",class: "ImageFile"
                       .js-remove  削除
         .ProductSide__name

@@ -10,14 +10,14 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.images.build
+    @product.images.new
   end
 
   def create
 
     @product = Product.create(product_params)
     if @product.save
-      redirect_to root_path　notice: "商品を出品しました"
+      redirect_to root_path
     else
       unless @product.images.present?
         @product.images.new
