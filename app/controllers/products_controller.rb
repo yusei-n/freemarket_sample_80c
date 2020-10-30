@@ -18,8 +18,13 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
     if @product.save
       redirect_to root_path
+    else
+      unless @product.images.present?
+        @product.images.new
+        render 'new'
       else
-        render :new
+        render 'new'
+      end
     end
   end
 

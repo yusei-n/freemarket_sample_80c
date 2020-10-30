@@ -3,10 +3,13 @@
   margin-left: 8px;
   margin-bottom:8px;
 }
+
 .ImageFile_group{
 
 }
-
+.delet-btn{
+  margin-right: auto;
+}
 #previews{
   display: flex;
   
@@ -21,10 +24,6 @@
   font-size:15px;
   margin-top:8px;
   }
-}
-
-.delet-btn{
-  margin-right: auto;
 }
 
 .show-image{
@@ -45,7 +44,51 @@
   height: 100px;
   }
 }
-.imageSide{
+
+
+@mixin select {
+  width: 100%;
+  height: 48px;
+  margin-top:16px;
+  padding:0 16px;
+  text-decoration:none;
+}
+
+@mixin content {
+  padding: 16px;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  border-bottom:1px solid lightgray;
+  @media(min-width: 768px) {
+  padding: 40px;
+  }
+}
+
+#product_product_status_id{
+  @include select
+}
+
+#product_delivery_burden_id{
+  @include select
+}
+
+#product_postal_prefectures_id{
+  @include select
+}
+
+#product_estimated_shipping_id{
+  @include select
+}
+
+#product_category_id{
+  @include select
+}
+
+.child_category_id{
+  @include select
+}
+
+.grandchild_category_id{
+  @include select
 }
 
 .product{
@@ -61,25 +104,13 @@
     max-width: 700px;
     }
     .ImageSide{
-      padding: 16px;
-      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-      border-bottom:1px solid lightgray;
-      @media(min-width: 768px) {
-      padding: 40px;
-      }
+      @include content;
       &__label{
         font-size: 14px;
         font-weight: bold;
         line-height: 1.4em;
         &__required{
-          font-size:12px;
-          color:white;
-          background-color:red;
-          margin-left: 8px;
-          padding:0 4px;
-          border-radius: 2px;
-          display: inline-block;
-          line-height: 1.4em;
+          @include requirement;
         }
       }
       &__PhotoNumber{
@@ -88,8 +119,9 @@
         line-height: 1.4em;
       }
       &__form{
-        display: flex;
+          display: flex;
         &__icon{
+          width: 100%;
           font-size: 24px;
           border:1px dashed lightslategray;
           background-color:rgb(245, 245, 245);
@@ -100,7 +132,6 @@
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          width: 100%;
           @media (min-width: 767px){
           height: 150px;
           width: 100%;
@@ -112,33 +143,20 @@
             @media (max-width: 767px){
             display: none;
             }
-            &__ImageFile{
-              display: none;
-            }
+            
           }
         }
       }
     }
     .ProductSide{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    border-bottom:1px solid lightgray;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+      @include content;
     &__name{
       font-size: 14px;
       font-weight: bold;
       line-height: 1.4em;
+      margin-top:10px;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
     &__NameBox{
@@ -154,14 +172,7 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
     &__form{
@@ -169,7 +180,6 @@
       padding:13px 16px;
       width: 100%;
       box-sizing: border-box;
-      
     }
     &__LengthCount{
       text-align: end;
@@ -183,12 +193,7 @@
     }
   }
   .DetailsSide{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    border-bottom:1px solid lightgray;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+    @include content;
     &__details{
       font-size:14px;
       font-weight: bold;
@@ -197,18 +202,13 @@
       color:lightgray;
     }
     &__category{
+      margin-top:16px;
+      color:black;
       font-size:14px;
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
     &__CategoryBox{
@@ -248,24 +248,12 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
   }
   .delivery{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    border-bottom:1px solid lightgray;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+    @include content;
     &__method{
       font-size:14px;
       font-weight: bold;
@@ -279,21 +267,7 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
-      }
-      &__CategoryBox{
-        width: 100%;
-        height: 48px;
-        margin-top:16px;
-        padding:0 16px;
-        text-decoration:none;
+        @include requirement;
       }
     }
     &__area{
@@ -302,22 +276,9 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
-      &__CategoryBox{
-        width: 100%;
-        height: 48px;
-        margin-top:16px;
-        padding:0 16px;
-        text-decoration:none;
-      }
+
     }
     &__day{
       margin-top:16px;
@@ -325,30 +286,12 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
-      }
-      &__CategoryBox{
-        width: 100%;
-        height: 48px;
-        margin-top:16px;
-        padding:0 16px;
-        text-decoration:none;
+        @include requirement;
       }
     }
   }
   .price{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+    @include content;
     &__example{
       font-size:14px;
       font-weight: bold;
@@ -364,14 +307,7 @@
       display: flex;
       align-items: center;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
       &__PriceForm{
         margin-left: auto;
@@ -442,14 +378,7 @@
       color:rgb(0, 149, 238);
     }
     &__required{
-      font-size:12px;
-      color:white;
-      background-color:red;
-      margin-left: 8px;
-      padding:0 4px;
-      border-radius: 2px;
-      display: inline-block;
-      line-height: 1.4em;
+      @include requirement;
     }
   }
   .caution{

@@ -81,3 +81,4 @@ $(document).on('turbolinks:load',()=>{
     $(this).css('cursor','pointer');
   });
 });
+
