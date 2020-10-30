@@ -10,5 +10,5 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
   has_many :images
 
-  validates :nickname, presence: true
+  validates :nickname, presence: true, uniqueness: true
 end
