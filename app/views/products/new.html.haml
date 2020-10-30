@@ -12,22 +12,15 @@
           .ImageForm
             .ImageSide__form
               %div#previews
-              %label.ImageSide__form__icon
+              .ImageSide__form__icon
                 = icon('fa', 'camera')
                 .ImageSide__form__icon__text
                   ドラックアンドドロップ
                   %br またはクリックしてファイルをアップロード
                 %div#image-box
-                  = f.fields_for :images do |i|
-                    %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
-                      = i.file_field :image, class: "ImageFile"
-                      .js-remove  削除
-                    - if @product.persisted?
-                      = i.checke_box :_destroy,data:{ index: i.index }, class: "ImageDestroy"
-                  -if @product.persisted?
-                    %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
-                      = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]",class: "ImageFile"
-                      .js-remove  削除
+          = f.fields_for :images do |i|
+            %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
+              = i.file_field :image, class: "ImageFile", data: {index: i.index}
         .ProductSide__name
           商品名
           %span.ProductSide__name__required
