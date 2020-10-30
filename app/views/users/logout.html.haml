@@ -3,11 +3,11 @@
 %nav.Category-nav__item-name
   %ul
     %li
-      = link_to "FURIMA", "#"
+      = link_to "FURIMA", '#'
     %li
       = icon("fas","angle-right")
     %li
-      = link_to "マイページ", "#"
+      = link_to "マイページ", '#'
     %li
       = icon("fas","angle-right")
     %li.item-name
@@ -85,6 +85,6 @@
             = link_to '#', class: 'Side__nav-listItem' do
               本人情報
           %li.Side__nav-btn.active
-            = link_to 'ログアウト', logout_user_path, class: 'Side__nav-listItem'
+            = link_to "ログアウト", logout_user_path, class: 'Side__nav-listItem'
 = render "products/footer"
-= render "products/purchasebtn"
+= render "products/sellingbtn"

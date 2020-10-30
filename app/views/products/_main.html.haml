@@ -7,10 +7,8 @@
         %br
         フリマアプリです
       .Content__btn
-        %a{ href: '#' }
-          = image_tag 'material/badge/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class: "appleIcon"
-        %a{ href: '#' }
-          = image_tag 'material/badge/google-play-badge.png', class: "googleIcon"
+        = link_to image_tag('material/badge/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class: "appleIcon"), '#'
+        = link_to image_tag('material/badge/google-play-badge.png', class: "googleIcon"), '#'
   %section.TopIntroduction
     %h2.subtitle
       FURIMAが選ばれる3つの理由
@@ -19,7 +17,7 @@
       %li.List
         .List__pict
           %span.number 1
-          = image_tag 'material/pict/pict-reason-01.jpg', class: "backgroundPict"
+          = link_to image_tag('material/pict/pict-reason-01.jpg', class: "backgroundPict"), '#'
         %h3.List__text
           %span 3分
           ですぐに出品
@@ -28,7 +26,7 @@
       %li.List
         .List__pict
           %span.number 2
-          = image_tag 'material/pict/pict-reason-02.jpg', class: "backgroundPict"
+          = link_to image_tag('material/pict/pict-reason-02.jpg', class: "backgroundPict"), '#'
         %h3.List__text
           %span シンプル
           で使いやすい
@@ -37,7 +35,7 @@
       %li.List.List--last
         .List__pict
           %span.number 3
-          = image_tag 'material/pict/pict-reason-03.jpg', class: "backgroundPict"
+          = link_to image_tag('material/pict/pict-reason-03.jpg', class: "backgroundPict"), '#'
         %h3.List__text
           手数料
           %span 業界最安
@@ -53,10 +51,8 @@
         %br
         ほしかったあの商品に出会えるかもしれません。
       .Content__btn
-        %a{ href: '#' }
-          = image_tag 'material/badge/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class: "appleIcon"
-        %a{ href: '#' }
-          = image_tag 'material/badge/google-play-badge.png', class: "googleIcon"
+        = link_to image_tag('material/badge/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class: "appleIcon"), '#'
+        = link_to image_tag('material/badge/google-play-badge.png', class: "googleIcon"), '#'
   %section.TopKeyFeatures
     %h2.head
       FURIMAの特徴
@@ -89,12 +85,12 @@
       ピックアップカテゴリー
     .ProductBox
       .ProductHead
-        %a{ href: '#'}
+        = link_to '#' do
           %h3.title
             新規投稿商品
       .ProductLists
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -105,9 +101,9 @@
                   %li 1000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -118,9 +114,9 @@
                   %li 2000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -131,9 +127,9 @@
                   %li 3000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -144,9 +140,9 @@
                   %li 4000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -157,18 +153,18 @@
                   %li 5000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
   .PickupContainer.LastContainer
     %h2.head
       ピックアップブランド
     .ProductBox
       .ProductHead
-        %a{ href: '#'}
+        = link_to '#' do
           %h3.title
             アーカイバ
       .ProductLists
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -179,9 +175,9 @@
                   %li 1000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -192,9 +188,9 @@
                   %li 2000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -205,9 +201,9 @@
                   %li 3000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -218,9 +214,9 @@
                   %li 4000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
         .ProductList
-          %a{ href: '#'}
+          = link_to '#' do
             %figure.ProductList__img
               -# = image_tag
             .ProductList__body
@@ -231,7 +227,7 @@
                   %li 5000円
                   %li
                     = icon('fas', 'star')
-                %p （税金）
+                %p （税込）
 .AppBanner
   .Inner
     %h2.Inner__title
@@ -239,7 +235,5 @@
     %p.Inner__text
       今すぐ無料ダウンロード！
     .Inner__btn
-      %a{ href: '#' }
-        = image_tag 'material/badge/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class: "appleIcon"
-      %a{ href: '#' }
-        = image_tag 'material/badge/google-play-badge.png', class: "googleIcon"
+      = link_to image_tag('material/badge/Download_on_the_App_Store_Badge_US-UK_blk_092917.png', class: "appleIcon"), '#'
+      = link_to image_tag('material/badge/google-play-badge.png', class: "googleIcon"), '#'
