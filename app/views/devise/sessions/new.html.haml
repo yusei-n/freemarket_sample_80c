@@ -8,8 +8,8 @@
         %button{tyep: "submit", class: "NoAccount__submit"}新規会員登録
     .Login
       = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
-        = render "devise/shared/error_messages", resource: @user
         .Login__contents
+          = render 'layouts/notifications'
           .LoginBlock
             = f.label :email, "メールアドレス", class: "LoginBlock__item" 
             %span.LoginBlock__requirement
