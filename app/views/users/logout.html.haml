@@ -3,11 +3,11 @@
 %nav.Category-nav__item-name
   %ul
     %li
-      = link_to "FURIMA", "#"
+      = link_to "FURIMA", '#'
     %li
       = icon("fas","angle-right")
     %li
-      = link_to "マイページ", "#"
+      = link_to "マイページ", '#'
     %li
       = icon("fas","angle-right")
     %li.item-name
@@ -16,8 +16,8 @@
   %main.MyPage.clearfix
     .MyPage__Content
       .Logout-form
-        = form_with url: destroy_user_session_path do |f|
-          = f.submit 'ログアウト', class: 'Logout-btn'
+        = link_to destroy_user_session_path, method: :delete do
+          %bottun.Logout-btn ログアウト
     .MyPage__Side
       %nav.Side__nav
         %ul.Side__nav-list
@@ -85,7 +85,6 @@
             = link_to '#', class: 'Side__nav-listItem' do
               本人情報
           %li.Side__nav-btn.active
-            = link_to '#', class: 'Side__nav-listItem' do
-              ログアウト
+            = link_to "ログアウト", logout_user_path, class: 'Side__nav-listItem'
 = render "products/footer"
-= render "products/purchasebtn"
+= render "products/sellingbtn"

@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
   end
 
   def new
+    @user = current_user.id
   end
 
   def create
@@ -17,5 +19,5 @@ class UsersController < ApplicationController
 
   def logout
   end
-  
+
 end

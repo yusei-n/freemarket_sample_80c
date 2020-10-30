@@ -7,5 +7,8 @@ class User < ApplicationRecord
   has_many :products
   has_many :cards
   has_one :address
+  accepts_nested_attributes_for :address
   has_many :images
+
+  validates :nickname, presence: true, uniqueness: true
 end

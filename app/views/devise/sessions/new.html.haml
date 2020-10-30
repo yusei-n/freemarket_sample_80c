@@ -4,22 +4,28 @@
     .NoAccount
       %p.NoAccount__explanation
         アカウントをお持ちでない方はこちら
-      %button{tyep: "submit", class: "NoAccount__submit"}新規会員登録
+      = link_to new_user_registration_path do
+        %button{tyep: "submit", class: "NoAccount__submit"}新規会員登録
     .Login
-      .Login__contents
-        .LoginBlock
-          %label.LoginBlock__item
-            メールアドレス
-          %span.LoginBlock__requirement
-            必須
-          %input{type: "text", class: "LoginBlock__input", placeholder: "PCまたは携帯のメールアドレス"}
-        .LoginBlock
-          %label.LoginBlock__item
-            パスワード
-          %span.LoginBlock__requirement
-            必須
-          %input{type: "text", class: "LoginBlock__input", placeholder: "7文字以上の半角英数字"}
-        .LoginBlock
-          %button{tyep: "submit", class: "LoginBlock__submit"}ログイン
-          = link_to "パスワードをお忘れの方", "#", class: "PasswordReissue"
+      = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
+        .Login__contents
+          = render 'layouts/notifications'
+          .LoginBlock
+            = f.label :email, "メールアドレス", class: "LoginBlock__item" 
+            %span.LoginBlock__requirement
+              必須
+            = f.email_field :email, class: "LoginBlock__input", placeholder: "PCまたは携帯のメールアドレス能"
+          .LoginBlock
+            = f.label :password, "パスワード", class: "LoginBlock__item"
+            %span.LoginBlock__requirement
+              必須
+            = f.password_field :password, class: "LoginBlock__input", placeholder: "7文字以上の半角英数字"
+          .LoginBlock
+            = f.label :password_confirmation, "パスワード(確認用)", class: "LoginBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.password_field :password_confirmation, class: "LoginBlock__input", placeholder: "7文字以上の半角英数字"
+          .LoginBlock
+            = f.submit "ログイン", class: "LoginBlock__submit"
+            = link_to "パスワードをお忘れの方", "#", class: "PasswordReissue"
 = render "products/Productfooter"

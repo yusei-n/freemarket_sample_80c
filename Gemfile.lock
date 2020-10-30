@@ -121,6 +121,11 @@ GEM
     erubi (1.9.0)
     erubis (2.7.0)
     excon (0.76.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     faker (2.14.0)
       i18n (>= 1.6, < 2)
     ffi (1.13.1)
@@ -374,6 +379,7 @@ DEPENDENCIES
   carrierwave
   devise
   dotenv-rails
+  factory_bot_rails
   faker (~> 2.8)
   fog-aws
   font-awesome-sass

@@ -1,0 +1,61 @@
+= render "products/ProductHeader"
+.Container
+  .Register
+    %h2.Register__title
+      発送元・お届け先住所の登録
+    .Register__form
+      .Contents
+        = form_with model: @address, local: true do |f|
+          = render "devise/shared/error_messages", resource: @address
+          .ContentBlock
+            = f.label :last_name, "お名前 ※全角入力", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            .Input
+              = f.text_field :last_name, class: "Input__family-name", placeholder: "(例)鈴木"
+              = f.text_field :first_name, class: "Input__first-name", placeholder: "(例)一郎"
+          .ContentBlock
+            = f.label :last_name, "お名前カナ ※全角入力", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            .Input
+              = f.text_field :last_name_hurigana, class: "Input__family-name", placeholder: "(例)スズキ"
+              = f.text_field :first_name_hurigana, class: "Input__first-name", placeholder: "(例)イチロウ"
+          .ContentBlock
+            = f.label :birthday, "誕生日（西暦）", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.text_field :birthday, class: "ContentBlock__input", placeholder: "(例)19900101"
+          .ContentBlock
+            = f.label :postal_number, "郵便番号", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.text_field :postal_number, class: "ContentBlock__input", placeholder: "(例)123-4567"
+          .ContentBlock
+            = f.label :postal_prefectures_id, "都道府県", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.collection_select :postal_prefectures_id, PostalPrefectures.all, :id, :name,{include_blank: "選択してください"}, {class: "ContentBlock__input"}
+          .ContentBlock
+            = f.label :postal_municipalities, "市区町村", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.text_field :postal_municipalities, class: "ContentBlock__input", placeholder: "(例)横浜市緑区"
+          .ContentBlock
+            = f.label :postal_address, "番地", class: "ContentBlock__item"
+            %span.ContentBlock__requirement
+              必須
+            = f.text_field :postal_address, class: "ContentBlock__input", placeholder: "(例)青山1-1-1"
+          .ContentBlock
+            = f.label :post_apartment, "建物名", class: "ContentBlock__item"
+            %span.ContentBlock__arbitrary
+              任意
+            = f.text_field :post_apartment, class: "ContentBlock__input", placeholder: "(例)青山ビル103"
+          .ContentBlock
+            = f.label :tell_number, "電話番号", class: "ContentBlock__item"
+            %span.ContentBlock__arbitrary
+              任意
+            = f.text_field :tell_number, class: "ContentBlock__input", placeholder: "(例)09011112222"
+          .ContentBlock
+            = f.submit '登録する', class: "ContentBlock__submit"
+= render "products/Productfooter"
