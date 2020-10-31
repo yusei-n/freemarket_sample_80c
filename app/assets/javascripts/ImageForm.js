@@ -19,6 +19,22 @@ $(document).on('turbolinks:load',()=>{
                     </div>`;
       return html;
     }
+
+    const buildForm = ()=> {
+      const html = `<div class="ImageForm-under">  
+                      <div class="ImageFormBox-under">
+                        <div class="ImageSide__form__icon-under">
+                        <i class="fa fa-camera"></i>
+                          <div class="ImageSide__form__icon__text-under">
+                            ドラックアンドドロップ
+                            <br>またはクリックしてファイルをアップロード<br>
+                          </div>
+                          <div id="image-box"></div>
+                        </div>
+                      </div>
+                    </div>`;
+      return html;
+    }
     
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
     //クリックしたらファイルフィールドが選択される
@@ -27,6 +43,7 @@ $(document).on('turbolinks:load',()=>{
     const file_field = $('input[type="file"]:last');
     //クリックによって最後のフォームが選択される
     file_field.trigger('click');
+    
   });
 
   $('.ImageSide__PhotoNumber').on('change','.ImageFile',function(e){
@@ -43,15 +60,25 @@ $(document).on('turbolinks:load',()=>{
     fileIndex.shift();
     fileIndex.push(fileIndex[fileIndex.length -1] + 1);
     var count = $('.image-file').length;
+    if (count == 1){
+      $('.NotImage').remove();
+    }
     if (count == 5){
       $('.ImageSide__form__icon').toggle(false);
-      
+      $('.ImageSide__PhotoNumber').append(buildForm);
+      $('.ImageSide__form__icon-under').on('click', function(e){
+        // インプットボックスの最後のカスタムデータID取得
+        const file_field = $('input[type="file"]:last');
+        //クリックによって最後のフォームが選択される
+        file_field.trigger('click');
+      });
       }
+    if (count > 5){
+      
+      $('ImageSide__PhotoNumber').after(buildImg(targetIndex, blobUrl));
     }
-
+    }
   });
-
-
   $('#previews').on('click', '.delet-btn', function(e){
     //画像の削除
     const image = $(this).parent().parent();
@@ -62,6 +89,12 @@ $(document).on('turbolinks:load',()=>{
     const file_field = $(`input[type="file"][data-index="${data_index}"]`);
     file_field.remove();
     var count = $('.image-file').length;
+    if (count == 0){
+       $('.ImageSide__PhotoNumber').after(`<div class="NotImage">画像を挿入してください</div>`)
+       $('.NotImage').css({
+        color:'red',fontSize: '15px',padding: '10px',margin: '10px 0 0 0',
+       })
+    }
     // 画像が4以下になった時に5枚投稿された時発動した.toggle(else)を解除
     if (count == 4){
       $('.ImageSide__form__icon').toggle(true);
@@ -81,4 +114,5 @@ $(document).on('turbolinks:load',()=>{
     $(this).css('cursor','pointer');
   });
 });
+
 

@@ -5,14 +5,40 @@
 }
 
 .ImageFile_group{
-
+// JSで追加される要素
+.ImageSide__form__icon-under{
+  width: 100%;
+  font-size: 24px;
+  border:1px dashed lightslategray;
+  background-color:rgb(245, 245, 245);
+  margin-top: 10px;
+  padding:0 5px;
+  height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 767px){
+  height: 150px;
+  width: 100%;
+  }
 }
+
+.ImageSide__form__icon__text-under{
+  font-size: 12px;
+  line-height: 1.4em;
+  text-align: center;
+  @media (max-width: 767px){
+  display: none;
+  }
+}
+
 .delet-btn{
   margin-right: auto;
 }
 #previews{
   display: flex;
-  
+
 }
 .cotent{
   font-size:12px;
@@ -44,7 +70,6 @@
   height: 100px;
   }
 }
-
 
 @mixin select {
   width: 100%;
@@ -143,6 +168,8 @@
             @media (max-width: 767px){
             display: none;
             }
+          }
+
             
           }
         }
@@ -393,4 +420,4 @@
     }
   }
 }
-}
+
