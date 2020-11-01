@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   end
 
   resources :products do
+    collection do
+      get :search
+    end
     resources :orders, only: [:show, :delete, :new, :create]
     resources :images, only: [:create, :delete, :new, :show]
   end
