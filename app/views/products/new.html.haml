@@ -15,8 +15,7 @@
               .ImageSide__form__icon
                 = icon('fa', 'camera')
                 .ImageSide__form__icon__text
-                  ドラックアンドドロップ
-                  %br またはクリックしてファイルをアップロード
+                  クリックしてファイルをアップロード
                 %div#image-box
           = f.fields_for :images do |i|
             %div{id:"ImageData#{i.index}",class:"ImageFile_group"}

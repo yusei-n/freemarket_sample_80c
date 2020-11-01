@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     else
       unless @product.images.present?
         @product.images.new
-        render new
+        render :new
       else
         render 'new'
       end

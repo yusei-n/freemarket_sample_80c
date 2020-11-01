@@ -90,7 +90,7 @@ $(document).on('turbolinks:load',()=>{
     file_field.remove();
     var count = $('.image-file').length;
     if (count == 0){
-       $('.ImageSide__PhotoNumber').after(`<div class="NotImage">画像を挿入してください</div>`)
+       $('.ImageSide__PhotoNumber').after(`<div class="NotImage">イメージをアップロードしてください</div>`)
        $('.NotImage').css({
         color:'red',fontSize: '15px',padding: '10px',margin: '10px 0 0 0',
        })

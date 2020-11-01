@@ -1,5 +1,5 @@
 $(function(){
-  $("select").click(function(){
+  $("select").change(function(){
     let error;
     var select = $(this).val();
     if (select == "") {
