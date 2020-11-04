@@ -19,7 +19,7 @@
                 %div#image-box
           = f.fields_for :images do |i|
             %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
-              = i.file_field :image, class: "ImageFile", data: {index: i.index}
+              = i.file_field :image, class: "ImageFile", data: {index: i.index},accept: 'image/jpg,image/jpeg,image/png,image/gif'
         .ProductSide__name
           商品名
           %span.ProductSide__name__required
