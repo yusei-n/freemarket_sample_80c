@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   function build_Children(){
     let child_select = `<select name="product[category_id]"class="child_category_id">
                           <option value="">---</option>

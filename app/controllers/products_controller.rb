@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
         @product.images.new
         render :new
       else
-        render 'new'
+        render :new
       end
     end
   end

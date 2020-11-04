@@ -1,5 +1,5 @@
-$(function(){
-  $("select").change(function(){
+
+  $(document).on("change","select",function(){
     let error;
     var select = $(this).val();
     if (select == "") {
@@ -14,4 +14,3 @@ $(function(){
       $("#error").remove();
     }
   })
-})

@@ -24,12 +24,12 @@
           商品名
           %span.ProductSide__name__required
             必須
-        = f.text_field :title, class:"ProductSide__NameBox",placeholder: "40文字まで", maxlength:"40"
+        = f.text_field :title, class:"ProductSide__NameBox",placeholder: "40文字まで"
         .ProductSide__description
           商品の説明
           %span.ProductSide__description__required
             必須
-        = f.text_area :explanation,class:"ProductSide__form",rows:"7",placeholder: "商品の説明（必須1,000文字以内）\n(色、素材、重さ、定価、注意点など）\n\n例）2015年に購入したNintendoSwitchです。開封済みの品ですが状態は良好です", maxlength:"1000"
+        = f.text_area :explanation,class:"ProductSide__form",rows:"7",placeholder: "商品の説明（必須1,000文字以内）\n(色、素材、重さ、定価、注意点など）\n\n例）2015年に購入したNintendoSwitchです。開封済みの品ですが状態は良好です"
         .ProductSide__LengthCount
           0/1000
       .DetailsSide
@@ -80,7 +80,7 @@
             必須
           .price__SellingPrice__PriceForm
             ¥
-            = f.number_field :price,placeholder:"0",class: "price__SellingPrice__PriceForm__input"
+            = f.number_field :price,placeholder:"0",min:"300" ,max:"9999999",class: "price__SellingPrice__PriceForm__input"
         .price__fee
           販売手数料(10%)
           .price__fee__FeePrice

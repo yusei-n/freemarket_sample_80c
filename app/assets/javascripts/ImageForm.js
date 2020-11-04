@@ -65,18 +65,7 @@ $(document).on('turbolinks:load',()=>{
     }
     if (count == 5){
       $('.ImageSide__form__icon').toggle(false);
-      $('.ImageSide__PhotoNumber').append(buildForm);
-      $('.ImageSide__form__icon-under').on('click', function(e){
-        // インプットボックスの最後のカスタムデータID取得
-        const file_field = $('input[type="file"]:last');
-        //クリックによって最後のフォームが選択される
-        file_field.trigger('click');
-      });
       }
-    if (count > 5){
-      
-      $('ImageSide__PhotoNumber').after(buildImg(targetIndex, blobUrl));
-    }
     }
   });
   $('#previews').on('click', '.delet-btn', function(e){
