@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
+      flash.now[:alert] = '※画像・リストの選択または入力してください。'
       unless @product.images.present?
         @product.images.new
         render :new
