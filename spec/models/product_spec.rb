@@ -21,7 +21,7 @@ describe Product do
     end
 
     it "タイトルが40文字だと登録できる" do
-      product = build(:product, title: "a" * 39)
+      product = build(:product, title: "a" * 40)
       product.valid?
       expect(product).to be_valid
     end
