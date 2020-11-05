@@ -22,7 +22,6 @@ describe Product do
 
     it "タイトルが40文字だと登録できる" do
       product = build(:product, title: "a" * 40)
-      product.valid?
       expect(product).to be_valid
     end
 
@@ -40,7 +39,6 @@ describe Product do
 
     it "説明文が1000文字だと登録できる" do
       product = build(:product, explanation: "a" * 1000)
-      product.valid?
       expect(product).to be_valid
     end
 
@@ -58,7 +56,6 @@ describe Product do
 
     it "金額が300だと登録できる" do
       product = build(:product, price: 300)
-      product.valid?
       expect(product).to be_valid
     end
 
@@ -70,7 +67,6 @@ describe Product do
 
     it "金額が9999999だと登録できる" do
       product = build(:product, price: 9999999)
-      product.valid?
       expect(product).to be_valid
     end
 
@@ -106,7 +102,6 @@ describe Product do
 
     it "ブランドが空でも登録できる" do
       product = build(:product, brand: "")
-      product.valid?
       expect(product).to be_valid
     end
   end
