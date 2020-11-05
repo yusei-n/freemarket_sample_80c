@@ -13,7 +13,6 @@ class Product < ApplicationRecord
   # 発送までの日時
   belongs_to_active_hash :EstimatedShipping
 
-  validates :user_id, presence: true
   validates :delivery_burden_id, presence: true
   validates :estimated_shipping_id, presence: true
   validates :product_status_id, presence: true
