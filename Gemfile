@@ -79,3 +79,4 @@ gem 'mini_magick'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 # fontawesome
 gem 'font-awesome-sass'
+gem 'ancestry'

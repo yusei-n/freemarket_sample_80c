@@ -4,6 +4,121 @@
   margin-bottom:8px;
 }
 
+// JSで追加される要素
+.ImageFile_group{
+  display: none;
+}
+
+.ImageSide__form__icon-under{
+  width: 100%;
+  font-size: 24px;
+  border:1px dashed lightslategray;
+  background-color:rgb(245, 245, 245);
+  margin-top: 10px;
+  padding:0 5px;
+  height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 767px){
+  height: 150px;
+  width: 100%;
+  }
+}
+
+.ImageSide__form__icon__text-under{
+  font-size: 12px;
+  line-height: 1.4em;
+  text-align: center;
+  @media (max-width: 767px){
+  display: none;
+  }
+}
+
+.delet-btn{
+  margin-right: auto;
+}
+#previews{
+  display: flex;
+
+}
+.cotent{
+  font-size:12px;
+  display: flex;
+  justify-content: center;
+  padding:0 15px;
+  color: #3CCACE;
+  @media (min-width: 768px){
+  font-size:15px;
+  margin-top:8px;
+  }
+}
+
+.show-image{
+  height: 112px;
+  width: 101.8px;
+  background-color:white;
+  border: 1px solid lightgrey;
+  margin:10px 10px 0 0;
+  @media (min-width: 768px){
+  height: 150px;
+  width: 116px;
+  }
+}
+.image-file{
+  width: 100%;
+  height: 80px;
+  @media (min-width: 768px){
+  height: 100px;
+  }
+}
+
+@mixin select {
+  width: 100%;
+  height: 48px;
+  margin-top:16px;
+  padding:0 16px;
+  text-decoration:none;
+}
+
+@mixin content {
+  padding: 16px;
+  font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  border-bottom:1px solid lightgray;
+  @media(min-width: 768px) {
+  padding: 40px;
+  }
+}
+
+#product_product_status_id{
+  @include select
+}
+
+#product_delivery_burden_id{
+  @include select
+}
+
+#product_postal_prefectures_id{
+  @include select
+}
+
+#product_estimated_shipping_id{
+  @include select
+}
+
+#product_category_id{
+  @include select
+}
+
+.child_category_id{
+  @include select
+}
+
+.grandchild_category_id{
+  @include select
+}
+
 .product{
   background-color:lightgray;
   &__contents{
@@ -17,25 +132,13 @@
     max-width: 700px;
     }
     .ImageSide{
-      padding: 16px;
-      font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-      border-bottom:1px solid lightgray;
-      @media(min-width: 768px) {
-      padding: 40px;
-      }
+      @include content;
       &__label{
         font-size: 14px;
         font-weight: bold;
         line-height: 1.4em;
         &__required{
-          font-size:12px;
-          color:white;
-          background-color:red;
-          margin-left: 8px;
-          padding:0 4px;
-          border-radius: 2px;
-          display: inline-block;
-          line-height: 1.4em;
+          @include requirement;
         }
       }
       &__PhotoNumber{
@@ -44,7 +147,9 @@
         line-height: 1.4em;
       }
       &__form{
+          display: flex;
         &__icon{
+          width: 100%;
           font-size: 24px;
           border:1px dashed lightslategray;
           background-color:rgb(245, 245, 245);
@@ -57,6 +162,7 @@
           justify-content: center;
           @media (min-width: 767px){
           height: 150px;
+          width: 100%;
           }
           &__text{
             font-size: 12px;
@@ -65,33 +171,22 @@
             @media (max-width: 767px){
             display: none;
             }
-            &__ImageFile{
-              display: none;
-            }
+          }
+
+            
           }
         }
       }
     }
     .ProductSide{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    border-bottom:1px solid lightgray;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+      @include content;
     &__name{
       font-size: 14px;
       font-weight: bold;
       line-height: 1.4em;
+      margin-top:10px;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
     &__NameBox{
@@ -107,14 +202,7 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
     &__form{
@@ -135,12 +223,7 @@
     }
   }
   .DetailsSide{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    border-bottom:1px solid lightgray;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+    @include content;
     &__details{
       font-size:14px;
       font-weight: bold;
@@ -149,18 +232,13 @@
       color:lightgray;
     }
     &__category{
+      margin-top:16px;
+      color:black;
       font-size:14px;
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
     &__CategoryBox{
@@ -200,24 +278,12 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
     }
   }
   .delivery{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    border-bottom:1px solid lightgray;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+    @include content;
     &__method{
       font-size:14px;
       font-weight: bold;
@@ -231,21 +297,7 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
-      }
-      &__CategoryBox{
-        width: 100%;
-        height: 48px;
-        margin-top:16px;
-        padding:0 16px;
-        text-decoration:none;
+        @include requirement;
       }
     }
     &__area{
@@ -254,22 +306,9 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
-      &__CategoryBox{
-        width: 100%;
-        height: 48px;
-        margin-top:16px;
-        padding:0 16px;
-        text-decoration:none;
-      }
+
     }
     &__day{
       margin-top:16px;
@@ -277,30 +316,12 @@
       font-weight: bold;
       line-height: 1.4em;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
-      }
-      &__CategoryBox{
-        width: 100%;
-        height: 48px;
-        margin-top:16px;
-        padding:0 16px;
-        text-decoration:none;
+        @include requirement;
       }
     }
   }
   .price{
-    padding: 16px;
-    font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-    @media(min-width: 768px) {
-    padding: 40px;
-    }
+    @include content;
     &__example{
       font-size:14px;
       font-weight: bold;
@@ -316,14 +337,7 @@
       display: flex;
       align-items: center;
       &__required{
-        font-size:12px;
-        color:white;
-        background-color:red;
-        margin-left: 8px;
-        padding:0 4px;
-        border-radius: 2px;
-        display: inline-block;
-        line-height: 1.4em;
+        @include requirement;
       }
       &__PriceForm{
         margin-left: auto;
@@ -331,6 +345,7 @@
           margin-left: 10px;
           text-align: end;
           height: 48px;
+          width: 250px;
         }
       }
     }
@@ -343,11 +358,13 @@
       justify-content: space-between;
     }
     &__sales{
+      margin-bottom:32px;
       font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
       border-top:1px solid lightgray;
       padding-top: 16px;
       @media(min-width: 768px) {
       padding-top: 16px;
+      margin-bottom:64px;
       }
       font-size:14px;
       line-height: 1.4em;
@@ -394,14 +411,7 @@
       color:rgb(0, 149, 238);
     }
     &__required{
-      font-size:12px;
-      color:white;
-      background-color:red;
-      margin-left: 8px;
-      padding:0 4px;
-      border-radius: 2px;
-      display: inline-block;
-      line-height: 1.4em;
+      @include requirement;
     }
   }
   .caution{
@@ -415,5 +425,4 @@
       color:rgb(0, 149, 238);
     }
   }
-}
 }

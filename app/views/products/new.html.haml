@@ -1,118 +1,109 @@
 = render "ProductHeader"
 .product
   .product__contents
-    .ImageSide
-      %label.ImageSide__label
-        出品画像
-        %span.ImageSide__label__required
-          必須
-      .ImageSide__PhotoNumber
-        最大10枚までアップロードできます
-      .ImageSide__form
-        %label.ImageSide__form__icon
-          = icon('fa', 'camera')
-          .ImageSide__form__icon__text
-            ドラックアンドドロップ
-            %br またはクリックしてファイルをアップロード
-          %input{type: "file",class: "ImageSide__form__icon__text__ImageFile"}
-    .ProductSide
-      .ProductSide__name
-        商品名
-        %span.ProductSide__name__required
-          必須
-      %input{type: "text", class:"ProductSide__NameBox",placeholder: "40文字まで", maxlength:"40"}
-      .ProductSide__description
-        商品の説明
-        %span.ProductSide__description__required
-          必須
-      %textarea{class:"ProductSide__form",rows:"7",placeholder: "商品の説明（必須1,000文字以内）\n(色、素材、重さ、定価、注意点など）\n\n例）2015年に購入したNintendoSwitchです。開封済みの品ですが状態は良好です", maxlength:"1000"}
-      .ProductSide__LengthCount
-        0/1000
-    .DetailsSide
-      .DetailsSide__details
-        商品の詳細
-      .DetailsSide__category
-        カテゴリー
-        %span.DetailsSide__category__required
-          必須
-      %select.DetailsSide__CategoryBox
-        %option 選択してください
-        %option レディース
-        %option メンズ
-      .DetailsSide__brand
-        ブランド
-        %span.DetailsSide__brand__any
-          任意
-      %input{type: "text",class: "DetailsSide__BrandName",placeholder: "例）シャネル"}
-      .DetailsSide__status
-        商品の状態
-        %span.DetailsSide__status__required
-          必須
-      %select.DetailsSide__CategoryBox
-        %option 選択してください
-        %option 新品、未使用
-        %option 未使用に近い
-    .delivery
-      .delivery__method
-        配送方法について
-        = link_to icon('fa','question-circle'),"#"
-      .delivery__price
-        配送料の負担
-        %span.delivery__price__required
-          必須
-      %select{class:"delivery__price__CategoryBox" }
-        %option 選択してください
-        %option 送料込み（出品者負担）
-        %option 着払い（購入者負担）
-      .delivery__area
-        配送元の地域
-        %span.delivery__area__required
-          必須
-      %select{class:"delivery__area__CategoryBox" }
-        %option 選択してください
-        %option 北海道
-        %option 沖縄
-      .delivery__day
-        発送までの日時
-        %span.delivery__day__required
-          必須
-      %select{class:"delivery__day__CategoryBox" }
-        %option 選択してください
-        %option １〜２日で発送
-        %option ３〜４日で発送
-    .price
-      .price__example
-        価格（¥300~9,999,999)
-        = link_to icon('fa','question-circle'),"#"
-      %label.price__SellingPrice
-        販売価格
-        %span.price__SellingPrice__required
-          必須
-        .price__SellingPrice__PriceForm
-          ¥
-          %input{type: "number",placeholder:"0",class: ".price__SellingPrice__PriceForm__input"}
-      .price__fee
-        販売手数料(10%)
-        .price__fee__FeePrice
-          ー
-      .price__sales
-        販売利益
-        .price__sales__ProfitAmount
-          ー
-      .BtnSide
-        %button{type:"submit",class: "BtnSide__listing-btn"}出品する
-        %button{type:"submit",class: "BtnSide__draft-btn"}下書きする
-        = link_to "もどる","#",class:"BtnSide__return"
-      .caution
-        禁止されている
-        = link_to "行為","#",class: "caution__notice"
-        %span<>および
-        = link_to"出品物","#",class: "caution__notice"
-        %span<>を必ずご確認ください。
-        =link_to"偽ブランド品","#",class: "caution__notice"
-        %span<>や
-        = link_to"盗品物","#",class: "caution__notice"
-        %span<>などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
-        =link_to"加盟店規約","#",class: "caution__notice"
-        %span<>に同意したことになります。
+    = form_for @product,local: true do |f|
+      .ImageSide
+        = render 'layouts/notifications'
+        %label.ImageSide__label
+          出品画像
+          %span.ImageSide__label__required
+            必須
+        .ImageSide__PhotoNumber
+          最大５枚までアップロードできます
+          .ImageForm
+            .ImageSide__form
+              %div#previews
+              .ImageSide__form__icon
+                = icon('fa', 'camera')
+                .ImageSide__form__icon__text
+                  クリックしてファイルをアップロード
+                %div#image-box
+          = f.fields_for :images do |i|
+            %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
+              = i.file_field :image, class: "ImageFile", data: {index: i.index},accept: 'image/jpg,image/jpeg,image/png,image/gif'
+        .ProductSide__name
+          商品名
+          %span.ProductSide__name__required
+            必須
+        = f.text_field :title, class:"ProductSide__NameBox",placeholder: "40文字まで"
+        .ProductSide__description
+          商品の説明
+          %span.ProductSide__description__required
+            必須
+        = f.text_area :explanation,class:"ProductSide__form",rows:"7",placeholder: "商品の説明（必須1,000文字以内）\n(色、素材、重さ、定価、注意点など）\n\n例）2015年に購入したNintendoSwitchです。開封済みの品ですが状態は良好です"
+        .ProductSide__LengthCount
+          0/1000
+      .DetailsSide
+        .DetailsSide__details
+          商品の詳細
+          .form
+            .DetailsSide__category
+              カテゴリー
+              %span.DetailsSide__category__required
+                必須
+            = f.collection_select :category_id,Category.where(ancestry: nil), :id, :name,{prompt:"選択してください"}
+        .DetailsSide__brand
+          ブランド
+          %span.DetailsSide__brand__any
+            任意
+        = f.text_field :brand,class: "DetailsSide__BrandName",placeholder: "例）シャネル"
+        .DetailsSide__status
+          商品の状態
+          %span.DetailsSide__status__required
+            必須
+        = f.collection_select :product_status_id,ProductStatus.all, :id, :name,{prompt:"選択してください"}
+      .delivery
+        .delivery__method
+          配送方法について
+          = link_to icon('fa','question-circle'),"#"
+        .delivery__price
+          配送料の負担
+          %span.delivery__price__required
+            必須
+        = f.collection_select :delivery_burden_id,DeliveryBurden.all, :id, :name,{prompt:"選択してください"}
+        .delivery__area
+          配送元の地域
+          %span.delivery__area__required
+            必須
+        = f.collection_select :postal_prefectures_id,PostalPrefectures.all, :id, :name,{prompt:"選択してください"}
+        .delivery__day
+          発送までの日時
+          %span.delivery__day__required
+            必須
+        = f.collection_select :estimated_shipping_id,EstimatedShipping.all, :id, :name,{prompt:"選択してください"}
+      .price
+        .price__example
+          価格（¥300~9,999,999)
+          = link_to icon('fa','question-circle'),"#"
+        %label.price__SellingPrice
+          販売価格
+          %span.price__SellingPrice__required
+            必須
+          .price__SellingPrice__PriceForm
+            ¥
+            = f.number_field :price,placeholder:"0",min:"300" ,max:"9999999",class: "price__SellingPrice__PriceForm__input"
+        .price__fee
+          販売手数料(10%)
+          .price__fee__FeePrice
+            ー
+        .price__sales
+          販売利益
+          .price__sales__ProfitAmount
+            ー
+        .BtnSide
+          = f.submit "出品する",class: "BtnSide__listing-btn"
+          %button{type:"submit",class: "BtnSide__draft-btn"}下書きする
+          = link_to "もどる","/",class:"BtnSide__return"
+        .caution
+          禁止されている
+          = link_to "行為","#",class: "caution__notice"
+          %span<>および
+          = link_to"出品物","#",class: "caution__notice"
+          %span<>を必ずご確認ください。
+          =link_to"偽ブランド品","#",class: "caution__notice"
+          %span<>や
+          = link_to"盗品物","#",class: "caution__notice"
+          %span<>などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
+          =link_to"加盟店規約","#",class: "caution__notice"
+          %span<>に同意したことになります。
 = render "Productfooter"
