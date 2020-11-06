@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create,:search]
 
   def index
+    @product = Product.all
   end
 
   def show

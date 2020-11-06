@@ -24,7 +24,7 @@
     .Main-contents
       %section.ItemBox
         %h2.ItemBox__name
-          商品名
+          = @product.title
         .ItemBox__photo
           %ul
             %li
@@ -37,26 +37,29 @@
                 %li
                   = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png', height: '75', width: '75'
         .ItemBox__price
-          %span¥10,000
+          %span= "¥#{@product.price}"
           .ItemBox__price-info
             %span (税込)
-            %span 送料込み
+            %span=@product.delivery_burden_id
         .ItemBox__description
-          商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります
+          =@product.explanation
         .ItemBox__details
           %table
             %tbody
               %tr
                 %th 出品者
-                %td test
+                %td=@product.user.nickname
               %tr
                 %th カテゴリー
                 %td
-                  =link_to 'メンズ', '#'
+                  =link_to '#' do
+                    = @product.category.name
                   %br/
-                  =link_to 'ジャケット/アウター', '#'
+                  =link_to '#' do
+                    = @product.category.name
                   %br/
-                  =link_to 'ノーカラージャケット', '#'
+                  =link_to '#' do
+                    = @product.category.name
               %tr
                 %th ブランド
                 %td
@@ -122,4 +125,4 @@
                       4
                   %p (税込)
 = render "footer"
-= render "purchasebtn"
+= render "sellingbtn"
