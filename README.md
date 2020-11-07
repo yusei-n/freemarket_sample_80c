@@ -70,7 +70,7 @@
 |Column|Type|Options|
 |-------|-----|-------|
 |product|references|foreign_key: true, null: false|
-|image|text||
+|image|string||
 
 ### imagesアソシエーション
 - belongs_to: product
