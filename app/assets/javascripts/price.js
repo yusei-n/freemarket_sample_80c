@@ -5,8 +5,8 @@ $(function(){
     let profit = Math.ceil(price * 0.9)
     decimal: false
     var upperCaseText
-    $(".price__fee__FeePrice").html("¥"+tax);
-    $(".price__sales__ProfitAmount").html("¥"+profit);
+    $(".price__fee__FeePrice").html("¥"+tax.toLocaleString());
+    $(".price__sales__ProfitAmount").html("¥"+profit.toLocaleString());
     if (price <= 300 || price >= 9999999){
     }else{
       $("#PriceError").remove();
@@ -15,8 +15,8 @@ $(function(){
   $(document).on('change',".price__SellingPrice__PriceForm__input",function(e){
     $("#PriceError").remove();
     var price = $(this).val();
-    let tax = Math.ceil(price * 0.1)
-    let profit = Math.ceil(price * 0.9)
+    let tax = Math.ceil(price * 0.1.toLocaleString())
+    let profit = Math.ceil(price * 0.9.toLocaleString())
     decimal: false
     $(".price__fee__FeePrice").html("¥"+tax);
     $(".price__sales__ProfitAmount").html("¥"+profit);
