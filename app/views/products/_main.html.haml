@@ -91,8 +91,8 @@
       .ProductLists
         - @products.each do |product|
           .ProductList
-            = link_to '#',{class: "ProductLink"} do
-              %figure.ProductList_img
+            = link_to product_path(product.id),{class: "ProductLink"} do
+              %figure.ProductList__img
                 = image_tag product.images[0].image.url, :class => "ProductImg"
               .ProductList__body
                 %h3.name
@@ -106,6 +106,10 @@
                     %li
                       = icon('fas', 'star')
                   %p (税込)
+              -# -if product.purchaser_id.present? 
+              -#   .items-box_photo__sold
+              -#   .items-box_photo__sold__inner
+              -#     SOLD
   .PickupContainer.LastContainer
     %h2.head
       ピックアップブランド
@@ -117,8 +121,8 @@
       .ProductLists
         - @products.each do |product|
           .ProductList
-            = link_to '#',{class: "ProductLink"} do
-              %figure.ProductList_img
+            = link_to product_path(product.id),{class: "ProductLink"} do
+              %figure.ProductList__img
                 = image_tag product.images[0].image.url, :class => "ProductImg"
               .ProductList__body
                 %h3.name
@@ -132,6 +136,10 @@
                     %li
                       = icon('fas', 'star')
                   %p (税込)
+              -if product.id.present? 
+                .items-box_photo__sold
+                .items-box_photo__sold__inner
+                  SOLD
 .AppBanner
   .Inner
     %h2.Inner__title
