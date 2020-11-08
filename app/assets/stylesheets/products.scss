@@ -607,6 +607,19 @@ li.item-name {
         img {
           width: 100%;
         }
+        a {
+          text-decoration: none;
+        }
+        &__buy-btn {
+          display: block;
+          background-color: $main-color;
+          font-size: 20px;
+          color: #fff;
+          line-height: 56px;
+          text-align: center;
+          font-weight: 600;
+          margin: 16px 0 30px 0;
+        }
         &__name {
           text-align: center;
           font-weight: bold;
@@ -642,11 +655,13 @@ li.item-name {
         &__price {
           margin: 24px 0 24px;
           text-align: center;
-          display: flex;
-          flex-direction: column;
-          & span {
+          &-price {
             font-size: 46px;
             font-weight: bold;
+            margin-right: 5px;
+          }
+          &-tax {
+            font-size: 10px;
           }
           &-info span {
             font-size: 16px;
@@ -727,7 +742,6 @@ li.item-name {
           margin: 10px 0;
           text-align: left;
         }
-        
         .button {
           line-height: 48px;
           background: #3CCACE;
@@ -737,6 +751,31 @@ li.item-name {
           font-size: 18px;
           border-radius: 100px;
           margin-top: 30px;
+        }
+      }
+      .EditDeleteArea {
+        padding: 24px;
+        background-color: #fff;
+        margin: 10px 0;
+        a {
+          text-decoration: none;
+        }
+        .edit-btn {
+          display: block;
+          background-color: $main-color;
+          color: #fff;
+          line-height: 56px;
+          text-align: center;
+          font-weight: 600;
+        }
+        .delete-btn {
+          display: block;
+          background-color: #aaa;
+          color: #fff;
+          line-height: 56px;
+          text-align: center;
+          font-weight: 600;
+          margin-top: 24px;
         }
       }
       .AnotherProducts a {
@@ -754,6 +793,12 @@ li.item-name {
         content: "";
         clear: both;
       }
+      .SeeMoreProduct {
+        display: flex;
+        justify-content: space-between;
+        overflow: auto;
+        white-space:nowrap;
+      }
       .SeeMoreProducts a {
         display: block;
         margin: 24px 0 8px;
@@ -764,8 +809,8 @@ li.item-name {
         position: relative;
       }
       .SeeMoreProduct__list {
-        margin: 0 0 10px;
-        width: calc(100% / 3);
+        margin: 0 10px 10px 10px;
+        min-width: 220px;
         &-image {
           height: 150px;
           position: relative;

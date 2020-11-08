@@ -3,10 +3,12 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create,:search]
 
   def index
-    @product = Product.all
+    @products = Product.all
   end
 
   def show
+    @products = Product.includes(:images)
+    @category = @product.category
   end
 
   def new
@@ -54,14 +56,14 @@ class ProductsController < ApplicationController
           @childrens = Category.find(params[:parent_id]).children
         elsif params[:children_id]
           @grandChilds = Category.find(params[:children_id]).children
-      end
+        end
       end
     end
   end
 
   private
   def product_params
-    params.require(:product).permit(:title,:price,:explanation,:delivery_burden_id,:product_status_id,:estimated_shipping_id,:category_id,:postal_prefectures_id,:brand,images_attributes: [:image, :_destory, :id])
+    params.require(:product).permit(:title,:price,:explanation,:delivery_burden_id,:product_status_id,:estimated_shipping_id,:category_id,:postal_prefectures_id,:brand,images_attributes: [:image, :_destory, :id]).merge(user_id: current_user.id)
   end
 
   def parent
