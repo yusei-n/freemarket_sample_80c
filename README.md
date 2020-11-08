@@ -18,7 +18,7 @@
 ## addressテーブル（商品配送情報）
 |Column|Type|Options|
 |-------|-----|-------|
-|user_id|reference|foreign_key: true, null: false|
+|user|reference|foreign_key: true, null: false|
 |last_name|string|null: false|
 |first_name|string|null: false|
 |last_name_hurigana|string|null: false|
@@ -39,16 +39,19 @@
 ## Productsテーブル
 |Column|Type|Options|
 |-------|-----|-------|
-|user_id|references|foreign_key: true, null: false|
+|user|references|foreign_key: true, null: false|
 |title|string|null: false|
 |price|integer|null: false|
 |explanation|text|null: false|
+|brand|text||
+|category_id|integer|null: false※アクティブハッシュ|
 |delivery_burden_id|integer|null: false※アクティブハッシュ|
 |product_Status_id|integer|null: false※アクティブハッシュ|
 |estimated_shipping_id|integer|null: false※アクティブハッシュ|
+|postal_prefectures_id|integer|null: false※アクティブハッシュ|
 
 ### Productsアソシエーション
-- has_many: images
+- has_many: images 
 - belongs_to: user
 - has_many: orders
 - belongs_to: category
@@ -57,7 +60,7 @@
 ## Ordersテーブル
 |Column|Type|Options|
 |-------|-----|-------|
-|product_id|references|foreign_key: true,null: false|
+|product|references|foreign_key: true,null: false|
 
 ### Ordersアソシエーション
 - belongs_to: product
@@ -66,8 +69,8 @@
 ## imagesテーブル
 |Column|Type|Options|
 |-------|-----|-------|
-|product_id|references|foreign_key: true, null: false|
-|image|text||
+|product|references|foreign_key: true, null: false|
+|image|string||
 
 ### imagesアソシエーション
 - belongs_to: product
@@ -75,16 +78,18 @@
 ## categories(カテゴリー)テーブル
 |Column|Type|Options|
 |-------|-----|-------|
-|item|string|null: false※アクティブハッシュ|
+|name|string|null: false|
+|ancestry|string|null: false|
 
 ### categoriesアソシエーション
 - has_many:products
+- has_ancestry
 
 
 ## Cardsテーブル
 |Column|Type|Options|
 |-------|-----|-------|
-|user_id|references|foreign_key: true, null: false|
+|user|references|foreign_key: true, null: false|
 |customer_id|string|null: false|
 |card_id|string|null: false|
 
