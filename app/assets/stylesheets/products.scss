@@ -397,12 +397,13 @@ header {
           width: 220px;
           display: inline-block;
           float: flex;
-          a {
+          .ProductLink {
+            width: 200px;
             background-color: #fff;
             display: inline-block;
             text-decoration: none;
-            .ProductList__img {
-              width: 220px;
+            figure {
+              width: 200px;
               height: 150px;
               position: relative;
               overflow: hidden;

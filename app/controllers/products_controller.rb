@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create,:search]
 
   def index
+    @products = Product.includes(:images).limit(5)
   end
 
   def show

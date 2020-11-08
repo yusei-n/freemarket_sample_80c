@@ -89,71 +89,23 @@
           %h3.title
             新規投稿商品
       .ProductLists
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product1
-              .details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product2
-              .details
-                %ul
-                  %li 2000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product3
-              .details
-                %ul
-                  %li 3000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product4
-              .details
-                %ul
-                  %li 4000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product5
-              .details
-                %ul
-                  %li 5000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
+        - @products.each do |product|
+          .ProductList
+            = link_to '#',{class: "ProductLink"} do
+              %figure.ProductList_img
+                = image_tag product.images[0].image.url, :class => "ProductImg"
+              .ProductList__body
+                %h3.name
+                  =product.title
+                .details
+                  %ul
+                    %li 
+                      %span
+                        =product.price
+                      円
+                    %li
+                      = icon('fas', 'star')
+                  %p (税込)
   .PickupContainer.LastContainer
     %h2.head
       ピックアップブランド
@@ -163,71 +115,23 @@
           %h3.title
             アーカイバ
       .ProductLists
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product1
-              .details
-                %ul
-                  %li 1000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product2
-              .details
-                %ul
-                  %li 2000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product3
-              .details
-                %ul
-                  %li 3000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product4
-              .details
-                %ul
-                  %li 4000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
-        .ProductList
-          = link_to '#' do
-            %figure.ProductList__img
-              -# = image_tag
-            .ProductList__body
-              %h3.name
-                product5
-              .details
-                %ul
-                  %li 5000円
-                  %li
-                    = icon('fas', 'star')
-                %p （税込）
+        - @products.each do |product|
+          .ProductList
+            = link_to '#',{class: "ProductLink"} do
+              %figure.ProductList_img
+                = image_tag product.images[0].image.url, :class => "ProductImg"
+              .ProductList__body
+                %h3.name
+                  =product.title
+                .details
+                  %ul
+                    %li 
+                      %span
+                        =product.price
+                      円
+                    %li
+                      = icon('fas', 'star')
+                  %p (税込)
 .AppBanner
   .Inner
     %h2.Inner__title
