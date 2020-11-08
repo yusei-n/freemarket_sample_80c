@@ -41,7 +41,7 @@
               カテゴリー
               %span.DetailsSide__category__required
                 必須
-            = f.collection_select :category_id,Category.where(ancestry: nil), :id, :name,{prompt:"選択してください"}
+            = f.collection_select :category_id,@parent, :id, :name,{prompt:"選択してください"}
         .DetailsSide__brand
           ブランド
           %span.DetailsSide__brand__any
