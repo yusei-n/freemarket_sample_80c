@@ -107,8 +107,8 @@
                       = icon('fas', 'star')
                   %p (税込)
               -# -if product.purchaser_id.present? 
-              -#   .items-box_photo__sold
-              -#   .items-box_photo__sold__inner
+              -#   .ItemProperty__sold
+              -#   .ItemProperty__inner
               -#     SOLD
   .PickupContainer.LastContainer
     %h2.head
@@ -137,8 +137,8 @@
                       = icon('fas', 'star')
                   %p (税込)
               -if product.id.present? 
-                .items-box_photo__sold
-                .items-box_photo__sold__inner
+                .ItemProperty__sold
+                .ItemProperty__inner
                   SOLD
 .AppBanner
   .Inner

@@ -440,14 +440,14 @@ header {
                 }
               }
             }
-            .items-box_photo__sold {
+            .ItemProperty__sold {
               position: absolute;
               top: 0px;
               border-bottom: 6em solid transparent;
               border-left: 6em solid #ea352d;
               z-index: 100;
             }
-            .items-box_photo__sold__inner {
+            .ItemProperty__inner {
               display: block;
               top: 20px;
               transform: rotate(-45deg);
