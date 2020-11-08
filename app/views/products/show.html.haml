@@ -36,7 +36,7 @@
                 - @product.images.each do |product|
                   %li= image_tag product.image.url, class: "ItemBox__photo-sub"
         .ItemBox__price
-          %span.ItemBox__price-price= "¥#{@product.price}"
+          %span.ItemBox__price-price= "¥#{@product.price.to_s(:delimited)}"
           %span.ItemBox__price-tax (税込)
           %span.ItemBox__price-info
             - if @product.DeliveryBurden.id == 1
@@ -110,8 +110,10 @@
             = icon("fas","angle-right")
       - if user_signed_in? && current_user.id == @product.user_id
         .EditDeleteArea
-          = link_to "商品の編集", "#", class: "edit-btn"
-          = link_to "この商品を削除する", "#", class: "delete-btn"
+          = link_to "#", class: "edit-btn" do
+            商品の編集
+          = link_to product_path(@product.id), method: :delete, class: "delete-btn" do
+            この商品を削除する
       .SeeMoreProducts
         = link_to "#{@product.category.name}（#{@product.category.parent.parent.name}）をもっと見る", "#"
         .SeeMoreProduct
