@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
   def edit
     @product.images.cache_key
     unless @product.images.blank?
+    end
   end
 
   def update
