@@ -20,24 +20,13 @@ $(document).on('turbolinks:load',()=>{
       return html;
     }
 
-    const buildForm = ()=> {
-      const html = `<div class="ImageForm-under">  
-                      <div class="ImageFormBox-under">
-                        <div class="ImageSide__form__icon-under">
-                        <i class="fa fa-camera"></i>
-                          <div class="ImageSide__form__icon__text-under">
-                            ドラックアンドドロップ
-                            <br>またはクリックしてファイルをアップロード<br>
-                          </div>
-                          <div id="image-box"></div>
-                        </div>
-                      </div>
-                    </div>`;
-      return html;
-    }
-    
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
     //クリックしたらファイルフィールドが選択される
+    lastIndex = $('.js-file_group:last').data('index');
+    fileIndex.splice(0, lastIndex);
+  
+    $('.hidden-destroy').hide();
+  
   $('.ImageSide__form__icon').on('click', function(e){
     // インプットボックスの最後のカスタムデータID取得
     const file_field = $('input[type="file"]:last');
@@ -45,6 +34,8 @@ $(document).on('turbolinks:load',()=>{
     file_field.trigger('click');
     
   });
+
+
 
   $('.ImageSide__PhotoNumber').on('change','.ImageFile',function(e){
     const targetIndex = $(this).data('index');

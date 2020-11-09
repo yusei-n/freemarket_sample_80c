@@ -13,6 +13,9 @@
           .ImageForm
             .ImageSide__form
               %div#previews
+              - if @product.persisted?
+                = @product.images.each_with_index do |image, i|
+                  = image_tag image.image.url, data: { index: i }, width: "100", height: '100' 
               .ImageSide__form__icon
                 = icon('fa', 'camera')
                 .ImageSide__form__icon__text
@@ -21,6 +24,11 @@
           = f.fields_for :images do |i|
             %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
               = i.file_field :image, class: "ImageFile", data: {index: i.index},accept: 'image/jpg,image/jpeg,image/png,image/gif'
+              - if @product.persisted?
+                = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+          - if @product.persisted?
+            %div{id:"ImageData#{@product.images.count}",class:"ImageFile_group"}
+              = file_field_tag :image,name: "product[images_attributes][#{@product.images.count}][image]", class: 'ImageFile'
         .ProductSide__name
           商品名
           %span.ProductSide__name__required
