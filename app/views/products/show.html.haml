@@ -6,15 +6,18 @@
     %li
       = icon("fas","angle-right")
     %li
-      = link_to "メンズ", "#"
+      = link_to "#" do
+        = @product.category.parent.parent.name
     %li
       = icon("fas","angle-right")
     %li
-      = link_to "ジャケット/アウター", "#"
+      = link_to "#" do
+        = @product.category.parent.name
     %li 
       = icon("fas","angle-right")
     %li
-      = link_to "ノーカラージャケット", "#"
+      = link_to "#" do
+        = @product.category.name
     %li
       = icon("fas","angle-right")
     %li.item-name
@@ -24,57 +27,58 @@
     .Main-contents
       %section.ItemBox
         %h2.ItemBox__name
-          商品名
+          = @product.title
         .ItemBox__photo
           %ul
             %li
-              = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png'
+              = image_tag @product.images[0].image.url, class: "ItemBox__photo-main"
               %ul
-                %li
-                  = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png', height: '75', width: '75'
-                %li
-                  = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/11/a005.png', height: '75', width: '75'
-                %li
-                  = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/12/a006.png', height: '75', width: '75'
+                - @product.images.each do |product|
+                  %li= image_tag product.image.url, class: "ItemBox__photo-sub"
         .ItemBox__price
-          %span¥10,000
-          .ItemBox__price-info
-            %span (税込)
-            %span 送料込み
+          %span.ItemBox__price-price= "¥#{@product.price.to_s(:delimited)}"
+          %span.ItemBox__price-tax (税込)
+          %span.ItemBox__price-info
+            - if @product.DeliveryBurden.id == 1
+              送料込み
+            -else
+              着払い
+        - unless user_signed_in? && current_user.id == @product.user_id 
+          = link_to "購入画面に進む", "#", class: "ItemBox__buy-btn"
         .ItemBox__description
-          商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります商品説明が入ります
+          =@product.explanation
         .ItemBox__details
           %table
             %tbody
               %tr
                 %th 出品者
-                %td test
+                %td=@product.user.nickname
               %tr
                 %th カテゴリー
                 %td
-                  =link_to 'メンズ', '#'
+                  =link_to '#' do
+                    = @product.category.parent.parent.name
                   %br/
-                  =link_to 'ジャケット/アウター', '#'
+                  =link_to '#' do
+                    = @product.category.parent.name
                   %br/
-                  =link_to 'ノーカラージャケット', '#'
+                  =link_to '#' do
+                    = @product.category.name
               %tr
                 %th ブランド
-                %td
-              %tr
-                %th 商品のサイズ
-                %td
+                %td=@product.brand
               %tr
                 %th 商品の状態
-                %td 新品/未使用
+                %td=@product.ProductStatus.name
               %tr
                 %th 配送料の負担
-                %td 着払い（購入者負担）
+                %td=@product.DeliveryBurden.name
               %tr
                 %th 発送元の地域
-                %td=link_to "神奈川県", "#"
+                %td=@product.PostalPrefectures.name
               %tr
                 %th 発送日の目安
-                %td 1日〜2日で発送
+                %td=@product.EstimatedShipping.name
         .ItemBox__btn
           %ul
             %li.ItemBox__btn-like
@@ -104,22 +108,31 @@
           = link_to "#" do
             後ろの商品
             = icon("fas","angle-right")
+      - if user_signed_in? && current_user.id == @product.user_id
+        .EditDeleteArea
+          = link_to "#", class: "edit-btn" do
+            商品の編集
+          = link_to product_path(@product.id), method: :delete, data: {confirm: '削除しますか？'}, class: "delete-btn" do
+            この商品を削除する
       .SeeMoreProducts
-        = link_to 'メンズをもっと見る', '#'
+        = link_to "#{@product.category.name}（#{@product.category.parent.parent.name}）をもっと見る", "#"
         .SeeMoreProduct
-          .SeeMoreProduct__list
-            = link_to "#" do
-              %figure.SeeMoreProduct__list-image
-                = image_tag 'https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG'
-              .SeeMoreProduct__list-body
-                %h3.name
-                  test
-                .info
-                  %ul
-                    %li 1000円
-                    %il
-                      =icon("fas", "star")
-                      4
-                  %p (税込)
+          - @products.each do |product|
+            - if product.category.id == @category.id && @product.id != product.id
+              .SeeMoreProduct__list
+                = link_to product_path(product.id) do
+                  %figure.SeeMoreProduct__list-image
+                    = image_tag product.images[0].image.url
+                  .SeeMoreProduct__list-body
+                    %h3.name
+                      =product.title
+                    .info
+                      %ul
+                        %li 
+                          %span
+                            =product.price.to_s(:delimited)
+                          円
+                        %li
+                      %p (税込)
 = render "footer"
-= render "purchasebtn"
+= render "sellingbtn"

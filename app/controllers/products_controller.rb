@@ -3,9 +3,12 @@ class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create,:search]
 
   def index
+    @products = Product.includes(:images).limit(5)
   end
 
   def show
+    @products = Product.includes(:images)
+    @category = @product.category
   end
 
   def new
@@ -53,9 +56,12 @@ class ProductsController < ApplicationController
     end
   end
 
-  def delete
-    @product.destroy
-    redirect_to root_path
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   def search
@@ -66,7 +72,7 @@ class ProductsController < ApplicationController
           @childrens = Category.find(params[:parent_id]).children
         elsif params[:children_id]
           @grandChilds = Category.find(params[:children_id]).children
-      end
+        end
       end
     end
   end
