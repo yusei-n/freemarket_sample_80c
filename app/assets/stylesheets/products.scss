@@ -397,17 +397,22 @@ header {
           width: 220px;
           display: inline-block;
           float: flex;
-          a {
+          .ProductLink {
+            width: 200px;
             background-color: #fff;
             display: inline-block;
             text-decoration: none;
-            .ProductList__img {
-              width: 220px;
+            position: relative;
+            figure {
+              width: 200px;
               height: 150px;
               position: relative;
               overflow: hidden;
               margin: 0;
               z-index: auto;
+              .ProductImg {
+                width: 200px;
+              }
             }
             .ProductList__body {
               background-color: #fff;
@@ -434,6 +439,23 @@ header {
                   text-align: left;
                 }
               }
+            }
+            .ItemProperty__sold {
+              position: absolute;
+              top: 0px;
+              border-bottom: 6em solid transparent;
+              border-left: 6em solid #ea352d;
+              z-index: 100;
+            }
+            .ItemProperty__inner {
+              display: block;
+              top: 20px;
+              transform: rotate(-45deg);
+              color: #fff;
+              left: 5px;
+              font-weight: bold;
+              position: absolute;
+              z-index: 100;
             }
           }
         }
