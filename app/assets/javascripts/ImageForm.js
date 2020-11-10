@@ -25,7 +25,6 @@ $(document).on('turbolinks:load',()=>{
     lastIndex = $('.js-file_group:last').data('index');
     fileIndex.splice(0, lastIndex);
   
-    $('.hidden-destroy').hide();
   
   $('.ImageSide__form__icon').on('click', function(e){
     // インプットボックスの最後のカスタムデータID取得
