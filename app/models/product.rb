@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  belongs_to :user
   has_many :images,dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :orders,dependent: :destroy
@@ -13,6 +14,9 @@ class Product < ApplicationRecord
   
   # 発送までの日時
   belongs_to_active_hash :EstimatedShipping
+
+  # 発送元の地域
+  belongs_to_active_hash :PostalPrefectures
 
   validates :delivery_burden_id, presence: true
   validates :estimated_shipping_id, presence: true
