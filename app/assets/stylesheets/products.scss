@@ -397,17 +397,24 @@ header {
           width: 220px;
           display: inline-block;
           float: flex;
-          a {
+          .ProductLink {
+            width: 200px;
             background-color: #fff;
             display: inline-block;
             text-decoration: none;
-            .ProductList__img {
-              width: 220px;
+            position: relative;
+            figure {
+              width: 200px;
               height: 150px;
               position: relative;
               overflow: hidden;
               margin: 0;
               z-index: auto;
+              .ProductImg {
+                width: 200px;
+                height: 150px;
+                object-fit: cover;
+              }
             }
             .ProductList__body {
               background-color: #fff;
@@ -434,6 +441,23 @@ header {
                   text-align: left;
                 }
               }
+            }
+            .ItemProperty__sold {
+              position: absolute;
+              top: 0px;
+              border-bottom: 6em solid transparent;
+              border-left: 6em solid #ea352d;
+              z-index: 100;
+            }
+            .ItemProperty__inner {
+              display: block;
+              top: 20px;
+              transform: rotate(-45deg);
+              color: #fff;
+              left: 5px;
+              font-weight: bold;
+              position: absolute;
+              z-index: 100;
             }
           }
         }
@@ -634,20 +658,20 @@ li.item-name {
           align-items: center;
           margin: 0 auto;
           }
-          & ul>li img {
+          ul>li img {
             object-fit: cover;
             height: 346px;
           }
-          & ul>li ul {
+          ul>li ul {
             display: flex;
             justify-content: center;
             margin-top: 10px;
           }
-          & ul>li>ul li {
+          ul>li>ul li {
             width: 25%;
-            margin: 0 10px 0 0;
+            margin: 0 5px 0 5px;
           }
-          & ul li>ul li img {
+          ul li>ul li img {
             object-fit: cover;
             height: 87px;
           }
@@ -795,7 +819,6 @@ li.item-name {
       }
       .SeeMoreProduct {
         display: flex;
-        justify-content: space-between;
         overflow: auto;
         white-space:nowrap;
       }
