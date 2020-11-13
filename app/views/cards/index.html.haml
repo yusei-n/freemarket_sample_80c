@@ -42,7 +42,7 @@
                   = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg', class: "Card-img"
                 %bottun.Delete-btn
                   削除する
-          = link_to "#" ,class: "Card-add" do
+          = link_to new_user_card_path(current_user.id) ,class: "Card-add" do
             = icon("fas", "plus-circle")
             クレジットカードを追加
         %section.CardInfo
@@ -55,7 +55,7 @@
       %nav.Side__nav
         %ul.Side__nav-list
           %li.Side__nav-btn
-            = link_to user_path, class: 'Side__nav-listItem' do
+            = link_to user_path(current_user.id), class: 'Side__nav-listItem' do
               マイページ
           %li.Side__nav-btn
             = link_to '#', class: 'Side__nav-listItem' do

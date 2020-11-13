@@ -82,7 +82,7 @@
             = link_to '#', class: 'Side__nav-listItem' do
               発送元・お届け先住所変更
           %li.Side__nav-btn
-            = link_to '#', class: 'Side__nav-listItem' do
+            = link_to user_cards_path(current_user.id), class: 'Side__nav-listItem' do
               カード情報の編集
           %li.Side__nav-btn
             = link_to '#', class: 'Side__nav-listItem' do
