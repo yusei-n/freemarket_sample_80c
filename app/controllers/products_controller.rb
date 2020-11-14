@@ -41,7 +41,7 @@ class ProductsController < ApplicationController
     end
 
     # productに紐づいている孫カテゴリーの親である子カテゴリーが属している子カテゴリーの一覧を配列で取得
-    @category_child_array = @product.categori.parent.parent.children
+    @category_child_array = @product.category.parent.parent.children
 
     # productに紐づいている孫カテゴリーが属している孫カテゴリーの一覧を配列で取得
     @category_grandchild_array = @product.category.parent.children
