@@ -42,9 +42,9 @@
               %span.DetailsSide__category__required
                 必須
             = f.select :category, options_for_select(@category_parent_array.map{|c|[c, {}]}, @product.category.parent.parent.name), {}, {class: 'select', id: 'parent_category'}
-            .child_category_id
+            #child_category.child_category_id
             = f.select :category, options_for_select(@category_child_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.category.parent.id), {}, {class: 'select', id: 'child_category'}
-            .grandchild_category_id
+            #grandchild_category.grandchild_category_id
             = f.select :category, options_for_select(@category_grandchild_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.category.id), {}, {class: 'select', id: 'grandchild_category'}
         .DetailsSide__brand
           ブランド
