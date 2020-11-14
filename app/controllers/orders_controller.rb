@@ -11,5 +11,8 @@ class OrdersController < ApplicationController
 
   def delete
   end
+
+  def payment
+  end
   
 end

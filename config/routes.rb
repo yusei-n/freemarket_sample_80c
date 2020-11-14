@@ -19,7 +19,12 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-    resources :orders, only: [:show, :delete, :new, :create]
+    resources :orders, only: [:show, :delete, :new, :create] do
+      collection do
+        get :payment_method
+        get :card_registration
+      end
+    end
     resources :images, only: [:create, :delete, :new, :show]
   end
 end

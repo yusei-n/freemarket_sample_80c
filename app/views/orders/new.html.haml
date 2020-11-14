@@ -1,6 +1,5 @@
 .Main
-  .Header
-    = link_to image_tag ('material/logo/logo.png')
+  = render "products/ProductHeader"
   .Product
     .Product__List
       %section.Product__List__Verification.NoFst--cld
@@ -30,7 +29,8 @@
           .MethodForm__List
             %h3.MethodForm__Payment
               支払い方法
-            = link_to "変更する","#", class: "Method__Change" 
+            = link_to payment_method_product_orders_path, class: "Method__Change" do
+              変更する
           .MethodForm__Show
             %p クレジットカード支払い
             %p 手数料¥100
@@ -42,14 +42,4 @@
       %section.Button.NoFst--cld
         .ButtonForm
           %button.btn(type="button") 購入する
-  .Footer
-    .Footer__Center
-      %ul.ul
-        %li.li
-          = link_to "プライバシーポリシー", "#"
-        %li.li
-          = link_to "メルカリ使用規約","#"
-        %li.li
-          = link_to "特定商取引に関する表記","#"
-      = link_to image_tag 'material/logo/logo-white.png'
-    %p © FURIMA, Inc.
+  = render "products/Productfooter"
