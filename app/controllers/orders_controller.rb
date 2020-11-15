@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
   before_action :set_card, :set_product
+  before_action :user_set
   def show
   end
 
   def new
+    # @user_Postal = Address.postalNumber
     if @card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -35,7 +37,7 @@ class OrdersController < ApplicationController
     if @card.blank?
       # カード情報がなければ、買えないので戻す
       flash.now[:alert] = '※画像・リストの選択または入力してください。'
-      redirect_to action: "new"
+      # redirect_to action: "new"
     else
       # 購入者も、クレジットカードもある、決済処理に移行
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -66,5 +68,8 @@ private
   end
   def set_product
     @product = Product.find(params[:product_id])
+  end
+  def user_set
+    @user = User.find(params[:product_id])
   end
 end
