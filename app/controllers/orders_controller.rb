@@ -48,14 +48,6 @@ class OrdersController < ApplicationController
       description: "商品名:" + @product.title,
       metadata: {nickname_id: current_user.nickname}
       )
-      # 売り切れの場合、productの情報をアップデートして売り切れに。
-      if @product.update(user_id: current_user.id)
-        flash[:notice] = '購入しました'
-        redirect_to controller: 'products', action: 'index'
-      else
-        flash[:notice] = '購入に失敗しました'
-        redirect_to controller: 'products', action: 'show', id: @product.id
-      end
     end
   end
 
