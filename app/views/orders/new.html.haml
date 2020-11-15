@@ -45,7 +45,9 @@
         .AddressForm
           .AddressForm__Delivery
             %h3.AddressForm__DeliveryName 配送先
-          = link_to "登録してください", "#", class: "Registration"
+          = @card.PostalPrefectures.name
+          -# = @user.PostalPrefectures.name
+          -# = link_to "登録してください", "#", class: "Registration"
       %section.Button.NoFst--cld
         .ButtonForm
           %button.btn(type="button") 購入する

@@ -3,16 +3,14 @@ document.addEventListener(
     Payjp.setPublicKey("pk_test_89a276af1e33dcfa7cdc9931");
     const card_to = document.querySelector('#card_token');
     const btn_to = document.querySelector('#btn_token');
-    // console.log("pay.js/")
-    // console.log(btn_to)
     card_to.addEventListener("click", (e) => {//ボタンが押されたときに作動します
       e.preventDefault();//ボタンを一旦無効化します
       //カード情報生成
       const card = {
-        number: document.getElementById("card_number").value,
-        cvc: document.getElementById("cvc").value,
-        exp_month: document.getElementById("exp_month").value,
-        exp_year: document.getElementById("exp_year").value
+        number: document.querySelector("#card_number").value,
+        cvc: document.querySelector("cvc").value,
+        exp_month: document.querySelector("exp_month").value,
+        exp_year: document.querySelector("exp_year").value
       };
       //トークン生成
       Payjp.createToken(card, (status, response) => {
