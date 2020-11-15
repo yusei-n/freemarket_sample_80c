@@ -21,30 +21,25 @@ $(document).on('turbolinks:load',()=>{
     }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  lastIndex = $('.ImageFile_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
+
     //クリックしたらファイルフィールドが選択される
-    lastIndex = $('.js-file_group:last').data('index');
-    fileIndex.splice(0, lastIndex);
-  
-  
   $('.ImageSide__form__icon').on('click', function(e){
     // インプットボックスの最後のカスタムデータID取得
     const file_field = $('input[type="file"]:last');
     //クリックによって最後のフォームが選択される
     file_field.trigger('click');
-    
   });
-
-
 
   $('.ImageSide__PhotoNumber').on('change','.ImageFile',function(e){
     const targetIndex = $(this).data('index');
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]){
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src',blobUrl);
     } else{
     $('#previews').append(buildImg(targetIndex, blobUrl));
-
     const next_index = $('input[type="file"]:last').data('index') +1;
     $('.ImageSide__PhotoNumber').append(buildFileField(next_index));
     fileIndex.shift();
@@ -58,6 +53,8 @@ $(document).on('turbolinks:load',()=>{
       }
     }
   });
+
+
   $('#previews').on('click', '.delet-btn', function(e){
     //画像の削除
     const image = $(this).parent().parent();
@@ -80,18 +77,39 @@ $(document).on('turbolinks:load',()=>{
     } 
   });
 
+  
   $('#previews').on('click','.eidt-btn',function(){
     const data_index = $(this).data('index');
     // データインデックスのカスタムデータ属性をfile_fieldに定義
     const file_field = $(`input[type="file"][data-index="${data_index}"]`);
     file_field.trigger('click');
   });
+
   $('#previews').on('mouseenter', '.delet-btn', function() {
     $(this).css('cursor','pointer');
   });
   $('#previews').on('mouseenter', '.eidt-btn', function() {
     $(this).css('cursor','pointer');
   });
+
+  // 投稿された画像を変更 
+  $('#previews').on('click', '.js-edit', function() {
+    const data_index = $(this).data('index');
+    // データインデックスのカスタムデータ属性をfile_fieldに定義
+    const file_field = $(`input[type="file"][data-index="${data_index}"]`);
+    file_field.trigger('click');
+  });
+
+    // 投稿された画像を削除
+    $('#previews').on('click', '.js-remove', function() {
+      const image = $(this).parent().parent();
+      image.remove();
+      const data_index = $(this).data('index');
+      const hiddenCheck = $(`input[data-index="${data_index}"].hidden`);
+      if (hiddenCheck) hiddenCheck.prop('checked', true);
+      $(`img[data-index="${data_index}"]`).remove();
+    if ($('.ImageFile').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    });
 });
 
 
