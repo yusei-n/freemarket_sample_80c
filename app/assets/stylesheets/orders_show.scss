@@ -141,7 +141,7 @@
           font-size: 14px;
           text-decoration: none;
         }
-      &__Show p {
+      &__Show  p {
         margin: 4px 0px 0px;
         font-size: 12px;
       }
@@ -165,10 +165,10 @@
       font-size: 15px;
     }
 
-  .Button {
+  .ButtonForm {
       padding: 35px 16px 50px;
 
-      .btn {
+      #btn {
         background-color: #3CCACE;
         color: white;
         cursor: pointer;
