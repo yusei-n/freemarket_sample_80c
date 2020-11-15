@@ -10,38 +10,47 @@
         .ShowForm
           .ShowForm__Image
             %figure
-              = image_tag "https://o.imgz.jp/fashionnews/109222/master_640_1.jpg"
+              = image_tag @product.images[0].image.url
           .ShowForm__Show
             %p.ProductName
-              ここに商品名が入る
+              =@product.title
             %p.Product__Price
               %span.Shipping
                 送料込み(税込)
-              %span.Price
-                ¥1,000
+              %span.Price 
+                ¥
+                = @product.price
       %section.Product__List__Price.NoFst--cld
         .PriceForm
           %span.PriceForm__Text
             支払い金額 
           %spam.PriceForm__TotalPrice
-            ¥1,100
+            ¥
+            = @product.price
       %section.Product__List__Method.NoFst--cld
         .MethodForm
           .MethodForm__List
             %h3.MethodForm__Payment
               支払い方法
-            = link_to "変更する","#", class: "Method__Change" 
-          .MethodForm__Show
+        - if @card.present?
+          .MethodForm__Show_
             %p クレジットカード支払い
-            %p 手数料¥100
+            = "**** **** **** " + @card_info_last4
+            = image_tag "card_brand/#{@card_src}", width: '34', height: '28', alt: @card_brand, id: "card_image", class: "New-card-img"
+            = link_to "変更する",user_cards_path(current_user.id), class: "Method__Change", id: "btn" 
+        - else
+          .MethodForm__Show.no-card
+            %p クレジットカード支払い
+            = link_to "登録する",user_cards_path(current_user.id), class: "Method__Change", id: "btn" 
       %section.Product__List__Address.NoFst--cld
         .AddressForm
           .AddressForm__Delivery
             %h3.AddressForm__DeliveryName 配送先
           = link_to "登録してください", "#", class: "Registration"
       %section.Button.NoFst--cld
-        .ButtonForm
-          %button.btn(type="button") 購入する
+        .ButtonForm#btn_token
+          = form_with url:product_orders_path do |f|
+            = f.button '購入する',type: 'submit', id: "btn",class:"btn_order" 
   .Footer
     .Footer__Center
       %ul.ul

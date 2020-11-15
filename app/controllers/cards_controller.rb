@@ -1,17 +1,70 @@
 class CardsController < ApplicationController
-
-  def index
+  require "payjp"
+  before_action :set_card
+  def index #CardのデータをPayjpに送って情報を取り出す
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      card_information = customer.cards.retrieve(@card.card_id)
+      @exp_month = card_information.exp_month.to_s
+      @exp_year = card_information.exp_year.to_s.slice(2,3)
+      @card_info_last4 = card_information.last4
+      @card_brand = card_information.brand
+        case @card_brand
+        when "Visa"
+          @card_src = "visa.png"
+        when "JCB"
+          @card_src = "jcb.png"
+        when "MasterCard"
+          @card_src = "master-card.png"
+        when "American Express"
+          @card_src = "american_express.png"
+        when "Diners Club"
+          @card_src = "dinersclub.png"
+        when "Discover"
+          @card_src = "discover.png"
+        end
+      else
+        # redirect_to action: "new"
+    end
   end
 
-  def show
+  def new 
+    # redirect_to action: "index" if @card.present?
   end
 
-  def new
+  def create #PayjpとCardのデータベースを作成
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    if params['payjp-token'].blank?
+      redirect_to action: "new",alert: "トークンが生成されていません"
+    else
+      customer = Payjp::Customer.create(
+        description: "ニックネーム：" + current_user.nickname, # PAY.JPの顧客情報に表示する概要。
+        email: current_user.email,
+        card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて保存。
+        metadata: {user_id: current_user.id} 
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to action: "index"
+      else
+        redirect_to action: "index",alert: "登録できませんでしました"
+      end
+    end
   end
 
-  def create
+  def delete #PayjpとCardのデータベースを削除
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    customer.delete
+    if @card.destroy #削除に成功した時にポップアップを表示
+      redirect_to action: "index"
+    else #削除に失敗した時にアラートを表示
+      redirect_to action: "index", alert: "削除できませんでした"
+    end
   end
-
-  def delete
+  private
+  def set_card 
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
 end

@@ -89,6 +89,7 @@
               = link_to "#" do
                 = icon("fab", "font-awesome-flag")
                 不適切な商品の通報
+        = link_to "購入する", new_product_order_path(@product.id)
       .CommentArea
         = form_with url: "#" do |f|
           = f.text_area :comment
