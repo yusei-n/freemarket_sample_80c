@@ -15,7 +15,10 @@
               =@product.title
             %p.Product__Price
               %span.Shipping
-                送料込み(税込)
+                - if @product.DeliveryBurden.id == 1
+                  送料込み(税込)
+                -else
+                  着払い(税込)
               %span.Price 
                 ¥
                 = @product.price
@@ -36,19 +39,20 @@
             %p クレジットカード支払い
             = "**** **** **** " + @card_info_last4
             = image_tag "card_brand/#{@card_src}", width: '34', height: '28', alt: @card_brand, id: "card_image", class: "New-card-img"
-            = link_to "変更する",payment_method_product_orders_path, class: "Method__Change", id: "btn" 
+            = link_to "変更する",card_registration_product_orders_path, class: "Method__Change", id: "btn" 
         - else
           .MethodForm__Show.no-card
             %p クレジットカード支払い
-            = link_to "登録する",payment_method_product_orders_path, class: "Method__Change", id: "btn" 
+            = link_to "登録する",card_registration_product_orders_path, class: "Method__Change", id: "btn" 
       %section.Product__List__Address.NoFst--cld
         .AddressForm
           .AddressForm__Delivery
             %h3.AddressForm__DeliveryName 配送先
-          = @card.PostalPrefectures.name
+          -# = @card.PostalPrefectures.name
           -# = @user.PostalPrefectures.name
           -# = link_to "登録してください", "#", class: "Registration"
       %section.Button.NoFst--cld
-        .ButtonForm
-          %button.btn(type="button") 購入する
+        .ButtonForm#btn_token
+          = form_with url:product_orders_path do |f|
+            = f.button '購入する',type: 'submit', id: "btn",class:"btn_order" 
   = render "products/Productfooter"

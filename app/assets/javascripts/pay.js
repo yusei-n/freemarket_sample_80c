@@ -8,9 +8,9 @@ document.addEventListener(
       //カード情報生成
       const card = {
         number: document.querySelector("#card_number").value,
-        cvc: document.querySelector("cvc").value,
-        exp_month: document.querySelector("exp_month").value,
-        exp_year: document.querySelector("exp_year").value
+        cvc: document.querySelector("#cvc").value,
+        exp_month: document.querySelector("#exp_month").value,
+        exp_year: document.querySelector("#exp_year").value
       };
       //トークン生成
       Payjp.createToken(card, (status, response) => {

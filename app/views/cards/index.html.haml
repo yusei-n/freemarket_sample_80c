@@ -1,5 +1,4 @@
 = render "products/header"
-
 %nav.Category-nav__item-name
   %ul
     %li
@@ -12,34 +11,37 @@
       = icon("fas","angle-right")
     %li.item-name
       カード情報の編集
-  = form_with url: delete_user_cards_path, method: :delete, html: { name: "inputForm" } do |f|
-    .MyPage__Main
-      %main.MyPage.clearfix
-        .MyPage__Content
-          %section.Payment-title
-            %h2 カード情報の編集
+.MyPage__Main
+  %main.MyPage.clearfix
+    .MyPage__Content
+      %section.Payment-title
+        %h2 カード情報の編集
+      = form_with url: delete_user_cards_path, method: :delete, html: { name: "inputForm" } do |f|
         - if @card.present?
           .Payment-content
             %section.CardInfo
               %ul.CardInfo-ul
                 %li.CardInfo-li
                   .CardInfo-box
-                    %span.Choice-btn
-                      %input(type="radio")
                     .CardInfo-text
-                      %p ***********0000
+                      %p ***********
                       = "**** **** ****" + @card_info_last4
                       %p.expiration-date 有効期限 
                       = @exp_month + "/" + @exp_year
                       = image_tag "card_brand/#{@card_src}", width: '34', height: '28', alt: @card_brand, id: "card_image", class: "Card-img"
-                    %bottun.Delete-btn
-                      = f.button "削除する", url: delete_user_cards_path ,class:"Delete-btn"
-        - else 
-          = link_to new_user_card_path(current_user.id) ,class: "Card-add" do
-            = icon("fas", "plus-circle")
-            クレジットカードを追加
-        %section.CardInfo
-          %button 選択したカードを使う
+                    = f.button "削除する", url: delete_user_cards_path ,class:"Delete-btn"
+            %section.CardInfo
+              = link_to new_user_card_path(current_user.id) ,class: "Card-add" do
+                = icon("fas", "plus-circle")
+                クレジットカードを変更
+        - else
+          .Payment-content
+            %section.CardInfo
+              = link_to new_user_card_path(current_user.id) ,class: "Card-Registration" do
+                = icon("fas", "plus-circle")
+                クレジットカードを登録
+          -# %section.CardInfo
+          -# %button.content-bottom--add-btn 選択したカードを使う
         .MethodPayment
           = link_to "#" do
             支払い方法について

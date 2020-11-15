@@ -3,7 +3,10 @@
   .Payment__content
     %main
       %section.Payment-title
-        %h2 クレジットカード登録
+        - if @card.present?
+          %h2 クレジットカード変更
+        - else
+          %h2 クレジットカード登録
       .Content__card-inner
         = form_with url: '#', method: :post, html: { name: "inputForm" } do |f|
           .Content__CardNumber
@@ -37,6 +40,9 @@
               %span ?
               カード裏面の番号とは?
           .Content-button
-            = f.button '登録する', class: 'content-bottom--add-btn', id: 'token_submit'
-            = link_to 'もどる', "#", class: 'return-btn'
+            - if @card.present?
+              = f.button '変更する', type: 'submit', id: "btn",class:"btn_order"
+            - else
+              = f.button '登録する', type: 'submit', id: "btn",class:"btn_order"
+          = link_to 'もどる', "#", class: 'return-btn'
 = render "products/Productfooter"
