@@ -34,6 +34,7 @@ class OrdersController < ApplicationController
 
   def create
     # すでに購入されていないか？
+    # flash.now[:alert] = '※画像・リストの選択または入力してください。'
     if @card.blank?
       # カード情報がなければ、買えないので戻す
       flash.now[:alert] = '※画像・リストの選択または入力してください。'
@@ -48,6 +49,7 @@ class OrdersController < ApplicationController
       description: "商品名:" + @product.title,
       metadata: {nickname_id: current_user.nickname}
       )
+      redirect_to controller: 'products', action: 'index'
     end
   end
 
@@ -67,7 +69,7 @@ private
   def set_product
     @product = Product.find(params[:product_id])
   end
-  def user_set
-    @user = User.find(params[:product_id])
-  end
+  # def user_set
+  #   @user = User.find(params[:product_id])
+  # end
 end
