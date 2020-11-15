@@ -55,9 +55,9 @@
               カテゴリー
               %span.DetailsSide__category__required
                 必須
-            = f.select :category, options_for_select(@category_parent_array.map{|c|[c, {}]}, @product.category.parent.parent.name), {}, {class: 'Select__category', id: 'parent_category'}
-            = f.select :category, options_for_select(@category_child_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.category.parent.id), {}, {class: 'Select__category', id: 'child_category'}
-            = f.select :category, options_for_select(@category_grandchild_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @product.category.id), {}, {class: 'Select__category', id: 'grandchild_category'}
+            = f.collection_select :category_id, @parents, :id, :name, {selected: @parent.id}, {id: 'product_category_id'}
+            = f.collection_select :category_id, @children, :id, :name, {selected: @child.id}, {class: 'child_category_id', id: 'child_category'}
+            = f.collection_select :category_id, @grandchildren, :id, :name, {selected: @grandchild.id}, {class: 'grandchild_category_id', id: 'grandchild_category'}
         .DetailsSide__brand
           ブランド
           %span.DetailsSide__brand__any
