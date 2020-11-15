@@ -12,29 +12,29 @@
           最大５枚までアップロードできます
           .ImageForm
             .ImageSide__form
-              %div#image-box
-                %div#previews
-                  - if @product.persisted?
-                    - @product.images.each_with_index do |image, s|
-                      .show-image
-                        = image_tag image.image.url, data: {index: s}, width: "100", height: '５0'
-                        .cotent
-                          .div{data: {index:s},class:"js-remove"}
-                            削除
-                          .div{data: {index:s},class:"js-edit"}
-                            編集
-                = f.fields_for :images do |i|
-                  %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
-                    = i.file_field :image, class: "ImageFile", data: {index: i.index},accept: 'image/jpg,image/jpeg,image/png,image/gif'
-                    - if @product.persisted?
-                      = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden'
-                  - if @product.persisted?
-                    %div{id:"ImageData#{@product.images.count}",class:"ImageFile_group"}
-                      = file_field_tag :image,name: "product[images_attributes][#{@product.images.count}][image]", class: 'ImageFile'
+              %div#previews
+                - if @product.persisted?
+                  - @product.images.each_with_index do |image, s|
+                    .show-image
+                      = image_tag image.image.url, data: {index: s}, width: "100", height: '５0'
+                      .cotent
+                        .div{data: {index:s},class:"js-remove"}
+                          削除
+                        .div{data: {index:s},class:"js-edit"}
+                          編集
               .ImageSide__form__icon
                 = icon('fa', 'camera')
                 .ImageSide__form__icon__text
                   クリックしてファイルをアップロード
+                %div#image-box
+          = f.fields_for :images do |i|
+            %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
+              = i.file_field :image, class: "ImageFile", data: {index: i.index},accept: 'image/jpg,image/jpeg,image/png,image/gif'
+              - if @product.persisted?
+                = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden'
+            - if @product.persisted?
+              %div{data:"ImageData#{@product.images.count}",class:"ImageFile_group"}
+                = file_field_tag :image,name: "product[images_attributes][#{@product.images.count}][image]", class: 'ImageFile',accept: 'image/jpg,image/jpeg,image/png,image/gif'
         .ProductSide__name
           商品名
           %span.ProductSide__name__required
@@ -105,7 +105,19 @@
           .price__sales__ProfitAmount
             ー
         .BtnSide
-          = f.submit "編集する",class: "BtnSide__listing-btn"
+          = f.submit "出品する",class: "BtnSide__listing-btn"
           %button{type:"submit",class: "BtnSide__draft-btn"}下書きする
           = link_to "もどる","/",class:"BtnSide__return"
+        .caution
+          禁止されている
+          = link_to "行為","#",class: "caution__notice"
+          %span<>および
+          = link_to"出品物","#",class: "caution__notice"
+          %span<>を必ずご確認ください。
+          =link_to"偽ブランド品","#",class: "caution__notice"
+          %span<>や
+          = link_to"盗品物","#",class: "caution__notice"
+          %span<>などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
+          =link_to"加盟店規約","#",class: "caution__notice"
+          %span<>に同意したことになります。
 = render "Productfooter"
