@@ -36,9 +36,7 @@
 }
 
 .Product {
-  margin: 0px auto;
-  width: 100%;
-  max-width: 700px;
+  background-color: lightgray;
   section {
     margin: 0px auto;
     max-width: 375px;
@@ -46,6 +44,8 @@
     padding: 32px 16px;
   }
   &__List {
+    margin: 0px auto;
+    max-width: 700px;
     position: relative;
     background-color: white;
     &__Verification {

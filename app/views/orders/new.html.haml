@@ -1,6 +1,5 @@
 .Main
-  .Header
-    = link_to image_tag ('material/logo/logo.png')
+  = render "products/ProductHeader"
   .Product
     .Product__List
       %section.Product__List__Verification.NoFst--cld
@@ -16,7 +15,10 @@
               =@product.title
             %p.Product__Price
               %span.Shipping
-                送料込み(税込)
+                - if @product.DeliveryBurden.id == 1
+                  送料込み(税込)
+                -else
+                  着払い(税込)
               %span.Price 
                 ¥
                 = @product.price
@@ -37,11 +39,11 @@
             %p クレジットカード支払い
             = "**** **** **** " + @card_info_last4
             = image_tag "card_brand/#{@card_src}", width: '34', height: '28', alt: @card_brand, id: "card_image", class: "New-card-img"
-            = link_to "変更する",user_cards_path(current_user.id), class: "Method__Change", id: "btn" 
+            = link_to "変更する",card_registration_product_orders_path, class: "Method__Change", id: "btn" 
         - else
           .MethodForm__Show.no-card
             %p クレジットカード支払い
-            = link_to "登録する",user_cards_path(current_user.id), class: "Method__Change", id: "btn" 
+            = link_to "登録する",card_registration_product_orders_path, class: "Method__Change", id: "btn" 
       %section.Product__List__Address.NoFst--cld
         .AddressForm
           .AddressForm__Delivery
@@ -53,14 +55,4 @@
         .ButtonForm#btn_token
           = form_with url:product_orders_path do |f|
             = f.button '購入する',type: 'submit', id: "btn",class:"btn_order" 
-  .Footer
-    .Footer__Center
-      %ul.ul
-        %li.li
-          = link_to "プライバシーポリシー", "#"
-        %li.li
-          = link_to "メルカリ使用規約","#"
-        %li.li
-          = link_to "特定商取引に関する表記","#"
-      = link_to image_tag 'material/logo/logo-white.png'
-    %p © FURIMA, Inc.
+  = render "products/Productfooter"

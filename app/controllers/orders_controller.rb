@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_card, :set_product
-  before_action :user_set
+  # before_action :user_set
   def show
   end
 
@@ -52,6 +52,12 @@ class OrdersController < ApplicationController
   end
 
   def delete
+  end
+
+  def card_registration
+  end
+
+  def payment_method
   end
 
 private

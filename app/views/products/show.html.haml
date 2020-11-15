@@ -21,7 +21,7 @@
     %li
       = icon("fas","angle-right")
     %li.item-name
-      商品名
+      = @product.title
 .Main
   .MainShow
     .Main-contents
@@ -44,7 +44,7 @@
             -else
               着払い
         - unless user_signed_in? && current_user.id == @product.user_id 
-          = link_to "購入画面に進む", product_order_path(@product.id), class: "ItemBox__buy-btn"
+          = link_to "購入画面に進む", new_product_order_path(@product.id), class: "ItemBox__buy-btn"
         .ItemBox__description
           =@product.explanation
         .ItemBox__details
@@ -89,7 +89,6 @@
               = link_to "#" do
                 = icon("fab", "font-awesome-flag")
                 不適切な商品の通報
-        = link_to "購入する", new_product_order_path(@product.id)
       .CommentArea
         = form_with url: "#" do |f|
           = f.text_area :comment
