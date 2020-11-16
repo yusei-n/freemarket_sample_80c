@@ -26,7 +26,7 @@ $(document).on('turbolinks:load',()=>{
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.ImageFile_group:last').data('index');
   fileIndex.splice(0, lastIndex);
-
+  $('.hidden').hide();
     //クリックしたらファイルフィールドが選択される
   $('.ImageSide__form__icon').on('click', function(e){
     // インプットボックスの最後のカスタムデータID取得
@@ -88,7 +88,7 @@ $(document).on('turbolinks:load',()=>{
     const file_field = $(`input[type="file"][data-index="${data_index}"]`);
     file_field.trigger('click');
   });
-  
+
   $('#image-box').on('change', '.ImageFile', function(e) {
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
