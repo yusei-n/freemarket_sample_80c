@@ -4,10 +4,13 @@ $(document).on('turbolinks:load',()=>{
                 <input class="ImageFile" type="file"
                 name="product[images_attributes][${index}][image]"
                 id="product_images_attributes_${index}_image"
+                accept: 'image/jpg,image/jpeg,image/png,image/gif'
                 data-index="${index}"><br>
               </div>`;
     return html;
   }
+
+  
 
     const buildImg = (num, url)=> {
       const html = `<div class="show-image" id="image_box_${num}">
@@ -32,6 +35,7 @@ $(document).on('turbolinks:load',()=>{
     file_field.trigger('click');
   });
 
+  
   $('.ImageSide__PhotoNumber').on('change','.ImageFile',function(e){
     const targetIndex = $(this).data('index');
     const file = e.target.files[0];
@@ -84,12 +88,23 @@ $(document).on('turbolinks:load',()=>{
     const file_field = $(`input[type="file"][data-index="${data_index}"]`);
     file_field.trigger('click');
   });
-
-  $('#previews').on('mouseenter', '.delet-btn', function() {
-    $(this).css('cursor','pointer');
-  });
-  $('#previews').on('mouseenter', '.eidt-btn', function() {
-    $(this).css('cursor','pointer');
+  
+  $('#image-box').on('change', '.ImageFile', function(e) {
+    const targetIndex = $(this).parent().data('index');
+    // ファイルのブラウザ上でのURLを取得する
+    const file = e.target.files[0];
+    const blobUrl = window.URL.createObjectURL(file);
+    // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      img.setAttribute('src', blobUrl);
+    } else {  // 新規画像追加の処理
+      $('#preview').append(buildImg(targetIndex, blobUrl));
+      // fileIndexの先頭の数字を使ってinputを作る
+      $('#image-box').append(buildFileField(fileIndex[0]));
+      fileIndex.shift();
+      // 末尾の数に1足した数を追加する
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+    }
   });
 
   // 投稿された画像を変更 

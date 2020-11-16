@@ -5,9 +5,6 @@
 }
 
 // JSで追加される要素
-.ImageFile_group{
-
-}
 
 .ImageSide__form__icon-under{
   width: 100%;
@@ -35,14 +32,17 @@
   display: none;
   }
 }
+.js-remove{
+  margin-right: auto;
+}
 
 .delet-btn{
   margin-right: auto;
 }
 #previews{
   display: flex;
-
 }
+
 .cotent{
   font-size:12px;
   display: flex;
