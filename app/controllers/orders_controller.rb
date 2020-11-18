@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
       redirect_to controller: "products", action: "index"
       else
        # カード情報がなければ、買えないので戻す
-       flash.now[:alert] = '※画像・リストの選択または入力してください。'
+       flash.now[:alert] = '※クレジットカードが登録されていません。登録をして下さい。'
        redirect_to action: "new"
     end
   end
