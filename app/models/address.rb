@@ -12,8 +12,8 @@ class Address < ApplicationRecord
   validates :first_name_hurigana, presence: true,
                                   format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力してください" }
   validates :birthday, presence: true
-  validates :postal_number, presence: true
-  validates :postal_prefectures_id, presence: true
+  validates :postal_number, presence: true, numericality: true
+  validates :postal_prefectures_id, presence: { message: 'を選択してください' }
   validates :postal_municipalities, presence: true
   validates :postal_address, presence: true
 end

@@ -448,16 +448,18 @@ main {
   }
 }
 
-.field_with_errors {
-  display: contents;
-  li {
-    color: red;
-    list-style: inside;
-  }
-}
-
 .alert {
   padding-left: 40px;
   font-weight: bold;
   color: red;
+}
+
+.erro__message {
+  margin-top: 5px;
+  color: red;
+  font-size: 14px;
+}
+
+.field_with_errors {
+  display: contents
 }
