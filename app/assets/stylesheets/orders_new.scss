@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: rgb(245, 245, 245);
+  background-color: lightgrey;
 }
 
 .Header {
@@ -143,13 +143,12 @@
         }
       &__Show p {
         margin: 4px 0px 0px;
-        font-size: 12px;
+        font-size: 13px;
       }
     }
 
     .AddressForm__Delivery {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
       &Name {
@@ -157,8 +156,12 @@
         font-weight: 600;
       }
     }
+    .number_postal{
+      display: flex;
+    }
     a {
       color: rgb(0, 149, 238);
+      text-decoration: none;
     }
     .Registration {
       text-decoration: none;
@@ -168,7 +171,7 @@
   .Button {
       padding: 35px 16px 50px;
 
-      .btn {
+      #btn {
         background-color: #3CCACE;
         color: white;
         cursor: pointer;
