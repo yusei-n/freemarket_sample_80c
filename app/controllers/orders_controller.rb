@@ -45,8 +45,10 @@ class OrdersController < ApplicationController
       redirect_to controller: "products", action: "index"
       else
        # カード情報がなければ、買えないので戻す
-       flash.now[:alert] = '※クレジットカードが登録されていません。登録をして下さい。'
-       redirect_to action: "new"
+        if @card.blank?
+         redirect_to action: "new"
+         flash.now[:alert] = '購入にはクレジットカード登録が必要です'
+        end
     end
   end
 
@@ -68,10 +70,10 @@ class OrdersController < ApplicationController
       if @card.save
         redirect_to action: "new"
       else
-        redirect_to action: "card_order_add",alert: "登録できませんでしました"
+        redirect_to action: "card_order_add", alert: "登録できませんでしました"
       end
     else
-      redirect_to action: "card_order_add",alert: "トークンが生成されていません"
+      redirect_to action: "card_order_add", alert: "トークンが生成されていません"
     end
   end
 private
