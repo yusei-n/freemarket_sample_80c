@@ -12,6 +12,7 @@ $(function(){
       $("#PriceError").remove();
     }
   })
+
   $(document).on('change',".price__SellingPrice__PriceForm__input",function(e){
     $("#PriceError").remove();
     var price = $(this).val();
@@ -35,4 +36,5 @@ $(function(){
       $("#PriceError").remove();
     }
   })
+
 })

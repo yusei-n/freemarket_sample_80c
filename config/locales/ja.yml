@@ -1,8 +1,23 @@
 ---
 ja:
   activerecord:
+    models:
+      product: 商品
+    attributes:
+      product:
+        delivery_burden_id: 発送料の負担
+        estimated_shipping_id: 発送までの日時
+        product_status_id: 商品の状態
+        category_id: カテゴリー
+        postal_prefectures_id: 発送元の地域
+        price: 金額
+        explanation: 説明文
+        title: 商品名
+        images: 画像
     errors:
+      format: "%{attribute}%{blank}"
       messages:
+        blank: "を選択してください"
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"

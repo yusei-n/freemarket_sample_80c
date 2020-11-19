@@ -21,6 +21,8 @@
           = f.fields_for :images do |i|
             %div{id:"ImageData#{i.index}",class:"ImageFile_group"}
               = i.file_field :image, class: "ImageFile", data: {index: i.index},accept: 'image/jpg,image/jpeg,image/png,image/gif'
+              - if @product.errors.include?(:images)
+                = @product.errors.full_messages_for(:images).first
         .ProductSide__name
           商品名
           %span.ProductSide__name__required
@@ -31,6 +33,8 @@
           %span.ProductSide__description__required
             必須
         = f.text_area :explanation,class:"ProductSide__form",rows:"7",placeholder: "商品の説明（必須1,000文字以内）\n(色、素材、重さ、定価、注意点など）\n\n例）2015年に購入したNintendoSwitchです。開封済みの品ですが状態は良好です"
+        - if @product.errors.include?(:explanation)
+          = @product.errors.full_messages_for(:explanation).first
         .ProductSide__LengthCount
           0/1000
       .DetailsSide
@@ -42,6 +46,8 @@
               %span.DetailsSide__category__required
                 必須
             = f.collection_select :category_id,@parent, :id, :name,{prompt:"選択してください"}
+            - if @product.errors.include?(:category_id)
+              = @product.errors.full_messages_for(:category_id).first
         .DetailsSide__brand
           ブランド
           %span.DetailsSide__brand__any
@@ -52,6 +58,8 @@
           %span.DetailsSide__status__required
             必須
         = f.collection_select :product_status_id,ProductStatus.all, :id, :name,{prompt:"選択してください"}
+        - if @product.errors.include?(:product_status_id)
+          = @product.errors.full_messages_for(:product_status_id).first
       .delivery
         .delivery__method
           配送方法について
@@ -61,16 +69,22 @@
           %span.delivery__price__required
             必須
         = f.collection_select :delivery_burden_id,DeliveryBurden.all, :id, :name,{prompt:"選択してください"}
+        - if @product.errors.include?(:delivery_burden_id)
+          = @product.errors.full_messages_for(:delivery_burden_id).first
         .delivery__area
           配送元の地域
           %span.delivery__area__required
             必須
         = f.collection_select :postal_prefectures_id,PostalPrefectures.all, :id, :name,{prompt:"選択してください"}
+        - if @product.errors.include?(:postal_prefectures_id)
+          = @product.errors.full_messages_for(:postal_prefectures_id).first
         .delivery__day
           発送までの日時
           %span.delivery__day__required
             必須
         = f.collection_select :estimated_shipping_id,EstimatedShipping.all, :id, :name,{prompt:"選択してください"}
+        - if @product.errors.include?(:estimated_shipping_id)
+          = @product.errors.full_messages_for(:estimated_shipping_id).first
       .price
         .price__example
           価格（¥300~9,999,999)
@@ -82,6 +96,9 @@
           .price__SellingPrice__PriceForm
             ¥
             = f.number_field :price,placeholder:"0",min:"300" ,max:"9999999",class: "price__SellingPrice__PriceForm__input"
+            .errormessage
+              - if @product.errors.include?(:price)
+                = @product.errors.full_messages_for(:price).first
         .price__fee
           販売手数料(10%)
           .price__fee__FeePrice

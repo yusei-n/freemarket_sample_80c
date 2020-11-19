@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path
     else
-      flash.now[:alert] = '※画像・リストの選択または入力してください。'
       unless @product.images.present?
         @product.images.new
         render :new
@@ -56,7 +55,8 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to root_path
+      redirect_to product_path(@product.id)
+      
     else
       render :edit
     end
@@ -95,4 +95,7 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
+
+
+
 end
