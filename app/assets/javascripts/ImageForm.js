@@ -9,18 +9,20 @@ $(document).on('turbolinks:load',()=>{
               </div>`;
     return html;
   }
-
+  const buildImg = (num, url)=> {
+    const html = `<div class="show-image" id="image_box_${num}">
+                    <img data-index="${num}" src="${url}" class="image-file" width="100px" height="100px">
+                      <div class="cotent">
+                        <div id="delet_btn_${num}" class="delet-btn" data-index="${num}" >削除</div>
+                        <div id="edit_btn_${num}" class="eidt-btn" data-index="${num}" >編集</div>
+                      </div>
+                  </div>`;
+    return html;
+  }
   
-
-    const buildImg = (num, url)=> {
-      const html = `<div class="show-image" id="image_box_${num}">
-                      <img data-index="${num}" src="${url}" class="image-file" width="100px" height="100px">
-                        <div class="cotent">
-                          <div id="delet_btn_${num}" class="delet-btn" data-index="${num}" >削除</div>
-                          <div id="edit_btn_${num}" class="eidt-btn" data-index="${num}" >編集</div>
-                        </div>
-                    </div>`;
-      return html;
+  var count = $('.image-file').length;
+  if (count == 5){
+    $('.ImageSide__form__icon').toggle(false);
     }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
@@ -90,12 +92,12 @@ $(document).on('turbolinks:load',()=>{
   });
 
   $('#image-box').on('change', '.ImageFile', function(e) {
-    const targetIndex = $(this).parent().data('index');
-    // ファイルのブラウザ上でのURLを取得する
-    const file = e.target.files[0];
-    const blobUrl = window.URL.createObjectURL(file);
-    // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
-    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      const targetIndex = $(this).parent().data('index');
+      // ファイルのブラウザ上でのURLを取得する
+      const file = e.target.files[0];
+      const blobUrl = window.URL.createObjectURL(file);
+      // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
+      if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
       $('#preview').append(buildImg(targetIndex, blobUrl));
@@ -116,15 +118,19 @@ $(document).on('turbolinks:load',()=>{
   });
 
     // 投稿された画像を削除
-    $('#previews').on('click', '.js-remove', function() {
-      const image = $(this).parent().parent();
-      image.remove();
-      const data_index = $(this).data('index');
-      const hiddenCheck = $(`input[data-index="${data_index}"].hidden`);
-      if (hiddenCheck) hiddenCheck.prop('checked', true);
-      $(`img[data-index="${data_index}"]`).remove();
+  $('#previews').on('click', '.js-remove', function() {
+    const image = $(this).parent().parent();
+    image.remove();
+    const data_index = $(this).data('index');
+    const hiddenCheck = $(`input[data-index="${data_index}"].hidden`);
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
+    $(`img[data-index="${data_index}"]`).remove();
     if ($('.ImageFile').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-    });
+    var count = $('.image-file').length;
+    if (count == 4){
+    $('.ImageSide__form__icon').toggle(true);
+    } 
+  });
 });
 
 

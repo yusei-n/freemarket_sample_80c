@@ -36,5 +36,13 @@ $(function(){
       $("#PriceError").remove();
     }
   })
-
+  $(document).on('turbolinks:load', function(){
+    var price = $(".price__SellingPrice__PriceForm__input").val();
+    let tax = Math.ceil(price * 0.1)
+    let profit = Math.ceil(price * 0.9)
+    decimal: false
+    $(".price__fee__FeePrice").html("¥"+tax.toLocaleString());
+    $(".price__sales__ProfitAmount").html("¥"+profit.toLocaleString());
+  });
+  
 })
