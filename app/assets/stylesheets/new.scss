@@ -24,6 +24,22 @@
   }
 }
 
+.ErrorMessage{
+  font-size:16px;
+  font-size: initial;
+  font-weight: initial;
+  color:red;
+  margin-top: 15px;
+}
+
+.ErrorMessage__price{
+  font-size:16px;
+  color:red;
+  text-align: end;
+  font-weight: initial;
+  margin-top: 15px;
+}
+
 .ImageFile{
   display: none;
 }

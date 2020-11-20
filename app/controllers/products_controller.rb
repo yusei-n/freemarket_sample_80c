@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
-  before_action :parent
+  before_action :parent,only:[:new,:create,:edit,:update]
   before_action :set_product, except: [:index, :new, :create,:search]
-
+  before_action :category,only:[:edit,:update]
+  
   def index
     @products = Product.includes(:images).limit(5)
   end
@@ -17,7 +18,6 @@ class ProductsController < ApplicationController
   end
 
   def create
-
     @product = Product.create(product_params)
     if @product.save
       redirect_to root_path
@@ -44,19 +44,15 @@ class ProductsController < ApplicationController
 
     # # productに紐づいている孫カテゴリーが属している孫カテゴリーの一覧を配列で取得
     # @category_grandchild_array = @product.category.parent.children
-    @grandchild = @product.category
-    @child = @grandchild.parent
-    @parent = @child.parent
-    @grandchildren = @child.children
-    @children = @parent.children
-    @parents = Category.where(ancestry: nil)
+
+
 
   end
 
   def update
+
     if @product.update(product_params)
       redirect_to product_path(@product.id)
-      
     else
       render :edit
     end
@@ -89,13 +85,18 @@ class ProductsController < ApplicationController
   end
 
   def parent
-    @parent = Category.where(ancestry: nil)
+    @parents = Category.where(ancestry: nil)
+  end
+
+  def category
+    @grandchild = @product.category
+    @child = @grandchild.parent
+    @parent = @child.parent
+    @grandchildren = @child.children
+    @children = @parent.children
   end
 
   def set_product
     @product = Product.find(params[:id])
   end
-
-
-
 end
