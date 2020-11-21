@@ -77,8 +77,8 @@ class OrdersController < ApplicationController
 private
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+    end
   end
   def set_product
     @product = Product.find(params[:product_id])
   end
-end
