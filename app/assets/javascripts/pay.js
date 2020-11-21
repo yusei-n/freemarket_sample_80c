@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function(){
   Payjp.setPublicKey("pk_test_89a276af1e33dcfa7cdc9931");
   $("#token_submit").click(function(e){
     e.preventDefault();
-    let card = {
+    const card = {
       number: $("#card_number").val(),
       cvc: $("#cvc").val(),
       exp_month: $("#exp_month").val(),

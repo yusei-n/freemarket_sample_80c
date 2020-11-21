@@ -41,6 +41,12 @@ class OrdersController < ApplicationController
       description: "商品名:" + @product.title,
       metadata: {nickname_id: current_user.nickname}
       )
+      @order = Order.new(product_id: @product.id)
+      @order.save()
+
+      # 購入時にbuyer_idをproductsに付与する
+      @product_buyer= Product.find(params[:product_id])
+      @product_buyer.update( buyer_id: current_user.id)
       # トップページに戻す
       redirect_to controller: "products", action: "index"
       else
