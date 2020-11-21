@@ -5,7 +5,6 @@
       %section.Product__List__Verification.NoFst--cld
         %h2.Contents
           購入内容の確認
-        = render 'layouts/notifications'
       %section.Product__List__Show.NoFst--cld
         .ShowForm
           .ShowForm__Image
@@ -32,6 +31,7 @@
             = @product.price
       %section.Product__List__Method.NoFst--cld
         .MethodForm
+          = render 'layouts/notifications'
           .MethodForm__List
             %h3.MethodForm__Payment
               支払い方法
