@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_product
   def new
     if @product.buyer_id.present?
-      redirect_to product_path(@product.id), alert: "売り切れています"
+      redirect_to product_path(@product.id)
     end
     user_address = Address.where(user_id: current_user.id).first 
     @postal_address = user_address.postal_prefectures.name
@@ -53,8 +53,7 @@ class OrdersController < ApplicationController
       redirect_to controller: "products", action: "index"
       else
        # カード情報がなければ、買えないので戻す
-      #  flash.now[:alert] = '※画像・リストの選択または入力してください。'
-        flash[:notice] = "クレジットカードを登録してください"
+        flash[:error] = "クレジットカードを登録してください"
         redirect_to action: "new"
     end
   end

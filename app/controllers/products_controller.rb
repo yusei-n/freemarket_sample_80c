@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    if @product.buyer_id.present?
+      flash[:error] = "この商品は購入済の為購入できません"
+    end
     @products = Product.includes(:images)
     @category = @product.category
   end
