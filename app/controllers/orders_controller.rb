@@ -2,6 +2,9 @@ class OrdersController < ApplicationController
   before_action :set_card
   before_action :set_product
   def new
+    if @product.buyer_id.present?
+      redirect_to product_path(@product.id), alert: "売り切れています"
+    end
     user_address = Address.where(user_id: current_user.id).first 
     @postal_address = user_address.postal_prefectures.name
     @p_numder_first3 = user_address.postal_number.to_s[0..2]
@@ -42,17 +45,17 @@ class OrdersController < ApplicationController
       metadata: {nickname_id: current_user.nickname}
       )
       @order = Order.new(product_id: @product.id)
-      @order.save()
-
+      @order.save
       # 購入時にbuyer_idをproductsに付与する
-      @product_buyer= Product.find(params[:product_id])
-      @product_buyer.update( buyer_id: current_user.id)
+      @product.update( buyer_id: current_user.id)
+      @product.save
       # トップページに戻す
       redirect_to controller: "products", action: "index"
       else
        # カード情報がなければ、買えないので戻す
-       flash.now[:alert] = '※画像・リストの選択または入力してください。'
-       redirect_to action: "new"
+      #  flash.now[:alert] = '※画像・リストの選択または入力してください。'
+        flash[:notice] = "クレジットカードを登録してください"
+        redirect_to action: "new"
     end
   end
 
