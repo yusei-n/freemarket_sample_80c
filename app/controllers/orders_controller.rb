@@ -45,10 +45,8 @@ class OrdersController < ApplicationController
       redirect_to controller: "products", action: "index"
       else
        # カード情報がなければ、買えないので戻す
-        if @card.blank?
           redirect_to action: "new"
           flash[:alert] = '購入にはクレジットカード登録が必要です'
-        end
     end
   end
 
