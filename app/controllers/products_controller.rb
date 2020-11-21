@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
+    @products = Product.includes(:images).limit(5)
   end
 
   def create
