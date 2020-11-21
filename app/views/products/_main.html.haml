@@ -90,22 +90,23 @@
             新規投稿商品
       .ProductLists
         - @products.each do |product|
-          .ProductList
-            = link_to product_path(product.id),{class: "ProductLink"} do
-              %figure.ProductList__img
-                = image_tag product.images[0].image.url, :class => "ProductImg"
-              .ProductList__body
-                %h3.name
-                  =product.title
-                .details
-                  %ul
-                    %li 
-                      %span
-                        =product.price
-                      円
-                    %li
-                      = icon('fas', 'star')
-                  %p (税込)
+          -if product.buyer_id.blank?
+            .ProductList
+              = link_to product_path(product.id),{class: "ProductLink"} do
+                %figure.ProductList__img
+                  = image_tag product.images[0].image.url, :class => "ProductImg"
+                .ProductList__body
+                  %h3.name
+                    =product.title
+                  .details
+                    %ul
+                      %li 
+                        %span
+                          =product.price
+                        円
+                      %li
+                        = icon('fas', 'star')
+                    %p (税込)
               -# -if product.purchaser_id.present? 
               -#   .ItemProperty__sold
               -#   .ItemProperty__inner
@@ -136,7 +137,7 @@
                     %li
                       = icon('fas', 'star')
                   %p (税込)
-              -if product.id.present? 
+              -if product.buyer_id.present? 
                 .ItemProperty__sold
                 .ItemProperty__inner
                   SOLD

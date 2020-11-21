@@ -44,7 +44,7 @@
             -else
               着払い
         - unless user_signed_in? && current_user.id == @product.user_id 
-          = link_to "購入画面に進む", product_order_path(@product.id), class: "ItemBox__buy-btn"
+          = link_to "購入画面に進む", new_product_order_path(@product.id), class: "ItemBox__buy-btn"
         .ItemBox__description
           =@product.explanation
         .ItemBox__details
