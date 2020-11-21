@@ -1,0 +1,48 @@
+= render "products/ProductHeader"
+.Payment
+  .Payment__content
+    %main
+      %section.Payment-title
+        - if @card.present?
+          %h2 クレジットカード変更
+        - else
+          %h2 クレジットカード登録
+      .Content__card-inner
+        = form_with url: card_registration_product_orders_path, method: :post,local: true, html: { name: "inputForm" } do |f|
+          .Content__CardNumber
+            = f.label :カード番号
+            %span.Requirement
+              必須
+            = f.text_field :card_number, type: 'text', class: 'input-number', placeholder: '半角数字のみ', maxlength: "16", id:"card_number"
+            = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg', class: "New-card-img"
+            = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/mastercard-8b5b68c12b7a2fc8619c71f49ef9209b.svg', class: "New-card-img"
+            = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/saison-550107415f39b81fa19e87c96486ba20.svg', class: "New-card-img"
+            = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/jcb-9ea981d20008c6545aa3afd1b3da9804.svg', class: "New-card-img"
+            = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/american_express-4df44c450653b0209850070ea5cf1264.svg', class: "New-card-img"
+          .Content__CardExpire
+            = f.label :有効期限, class: 'label'
+            %span.Requirement 必須
+            %br
+            .CardExpire
+              .CardExpire__wrap
+                = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire', id: "exp_month"
+                = icon("fas", "chevron-down")
+                %span.expire-text 月
+              .CardExpire__wrap
+                = f.select :exp_year, [["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030],["31",2031]],{} , class: 'input-expire', id:"exp_year"
+                = icon("fas", "chevron-down")
+                %span.expire-text 年
+          .Content__CardExpire
+            = f.label :セキュリティコード, class: 'label'
+            %span.Requirement 必須
+            = f.text_field :cvc, type: 'password', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "3", id: "cvc"
+            .Content__CardExpire-question
+              %span ?
+              カード裏面の番号とは?
+          .Content-button#card_token
+            - if @card.present?
+              = f.button '変更する', type: 'submit', id: "token_submit",class:"btn_order"
+            - else
+              = f.button '登録する', type: 'submit', id: "token_submit",class:"btn_order"
+          = link_to 'もどる', new_product_order_path, class: 'return-btn'
+= render "products/Productfooter"

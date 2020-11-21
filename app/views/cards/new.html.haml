@@ -22,10 +22,10 @@
         %h2 クレジットカード情報入力
       .Content__card
         .Content__card-inner
-          = form_with url: '#', method: :post, html: { name: "inputForm" } do |f|
+          = form_with url: user_cards_path, method: :post, local: true, html: { name: "inputForm" } do |f|
             .Content__CardNumber
               = f.label :カード番号
-              %span.requirement
+              %span.Requirement
                 必須
               = f.text_field :card_number, type: 'text', class: 'input-number', placeholder: '半角数字のみ', maxlength: "16"
               = image_tag 'https://web-jp-assets.mercdn.net/_next/static/images/visa-91c71914c6ae23d33f896e60bb1e3859.svg', class: "New-card-img"
@@ -43,18 +43,18 @@
                   = icon("fas", "chevron-down")
                   %span.expire-text 月
                 .CardExpire__wrap
-                  = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-expire'
+                  = f.select :exp_year, [["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029],["30",2030],["31",2031]],{} , class: 'input-expire'
                   = icon("fas", "chevron-down")
                   %span.expire-text 年
             .Content__CardExpire
               = f.label :セキュリティコード, class: 'label'
               %span.Requirement 必須
-              = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+              = f.text_field :cvc, type: 'password', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "3"
               .Content__CardExpire-question
                 %span ?
                 カード裏面の番号とは?
-            .Content-button
-              = f.button '追加する', class: 'content-bottom--add-btn', id: 'token_submit'
+            .Content-button#card_token
+              = f.button '追加する',type: 'submit', class: 'content-bottom--add-btn', id: 'token_submit'
     .MyPage__Side
       %nav.Side__nav
         %ul.Side__nav-list

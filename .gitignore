@@ -31,6 +31,6 @@ yarn-debug.log*
 .yarn-integrity
 
 .DS_store
-
+/.env
 # Ignore uploaded files in development
 /public/uploads

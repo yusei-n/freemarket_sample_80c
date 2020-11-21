@@ -1,5 +1,4 @@
-- if user_signed_in?
-  = render "ProductHeader"
+= render "ProductHeader"
   .product
     .product__contents
       = form_for @product,local: true do |f|
@@ -132,8 +131,3 @@
             =link_to"加盟店規約","#",class: "caution__notice"
             %span<>に同意したことになります。
   = render "Productfooter"
-- else
-  = render "header"
-  = render "account"
-  = render "footer"
-  = render "products/sellingbtn"

@@ -1,13 +1,15 @@
 class ProductsController < ApplicationController
-  before_action :parent,only:[:new,:create,:edit,:update]
+  before_action :parent
   before_action :set_product, except: [:index, :new, :create,:search]
-  before_action :category,only:[:edit,:update]
-  
+
   def index
     @products = Product.includes(:images).limit(5)
   end
 
   def show
+    if @product.buyer_id.present?
+      flash[:error] = "この商品は購入済の為購入できません"
+    end
     @products = Product.includes(:images)
     @category = @product.category
   end
@@ -19,10 +21,12 @@ class ProductsController < ApplicationController
   end
 
   def create
+
     @product = Product.create(product_params)
     if @product.save
       redirect_to root_path
     else
+      flash.now[:alert] = '※画像・リストの選択または入力してください。'
       unless @product.images.present?
         @product.images.new
         render :new
@@ -36,9 +40,8 @@ class ProductsController < ApplicationController
   end
 
   def update
-
     if @product.update(product_params)
-      redirect_to product_path(@product.id)
+      redirect_to root_path
     else
       render :edit
     end
@@ -67,19 +70,11 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title,:price,:explanation,:delivery_burden_id,:product_status_id,:estimated_shipping_id,:category_id,:postal_prefectures_id,:brand,images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:title,:price,:explanation,:delivery_burden_id,:product_status_id,:estimated_shipping_id,:category_id,:postal_prefectures_id,:brand,images_attributes: [:image, :_destory, :id]).merge(user_id: current_user.id)
   end
 
   def parent
-    @parents = Category.where(ancestry: nil)
-  end
-
-  def category
-    @grandchild = @product.category
-    @child = @grandchild.parent
-    @parent = @child.parent
-    @grandchildren = @child.children
-    @children = @parent.children
+    @parent = Category.where(ancestry: nil)
   end
 
   def set_product
