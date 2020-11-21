@@ -1,4 +1,3 @@
-
   $(document).on("change","select",function(){
     let error;
     var select = $(this).val();
