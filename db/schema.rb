@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020100803221533) do
     t.text "brand"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "buyer_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

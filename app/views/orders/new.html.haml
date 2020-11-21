@@ -1,0 +1,63 @@
+.Main
+  = render "products/ProductHeader"
+  .Product
+    .Product__List
+      %section.Product__List__Verification.NoFst--cld
+        %h2.Contents
+          購入内容の確認
+      = render 'layouts/notifications'
+      %section.Product__List__Show.NoFst--cld
+        .ShowForm
+          .ShowForm__Image
+            %figure
+              = image_tag @product.images[0].image.url
+          .ShowForm__Show
+            %p.ProductName
+              =@product.title
+            %p.Product__Price
+              %span.Shipping
+                - if @product.DeliveryBurden.id == 1
+                  送料込み(税込)
+                - else
+                  着払い(税込)
+              %span.Price 
+                ¥
+                = @product.price
+      %section.Product__List__Price.NoFst--cld
+        .PriceForm
+          %span.PriceForm__Text
+            支払い金額 
+          %spam.PriceForm__TotalPrice
+            ¥
+            = @product.price
+      %section.Product__List__Method.NoFst--cld
+        .MethodForm
+          .MethodForm__List
+            %h3.MethodForm__Payment
+              支払い方法
+        - if @card.present?
+          .MethodForm__Show
+            %p クレジットカード支払い
+            %p.number= "**** **** ****" + @card_info_last4
+            = image_tag "card_brand/#{@card_src}", width: '38', height: '32', alt: @card_brand, id: "card_image", class: "New-card-img"
+        - else
+          .MethodForm__Show.no-card
+            %p クレジットカード支払い
+            = link_to "登録する",card_order_add_product_orders_path, class: "Method__Change", id: "btn"
+      %section.Product__List__Address.NoFst--cld
+        .AddressForm
+          .AddressForm__Delivery
+          %h3.AddressForm__DeliveryName 配送先
+          .number_postal
+            %p 〒
+            %p= @p_numder_first3 + "-" +  @p_numder_last4
+          .number_postal
+            %p= @postal_address
+          .number_postal
+            %p 発送日目安：
+            %p= @product.EstimatedShipping.name
+      %section.Button.NoFst--cld
+        .ButtonForm
+          = form_with url:product_orders_path ,local: true do |f|
+            = f.button '購入する',type: 'submit', id: "btn",class:"btn_order" 
+  = render "products/Productfooter"
