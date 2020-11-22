@@ -14,7 +14,6 @@
 - has_many: cards
 - has_one: address
 
-
 ## addressテーブル（商品配送情報）
 |Column|Type|Options|
 |-------|-----|-------|
