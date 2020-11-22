@@ -137,10 +137,10 @@ describe Product do
     expect(product.errors[:explanation]).to include("を入力してください")
   end
 
-    it "画像がないと登録できない" do
-      product = build(:image, image: nil)
-      product.valid?
+  it "画像がないと登録できない" do
+    product = build(:image, image: nil)
+    product.valid?
     expect(product.errors[:image]).to include("を1枚以上登録してください")
-    end
+  end
   end
 end

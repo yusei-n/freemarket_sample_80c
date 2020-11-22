@@ -1,5 +1,5 @@
 ---
-ja:
+ja: 
   activerecord:
     models:
       product: 商品

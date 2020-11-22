@@ -17,6 +17,7 @@ class Product < ApplicationRecord
 
   # 発送元の地域
   belongs_to_active_hash :PostalPrefectures
+  
   validates :images, presence: {message: "を1枚以上登録してください"}
   validates :delivery_burden_id, presence: { message: "を選択してください"}
   validates :estimated_shipping_id, presence: { message: "を選択してください"}

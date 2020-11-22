@@ -54,7 +54,6 @@ $(document).on("change","#product_postal_prefectures_id",function(){
     $("#error_prefectures").remove()
   }
 })
-
 $(document).on("change","#product_estimated_shipping_id",function(){
   let error;
   var select = $(this).val();

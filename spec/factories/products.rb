@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :product do
     user
     title                 {"ニットのセーター"}
