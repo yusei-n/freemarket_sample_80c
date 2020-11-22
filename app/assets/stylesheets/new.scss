@@ -5,9 +5,6 @@
 }
 
 // JSで追加される要素
-.ImageFile_group{
-  display: none;
-}
 
 .ImageSide__form__icon-under{
   width: 100%;
@@ -27,6 +24,26 @@
   }
 }
 
+.ErrorMessage{
+  font-size:16px;
+  font-size: initial;
+  font-weight: initial;
+  color:red;
+  margin-top: 15px;
+}
+
+.ErrorMessage__price{
+  font-size:16px;
+  color:red;
+  text-align: end;
+  font-weight: initial;
+  margin-top: 15px;
+}
+
+.ImageFile{
+  display: none;
+}
+
 .ImageSide__form__icon__text-under{
   font-size: 12px;
   line-height: 1.4em;
@@ -35,14 +52,17 @@
   display: none;
   }
 }
+.js-remove{
+  margin-right: auto;
+}
 
 .delet-btn{
   margin-right: auto;
 }
 #previews{
   display: flex;
-
 }
+
 .cotent{
   font-size:12px;
   display: flex;

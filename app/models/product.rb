@@ -17,14 +17,15 @@ class Product < ApplicationRecord
 
   # 発送元の地域
   belongs_to_active_hash :PostalPrefectures
-
-  validates :delivery_burden_id, presence: true
-  validates :estimated_shipping_id, presence: true
-  validates :product_status_id, presence: true
+  
+  validates :images, presence: {message: "を1枚以上登録してください"}
+  validates :delivery_burden_id, presence: { message: "を選択してください"}
+  validates :estimated_shipping_id, presence: { message: "を選択してください"}
+  validates :product_status_id, presence: { message: "を選択してください"}
   validates :title, presence: true,length: { maximum: 40 }
   validates :price, presence: true,inclusion: {in: 300..9999999}
   validates :explanation, presence: true,length: { maximum: 1000 }
-  validates :category_id, presence: true
-  validates :postal_prefectures_id,presence: true
+  validates :category_id, presence: { message: "を選択してください"}
+  validates :postal_prefectures_id,presence: { message: "を選択してください"}
   
 end 
