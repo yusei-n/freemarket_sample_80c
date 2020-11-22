@@ -69,4 +69,4 @@ $(document).on('turbolinks:load',function(){
       $(".grandchild_category_id").remove();
     }
   });
-})
+});

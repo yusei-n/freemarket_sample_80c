@@ -34,8 +34,6 @@ $(document).on('turbolinks:load',()=>{
     //クリックによって最後のフォームが選択される
     file_field.trigger('click');
   });
-
-  
   $('.ImageSide__PhotoNumber').on('change','.ImageFile',function(e){
     const targetIndex = $(this).data('index');
     const file = e.target.files[0];
@@ -57,8 +55,6 @@ $(document).on('turbolinks:load',()=>{
       }
     }
   });
-
-
   $('#previews').on('click', '.delet-btn', function(e){
     //画像の削除
     const image = $(this).parent().parent();
@@ -80,15 +76,12 @@ $(document).on('turbolinks:load',()=>{
       $('.ImageSide__form__icon').toggle(true);
     } 
   });
-
-  
   $('#previews').on('click','.eidt-btn',function(){
     const data_index = $(this).data('index');
     // データインデックスのカスタムデータ属性をfile_fieldに定義
     const file_field = $(`input[type="file"][data-index="${data_index}"]`);
     file_field.trigger('click');
   });
-
   $('#image-box').on('change', '.ImageFile', function(e) {
       const targetIndex = $(this).parent().data('index');
       // ファイルのブラウザ上でのURLを取得する
@@ -106,7 +99,6 @@ $(document).on('turbolinks:load',()=>{
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
   });
-
   // 投稿された画像を変更 
   $('#previews').on('click', '.js-edit', function() {
     const data_index = $(this).data('index');
@@ -114,7 +106,6 @@ $(document).on('turbolinks:load',()=>{
     const file_field = $(`input[type="file"][data-index="${data_index}"]`);
     file_field.trigger('click');
   });
-
     // 投稿された画像を削除
   $('#previews').on('click', '.js-remove', function() {
     const image = $(this).parent().parent();

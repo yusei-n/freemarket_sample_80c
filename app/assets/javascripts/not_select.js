@@ -12,7 +12,6 @@ $(document).on("change","#product_category_id",function(){
     $("#error_category").remove()
   }
 })
-
 $(document).on("change","#product_product_status_id",function(){
   let error;
   var select = $(this).val();

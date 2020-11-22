@@ -16,6 +16,6 @@ FactoryBot.define do
       grand_child_category = child_category.children.create(name: "world")
       product.category_id = grand_child_category.id
       product.images << build(:image)
-    end    
+    end
   end
 end
