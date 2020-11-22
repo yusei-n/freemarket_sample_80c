@@ -10,7 +10,6 @@ $(document).on('turbolinks:load',function(){
                   <option value=${children.id}>${children.name}</option>`
       return option_html;
   }
-
   function build_grandchild(){
     let grandchild_select= `
     <select name="product[category_id]"class="grandchild_category_id">

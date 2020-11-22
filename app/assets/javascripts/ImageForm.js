@@ -19,12 +19,10 @@ $(document).on('turbolinks:load',()=>{
                   </div>`;
     return html;
   }
-  
   var count = $('.image-file').length;
   if (count == 5){
     $('.ImageSide__form__icon').toggle(false);
     }
-
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.ImageFile_group:last').data('index');
   fileIndex.splice(0, lastIndex);

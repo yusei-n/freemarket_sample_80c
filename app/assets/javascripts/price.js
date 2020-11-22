@@ -44,5 +44,4 @@ $(function(){
     $(".price__fee__FeePrice").html("¥"+tax.toLocaleString());
     $(".price__sales__ProfitAmount").html("¥"+profit.toLocaleString());
   });
-  
 })
