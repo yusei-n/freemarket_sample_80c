@@ -3,8 +3,9 @@ class Product < ApplicationRecord
   has_many :images,dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :orders,dependent: :destroy
+  has_many :comments
   belongs_to :category
-  belongs_to :user
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   # 配達の負担
   belongs_to_active_hash :DeliveryBurden

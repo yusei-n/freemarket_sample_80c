@@ -754,7 +754,7 @@ li.item-name {
         background-color: #fff;
         margin: 10px 0;
         text-align: center;
-        #comment {
+        .CommentForm {
           width: 100%;
           min-height: 104px;
           padding: 10px;
@@ -775,6 +775,36 @@ li.item-name {
           font-size: 18px;
           border-radius: 100px;
           margin-top: 30px;
+        }
+      }
+      .CommentDisplay{
+        background-color: #fff;
+        text-align: center;
+        font-size: 20px;
+        margin: 30px 0;
+        padding: 40px 10px;
+        &__contents{
+          margin: 20px 0;
+          
+          &__list{
+            margin-top: 20px;
+            &__user{
+              text-align: start;
+              font-size: 18px;
+              padding-left: 15px;
+            }
+            &__comment{
+              text-align: start;
+              font-size: 16px;
+              padding: 2px 0 0 15px;
+            }
+            &__day{
+              text-align: start;
+              font-size: 12px;
+              padding: 5px 0 0 15px;
+              color: #aaa;
+            }
+          }
         }
       }
       .EditDeleteArea {

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get :logout
     end
   end
-
+  
   resources :products do
     collection do
       get :search
@@ -30,5 +30,6 @@ Rails.application.routes.draw do
       end
     end
     resources :images, only: [:create, :destroy, :new, :show]
+    resources :comments, only: :create
   end
 end

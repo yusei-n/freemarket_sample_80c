@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
   def show
     @products = Product.includes(:images)
     @category = @product.category
+    @comment = Comment.new
+    @comments = @product.comments.includes(:user)
   end
 
   def new

@@ -91,8 +91,8 @@
                 = icon("fab", "font-awesome-flag")
                 不適切な商品の通報
       .CommentArea
-        = form_with url: "#" do |f|
-          = f.text_area :comment
+        = form_with(model: [@product,@comment], local: true, id: "new_comment")do |f|
+          = f.text_area :comment,class: "CommentForm"
           %p.caution
             相手のことを考え丁寧なコメントを心がけましょう。
             %br/
@@ -100,6 +100,18 @@
           = button_tag type: 'submit', class: 'button' do
             = icon("fas", "comment")
             コメントする
+      .CommentDisplay
+        < コメント一覧 >
+        .CommentSide
+          .CommentDisplay__contents
+          - @comments.each do |comment|
+            .CommentDisplay__contents__list
+              .CommentDisplay__contents__list__user
+                = "ニックネーム：#{comment.user.nickname}"
+              .CommentDisplay__contents__list__comment
+                = "コメント：#{comment.comment}"
+              .CommentDisplay__contents__list__day
+                = "投稿日：#{comment.created_at.strftime('%Y/%m/%d %H:%M:%S')}"
       %ul.AnotherProducts
         %li
           = link_to "#" do
