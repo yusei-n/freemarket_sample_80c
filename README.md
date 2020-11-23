@@ -23,9 +23,9 @@
 |first_name|string|null: false|
 |last_name_hurigana|string|null: false|
 |first_name_hurigana|string|null: false|
-|birthday|data|null: false,※アクティブハッシュ|
+|birthday|data|null: false,|
 |postal_number|integer|null: false|
-|postal_prefectures_id|integer|null: false※アクティブハッシュ|
+|postal_prefectures_id|integer|null: false|
 |postal_municipalities|integer|null: false|
 |postal_address|string|null: false|
 |post_apartment|string||
@@ -44,12 +44,11 @@
 |title|string|null: false|
 |price|integer|null: false|
 |explanation|text|null: false|
-|category_id|integer|null: false※アクティブハッシュ|
-|delivery_burden_id|integer|null: false※アクティブハッシュ|
-|product_Status_id|integer|null: false※アクティブハッシュ|
-|estimated_shipping_id|integer|null: false※アクティブハッシュ|
 |category_id|integer|null: false|
-|postal_prefectures_id|integer|null: false※アクティブハッシュ|
+|delivery_burden_id|integer|null: false|
+|product_Status_id|integer|null: false|
+|estimated_shipping_id|integer|null: false|
+|postal_prefectures_id|integer|null: false|
 |brand|text||
 |buyer_id|integer||
 
