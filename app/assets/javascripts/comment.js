@@ -28,7 +28,7 @@ $(function(){
     })
     .done(function(data){
       let html = buildHTML(data)
-      $(".CommentSide").append(html);
+      $(".CommentSide").prepend(html);
       $(".CommentForm").val("");
     })
     .fail(function(){

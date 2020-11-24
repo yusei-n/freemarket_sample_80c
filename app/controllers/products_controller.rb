@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     @products = Product.includes(:images)
     @category = @product.category
     @comment = Comment.new
-    @comments = @product.comments.includes(:user)
+    @comments = @product.comments.includes(:user).order("created_at DESC")
   end
 
   def new
