@@ -120,7 +120,7 @@
           %h3.title
             アーカイバ
       .ProductLists
-        - @products.each do |product|
+        - @products_all.each do |product|
           .ProductList
             = link_to product_path(product.id),{class: "ProductLink"} do
               %figure.ProductList__img
