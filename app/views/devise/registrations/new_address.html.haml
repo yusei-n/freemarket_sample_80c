@@ -13,11 +13,11 @@
               必須
             .Input
               = f.text_field :last_name, class: "Input__family-name", placeholder: "(例)鈴木"
-              .erro__message
+              .error__message
                 - if @address.errors.include?(:last_name)
                   = @address.errors.full_messages_for(:last_name).first
               = f.text_field :first_name, class: "Input__first-name", placeholder: "(例)一郎"
-              .erro__message
+              .error__message
                 - if @address.errors.include?(:first_name)
                   = @address.errors.full_messages_for(:first_name).first
           .ContentBlock
@@ -26,11 +26,11 @@
               必須
             .Input
               = f.text_field :last_name_hurigana, class: "Input__family-name", placeholder: "(例)スズキ"
-              .erro__message
+              .error__message
                 - if @address.errors.include?(:last_name_hurigana)
                   = @address.errors.full_messages_for(:last_name_hurigana).first
               = f.text_field :first_name_hurigana, class: "Input__first-name", placeholder: "(例)イチロウ"
-              .erro__message
+              .error__message
                 - if @address.errors.include?(:first_name_hurigana)
                   = @address.errors.full_messages_for(:first_name_hurigana).first
           .ContentBlock
@@ -38,7 +38,7 @@
             %span.ContentBlock__requirement
               必須
             = f.text_field :birthday, class: "ContentBlock__input", placeholder: "(例)19900101"
-            .erro__message
+            .error__message
               - if @address.errors.include?(:birthday)
                 = @address.errors.full_messages_for(:birthday).first
           .ContentBlock
@@ -46,7 +46,7 @@
             %span.ContentBlock__requirement
               必須
             = f.text_field :postal_number, class: "ContentBlock__input", placeholder: "(例)1234567"
-            .erro__message
+            .error__message
               - if @address.errors.include?(:postal_number)
                 = @address.errors.full_messages_for(:postal_number).first
           .ContentBlock
@@ -54,7 +54,7 @@
             %span.ContentBlock__requirement
               必須
             = f.collection_select :postal_prefectures_id, PostalPrefectures.all, :id, :name,{include_blank: "選択してください"}, {class: "ContentBlock__input"}
-            .erro__message
+            .error__message
               - if @address.errors.include?(:postal_prefectures_id)
                 = @address.errors.full_messages_for(:postal_prefectures_id).first
           .ContentBlock
@@ -62,7 +62,7 @@
             %span.ContentBlock__requirement
               必須
             = f.text_field :postal_municipalities, class: "ContentBlock__input", placeholder: "(例)横浜市緑区"
-            .erro__message
+            .error__message
               - if @address.errors.include?(:postal_municipalities)
                 = @address.errors.full_messages_for(:postal_municipalities).first
           .ContentBlock
@@ -70,7 +70,7 @@
             %span.ContentBlock__requirement
               必須
             = f.text_field :postal_address, class: "ContentBlock__input", placeholder: "(例)青山1-1-1"
-            .erro__message
+            .error__message
               - if @address.errors.include?(:postal_address)
                 = @address.errors.full_messages_for(:postal_address).first
           .ContentBlock
