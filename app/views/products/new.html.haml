@@ -29,6 +29,9 @@
           %span.ProductSide__name__required
             必須
         = f.text_field :title, class:"ProductSide__NameBox",placeholder: "40文字まで"
+        .ErrorMessage
+          - if @product.errors.include?(:title)
+            = @product.errors.full_messages_for(:title).first
         .ProductSide__description
           商品の説明
           %span.ProductSide__description__required
