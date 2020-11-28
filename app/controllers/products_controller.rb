@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   before_action :category,only:[:edit,:update]
   
   def index
-    @products = Product.includes(:images).limit(5)
+    @products = Product.includes(:images).limit(5).order('id DESC')
   end
 
   def show
