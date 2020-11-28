@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :parent,only:[:new,:create,:edit,:update]
   before_action :set_product, except: [:index, :new, :create,:search]
   before_action :category,only:[:edit,:update]
-  
+  before_action :authenticate_user,only: :new
   def index
     @products = Product.includes(:images).limit(5).order('id DESC')
   end
@@ -83,5 +83,12 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def authenticate_user
+    if @current_user==nil
+      flash[:notice]="ログインが必要です"
+      redirect_to("/users/sign_in")
+    end
   end
 end
