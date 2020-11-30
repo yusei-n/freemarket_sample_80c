@@ -1,5 +1,5 @@
 $(function(){
-  $(document).on('keyup',".ProductSide__NameBox",function(e){
+  $(document).on('change',".ProductSide__NameBox",function(e){
     var count = $(this).val().length;
     if (count == 0){
       $(this).after('<div id=error>商品名を入力してください</div>')

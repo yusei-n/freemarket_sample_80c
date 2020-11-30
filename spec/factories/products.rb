@@ -1,7 +1,6 @@
 FactoryBot.define do
-
   factory :product do
-    user_id               {1}
+    user
     title                 {"ニットのセーター"}
     explanation           {"今年の冬の新作"}
     price                 {2500}
@@ -16,6 +15,7 @@ FactoryBot.define do
       child_category = parent_category.children.create(name: "hello")      
       grand_child_category = child_category.children.create(name: "world")
       product.category_id = grand_child_category.id
-    end
+      product.images << build(:image)
+    end    
   end
 end
