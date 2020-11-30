@@ -6,33 +6,36 @@
     .Register__form
       .Contents
         = form_with model: @address, local: true do |f|
-          = render "devise/shared/error_messages", resource: @address
           .ContentBlock
             = f.label :last_name, "お名前 ※全角入力", class: "ContentBlock__item"
             %span.ContentBlock__requirement
               必須
-            .Input
-              = f.text_field :last_name, class: "Input__family-name", placeholder: "(例)鈴木"
-              .error__message
-                - if @address.errors.include?(:last_name)
-                  = @address.errors.full_messages_for(:last_name).first
-              = f.text_field :first_name, class: "Input__first-name", placeholder: "(例)一郎"
-              .error__message
-                - if @address.errors.include?(:first_name)
-                  = @address.errors.full_messages_for(:first_name).first
+            .Input__name
+              .Input__name-block
+                = f.text_field :last_name, class: "Input__family-name", placeholder: "(例)鈴木"
+                .error__message
+                  - if @address.errors.include?(:last_name)
+                    = @address.errors.full_messages_for(:last_name).first
+              .Input__name-block
+                = f.text_field :first_name, class: "Input__first-name", placeholder: "(例)一郎"
+                .error__message
+                  - if @address.errors.include?(:first_name)
+                    = @address.errors.full_messages_for(:first_name).first
           .ContentBlock
             = f.label :last_name, "お名前カナ ※全角入力", class: "ContentBlock__item"
             %span.ContentBlock__requirement
               必須
-            .Input
-              = f.text_field :last_name_hurigana, class: "Input__family-name", placeholder: "(例)スズキ"
-              .error__message
-                - if @address.errors.include?(:last_name_hurigana)
-                  = @address.errors.full_messages_for(:last_name_hurigana).first
-              = f.text_field :first_name_hurigana, class: "Input__first-name", placeholder: "(例)イチロウ"
-              .error__message
-                - if @address.errors.include?(:first_name_hurigana)
-                  = @address.errors.full_messages_for(:first_name_hurigana).first
+            .Input__name
+              .Input__name-block
+                = f.text_field :last_name_hurigana, class: "Input__family-name", placeholder: "(例)スズキ"
+                .error__message
+                  - if @address.errors.include?(:last_name_hurigana)
+                    = @address.errors.full_messages_for(:last_name_hurigana).first
+              .Input__name-block
+                = f.text_field :first_name_hurigana, class: "Input__first-name", placeholder: "(例)イチロウ"
+                .error__message
+                  - if @address.errors.include?(:first_name_hurigana)
+                    = @address.errors.full_messages_for(:first_name_hurigana).first
           .ContentBlock
             = f.label :birthday, "誕生日（西暦）", class: "ContentBlock__item"
             %span.ContentBlock__requirement
