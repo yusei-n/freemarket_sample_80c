@@ -68,7 +68,7 @@ describe Address do
     it "is invalid without a postal_prefectures_id" do
       address = build(:address, postal_prefectures_id: nil)
       address.valid?
-      expect(address.errors[:postal_prefectures_id]).to include("を入力してください")
+      expect(address.errors[:postal_prefectures_id]).to include("を選択してください")
     end
 
   end
