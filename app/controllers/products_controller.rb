@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
   before_action :parent,only:[:new,:create,:edit,:update]
   before_action :set_product, except: [:index, :new, :create,:search]
   before_action :category,only:[:edit,:update]
@@ -33,7 +34,10 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    unless user_signed_in? && current_user.id == @product.user_id
+      redirect_to product_path(@product.id)
   end
+end
 
   def update
 
