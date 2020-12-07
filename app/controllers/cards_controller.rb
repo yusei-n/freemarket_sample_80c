@@ -46,15 +46,15 @@ class CardsController < ApplicationController
       if @card.save
         redirect_to action: "index"
       else
-        redirect_to action: "index",alert: "登録できませんでしました"
+        redirect_to action: "index",alert: "登録できませんでした"
       end
     end
   end
 
-  def delete 
+  def destroy 
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
-    customer.delete
+    customer.destroy
     if @card.destroy 
       redirect_to action: "index"
     else 
