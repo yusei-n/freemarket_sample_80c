@@ -16,21 +16,20 @@ class OrdersController < ApplicationController
       card_information = customer.cards.retrieve(@card.card_id)
       @card_info_last4 = card_information.last4
       @card_brand = card_information.brand
-        case @card_brand
-        when "Visa"
-          @card_src = "visa.png"
-        when "JCB"
-          @card_src = "jcb.png"
-        when "MasterCard"
-          @card_src = "master-card.png"
-        when "American Express"
-          @card_src = "american_express.png"
-        when "Diners Club"
-          @card_src = "dinersclub.png"
-        when "Discover"
-          @card_src = "discover.png"
-        end
-      else
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.png"
+      when "JCB"
+        @card_src = "jcb.png"
+      when "MasterCard"
+        @card_src = "master-card.png"
+      when "American Express"
+        @card_src = "american_express.png"
+      when "Diners Club"
+        @card_src = "dinersclub.png"
+      when "Discover"
+        @card_src = "discover.png"
+      end
     end
   end
 
@@ -46,7 +45,7 @@ class OrdersController < ApplicationController
       )
       @order = Order.new(product_id: @product.id)
       @order.save
-      @product.update( buyer_id: current_user.id)
+      @product.update(buyer_id: current_user.id)
       @product.save
       redirect_to controller: "products", action: "index"
       else
