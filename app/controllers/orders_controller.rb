@@ -36,7 +36,6 @@ class OrdersController < ApplicationController
 
   def create
     if @card.present?
-      # 購入者も、クレジットカードもある、決済処理に移行
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       Payjp::Charge.create(
       amount: @product.price,
@@ -47,23 +46,18 @@ class OrdersController < ApplicationController
       )
       @order = Order.new(product_id: @product.id)
       @order.save
-      # 購入時にbuyer_idをproductsに付与する
       @product.update( buyer_id: current_user.id)
       @product.save
-      # トップページに戻す
       redirect_to controller: "products", action: "index"
       else
-       # カード情報がなければ、買えないので戻す
         flash[:error] = "クレジットカードを登録してください"
         redirect_to action: "new"
     end
   end
 
-  # 購入画面からのカード登録アクション
   def card_order_add
   end
 
-  # 上記の保存アクション
   def card_registration
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].present?
