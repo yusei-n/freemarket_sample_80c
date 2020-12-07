@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
   before_action :set_card
   before_action :set_product
   def new
