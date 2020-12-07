@@ -5,7 +5,9 @@
       %section.Product__List__Verification.NoFst--cld
         %h2.Contents
           購入内容の確認
-      = render 'layouts/notifications'
+      .OrderErrorMessage
+        - if flash[:error]
+          = flash[:error]
       %section.Product__List__Show.NoFst--cld
         .ShowForm
           .ShowForm__Image

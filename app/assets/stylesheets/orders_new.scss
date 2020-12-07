@@ -3,6 +3,16 @@
   box-sizing: border-box;
 }
 
+.OrderErrorMessage{
+  font-size:16px;
+  font-size: initial;
+  font-weight: initial;
+  color:red;
+  margin-top: 15px;
+  text-align: center;
+}
+
+
 .Main  {
   display: flex;
   flex-direction: column;
