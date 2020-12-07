@@ -44,5 +44,5 @@
               = f.button '変更する', type: 'submit', id: "token_submit",class:"btn_order"
             - else
               = f.button '登録する', type: 'submit', id: "token_submit",class:"btn_order"
-          = link_to 'もどる', new_product_order_path, class: 'return-btn'
+          = link_to 'もどる', :back, class: 'return-btn'
 = render "products/Productfooter"
