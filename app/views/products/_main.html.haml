@@ -102,7 +102,7 @@
                     %ul
                       %li 
                         %span
-                          =product.price
+                          =product.price.to_s(:delimited)
                         円
                       %li
                         = icon('fas', 'star')
@@ -132,7 +132,7 @@
                   %ul
                     %li 
                       %span
-                        =product.price
+                        =product.price.to_s(:delimited)
                       円
                     %li
                       = icon('fas', 'star')

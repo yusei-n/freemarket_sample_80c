@@ -24,14 +24,14 @@
                   着払い(税込)
               %span.Price 
                 ¥
-                = @product.price
+                = @product.price.to_s(:delimited)
       %section.Product__List__Price.NoFst--cld
         .PriceForm
           %span.PriceForm__Text
             支払い金額 
           %spam.PriceForm__TotalPrice
             ¥
-            = @product.price
+            = @product.price.to_s(:delimited)
       %section.Product__List__Method.NoFst--cld
         .MethodForm
           .MethodForm__List
