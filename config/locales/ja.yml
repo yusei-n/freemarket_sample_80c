@@ -6,7 +6,7 @@ ja:
     attributes:
       product:
         delivery_burden_id: 発送料の負担
-        estimated_shipping_id: 発送までの日時
+        estimated_shipping_id: 発送までの日数
         product_status_id: 商品の状態
         category_id: カテゴリー
         postal_prefectures_id: 発送元の地域
