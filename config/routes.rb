@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'products#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :create, :new, :update] do
-    resources :cards, only: [:index, :new, :create, :destroy] do
+    resources :cards, only: [:index, :new, :create] do
     collection do
       delete :delete
       end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-    resources :orders, only: [:new, :create, :destroy, :new, :create] do
+    resources :orders, only: [:new, :create] do
       collection do
         get :card_order_add
         post :card_registration

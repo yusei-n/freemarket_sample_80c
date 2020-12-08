@@ -5,7 +5,9 @@
       %section.Product__List__Verification.NoFst--cld
         %h2.Contents
           購入内容の確認
-      = render 'layouts/notifications'
+      .OrderErrorMessage
+        - if flash[:error]
+          = flash[:error]
       %section.Product__List__Show.NoFst--cld
         .ShowForm
           .ShowForm__Image
@@ -22,14 +24,14 @@
                   着払い(税込)
               %span.Price 
                 ¥
-                = @product.price
+                = @product.price.to_s(:delimited)
       %section.Product__List__Price.NoFst--cld
         .PriceForm
           %span.PriceForm__Text
             支払い金額 
           %spam.PriceForm__TotalPrice
             ¥
-            = @product.price
+            = @product.price.to_s(:delimited)
       %section.Product__List__Method.NoFst--cld
         .MethodForm
           .MethodForm__List

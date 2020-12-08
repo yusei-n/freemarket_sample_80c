@@ -18,6 +18,8 @@
       %ul.ListRight
         %li.ListRight__item
           = link_to "マイページ", "/users/#{current_user.id}"
+        %li.ListRight__item
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
     - else
       %ul.ListRight
         %li.ListRight__item

@@ -91,7 +91,7 @@
             必須
         = f.collection_select :postal_prefectures_id,PostalPrefectures.all, :id, :name
         .delivery__day
-          発送までの日時
+          発送までの日数
           %span.delivery__day__required
             必須
         = f.collection_select :estimated_shipping_id,EstimatedShipping.all, :id, :name
