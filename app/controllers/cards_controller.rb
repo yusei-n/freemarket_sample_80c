@@ -51,11 +51,11 @@ class CardsController < ApplicationController
     end
   end
 
-  def destroy 
+  def delete
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     customer = Payjp::Customer.retrieve(@card.customer_id)
-    customer.destroy
-    if @card.destroy 
+    customer.delete
+    if @card.destroy
       redirect_to action: "index"
     else 
       redirect_to action: "index", alert: "削除できませんでした"

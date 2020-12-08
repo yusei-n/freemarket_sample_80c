@@ -43,8 +43,6 @@ class OrdersController < ApplicationController
       description: "商品名:" + @product.title,
       metadata: {nickname_id: current_user.nickname}
       )
-      @order = Order.new(product_id: @product.id)
-      @order.save
       @product.update(buyer_id: current_user.id)
       @product.save
       redirect_to controller: "products", action: "index"
