@@ -24,7 +24,7 @@ class Product < ApplicationRecord
   validates :title, presence: true,length: { maximum: 40 }
   validates :price, presence: true,inclusion: {in: 300..9999999}
   validates :explanation, presence: true,length: { maximum: 1000 }
-  validates :category_id, presence: { message: "を選択してください"}
+  validates :category_id, numericality: { greater_than_or_equal_to:2 ,message: "を選択してください"}
   validates :postal_prefectures_id,presence: { message: "を選択してください"}
   
 end 
